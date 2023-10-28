@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.GraduationProject" parent="Theme.Material3.DayNight.NoActionBar">
+         Customize your light theme here.
+         <item name="colorPrimary">#27B545</item>
+        <item name="colorSecondary">@color/white</item>
+    </style>
+
+    <style name="Theme.GraduationProject" parent="Base.Theme.GraduationProject" />
+
+    <style name="btn">
+        <item name="android:background">@drawable/rectangle_btn</item>
+    </style>
+
+    <style name="btn2">
+        <item name="android:background">@drawable/rectangle_w</item>
+    </style>
+
+    <style name="input">
+        <item name="android:background">@drawable/rectangle_input</item>
+    </style>
+
+
+
+
+
+
+</resources>
