@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.graduationproject.databinding.ActivityLoginOrRegisterBinding
+import com.example.graduationproject.ui.register.RegisterActivity
 
 class LoginOrRegister : AppCompatActivity() {
 

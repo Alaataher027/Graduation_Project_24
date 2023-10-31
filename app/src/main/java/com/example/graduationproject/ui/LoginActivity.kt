@@ -3,9 +3,8 @@ package com.example.graduationproject.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityLoginBinding
-import com.example.graduationproject.databinding.ActivitySplashScreenBinding
+import com.example.graduationproject.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityLoginBinding

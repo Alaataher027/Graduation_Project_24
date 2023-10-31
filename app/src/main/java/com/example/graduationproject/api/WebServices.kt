@@ -9,19 +9,23 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.QueryName
 
 interface WebServices {
     //https://alshaerawy.aait-sa.com/api/ >> base
     // auth/user/register >> end point
+
     @FormUrlEncoded
     @POST("auth/user/register")
+    @Headers("X-Requested-With:XMLHttpRequest")
     fun userRegister(
-        //@Body user: User
         @Field("name") name: String,
         @Field("email") email: String,
         @Field("password") password: String,
+        @Field("password_confirmation") password_confirmation: String,
         @Field("phone_number") phone_number: String
     ): Call<RegisterResponse>
 
@@ -33,7 +37,5 @@ interface WebServices {
         @Field("email") email: String,
         @Field("password") password: String,
 
-        ):Call<LoginResponse>
-
-
+        ): Call<LoginResponse>
 }

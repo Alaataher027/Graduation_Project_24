@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiManager {
 
     companion object{         //  عشان يبقوا  static
-        private  var retrofit: Retrofit? = null //  ingleton >> عشان مش محتاجة يبقى معايا غير اوبجيكت واحد بس من retrofit
+        private  var retrofit: Retrofit? = null
         private fun getInstance():Retrofit{
             if(retrofit==null){
                 retrofit=Retrofit.Builder()
