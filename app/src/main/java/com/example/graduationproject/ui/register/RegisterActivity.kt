@@ -3,18 +3,9 @@ package com.example.graduationproject.ui.register
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import com.example.graduationproject.api.ApiManager
-import com.example.graduationproject.api.WebServices
-import com.example.graduationproject.api.model.RegisterResponse
 import com.example.graduationproject.databinding.ActivityRegisterBinding
-import com.example.graduationproject.ui.LoginActivity
-import org.json.JSONException
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.graduationproject.ui.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityRegisterBinding
@@ -26,19 +17,18 @@ class RegisterActivity : AppCompatActivity() {
         val view = viewBinding.root
         setContentView(view)
         viewModelRegister = RegisterViewModel()
-
         ifLogin()
         onClickRegister()
     }
 
     private fun performRegister() {
-        val userName = viewBinding.userName.editText.toString()
-        val email = viewBinding.email.editText.toString()
-        val password = viewBinding.password.editText.toString()
-        val phoneNumber = viewBinding.number.editText.toString()
-        val password_confirmation = viewBinding.confirmPassword.editText.toString()
+        val name = viewBinding.userName.editText?.text.toString()
+        val email = viewBinding.email.editText?.text.toString()
+        val password = viewBinding.password.editText?.text.toString()
+        val password_confirmation = viewBinding.confirmPassword.editText?.text.toString()
+        val phoneNumber = viewBinding.number.editText?.text.toString()
 
-        viewModelRegister.performRegister(userName, email, password, phoneNumber, password_confirmation) { success, message ->
+        viewModelRegister.performRegister(name, email, password,password_confirmation , phoneNumber ) { success, message ->
             if (success) {
                 Toast.makeText(this@RegisterActivity, message, Toast.LENGTH_SHORT).show()
                 navigateToLogin()

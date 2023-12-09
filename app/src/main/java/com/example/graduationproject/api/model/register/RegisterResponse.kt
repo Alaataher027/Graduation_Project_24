@@ -1,4 +1,4 @@
-package com.example.graduationproject.api.model
+package com.example.graduationproject.api.model.register
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
@@ -31,3 +31,5 @@ data class Errors(
     val email: List<String>? = null
 
 ) : Parcelable
+
+

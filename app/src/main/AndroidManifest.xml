@@ -30,7 +30,7 @@
             android:name=".ui.OtpVertification"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.register.RegisterActivity"

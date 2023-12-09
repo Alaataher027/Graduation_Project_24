@@ -1,15 +1,9 @@
 package com.example.graduationproject.ui.register
 
-import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
-import com.example.graduationproject.api.WebServices
-import com.example.graduationproject.api.model.RegisterResponse
-import com.example.graduationproject.data.User
+import com.example.graduationproject.api.model.register.RegisterResponse
 import com.google.gson.Gson
-import org.json.JSONException
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,16 +11,16 @@ import retrofit2.Response
 class RegisterViewModel : ViewModel() {
 
     fun performRegister(
-        userName: String,
+        name: String,
         email: String,
         password: String,
-        phoneNumber: String,
         password_confirmation: String,
+        phone_number: String,
         onRegisterResult: (Boolean, String) -> Unit
     ) {
 
         ApiManager.getApis()
-            .userRegister(userName, email, password, phoneNumber, password_confirmation)
+            .userRegister(name, email, password, password_confirmation, phone_number)
             .enqueue(object : Callback<RegisterResponse> {
                 override fun onResponse(
                     call: Call<RegisterResponse>,
@@ -49,10 +43,35 @@ class RegisterViewModel : ViewModel() {
                         }
                     }
                 }
-
                 override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
                     onRegisterResult(false, "Registration failed: ${t.message}")
                 }
             })
     }
 }
+
+//viewModelScope.launch {
+//            try {
+//                val registerResponse = ApiManager.getApis()
+//                    .userRegister(name, email, password, password_confirmation, phone_number)
+//                onRegisterResult(true, "Registration successful")
+//
+//            } catch (e: HttpException) {
+//                val errorResponse = e.response()?.errorBody()?.string()
+//                if (errorResponse != null) {
+//                    val errorResultObject =
+//                        Gson().fromJson(errorResponse, RegisterResponse::class.java)
+//                    val errorMessage =
+//                        "Registration failed: ${errorResultObject.message}\n" +
+//                                "Name: ${errorResultObject.errors?.name}\n" +
+//                                "Email: ${errorResultObject.errors?.email}\n" +
+//                                "Password: ${errorResultObject.errors?.password}\n" +
+//                                "Phone Number: ${errorResultObject.errors?.phoneNumber}"
+//                    onRegisterResult(false, errorMessage)
+//                }
+//
+//            }catch (e:Exception){
+//                onRegisterResult(false, "Registration failed: ${e.message}")
+//
+//            }
+//        }

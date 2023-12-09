@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.graduationproject.R
-import com.example.graduationproject.databinding.ActivityCreateNewPasswordBinding
 import com.example.graduationproject.databinding.ActivityForgetPasswordBinding
+import com.example.graduationproject.ui.login.LoginActivity
 
 class ForgetPassword : AppCompatActivity() {
     lateinit var viewBinding: ActivityForgetPasswordBinding
