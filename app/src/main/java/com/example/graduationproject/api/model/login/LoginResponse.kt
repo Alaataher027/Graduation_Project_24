@@ -1,4 +1,4 @@
-package com.example.graduationproject.api.model
+package com.example.graduationproject.api.model.login
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
@@ -11,5 +11,5 @@ data class LoginResponse(
 	val message: String? = null,
 
 	@field:SerializedName("errors")
-	val errors: Errors? = null
+	val loginErrors: LoginErrors? = null
 ) : Parcelable

@@ -3,9 +3,8 @@ package com.example.graduationproject.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.graduationproject.R
-import com.example.graduationproject.databinding.ActivityGetStartedBinding
 import com.example.graduationproject.databinding.ActivityPasswordChangedBinding
+import com.example.graduationproject.ui.login.LoginActivity
 
 class PasswordChanged : AppCompatActivity() {
     lateinit var viewBinding: ActivityPasswordChangedBinding
