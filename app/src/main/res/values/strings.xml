@@ -33,4 +33,5 @@
     <string name="your_password_has_been">Your password has been</string>
     <string name="changed_successfully">changed successfully.</string>
     <string name="back_to_login">Back to Login</string>
+    <string name="enter_the_code">Enter the code</string>
 </resources>
