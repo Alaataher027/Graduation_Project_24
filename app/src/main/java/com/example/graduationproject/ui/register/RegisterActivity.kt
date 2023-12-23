@@ -27,8 +27,21 @@ class RegisterActivity : AppCompatActivity() {
         val password = viewBinding.password.editText?.text.toString()
         val password_confirmation = viewBinding.confirmPassword.editText?.text.toString()
         val phoneNumber = viewBinding.number.editText?.text.toString()
+        var user_type:String = "DefaultUserType"
+        viewBinding.radioSeller.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                user_type = "Seller"
+            }
+        }
 
-        viewModelRegister.performRegister(name, email, password,password_confirmation , phoneNumber ) { success, message ->
+        viewBinding.radioBuyer.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                user_type  = "Buyer"
+            }
+        }
+
+
+        viewModelRegister.performRegister(name, email, password,password_confirmation , phoneNumber, user_type ,"ar") { success, message ->
             if (success) {
                 Toast.makeText(this@RegisterActivity, message, Toast.LENGTH_SHORT).show()
                 navigateToLogin()

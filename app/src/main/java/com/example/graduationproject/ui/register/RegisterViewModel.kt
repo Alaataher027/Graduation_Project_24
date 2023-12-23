@@ -3,6 +3,7 @@ package com.example.graduationproject.ui.register
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
 import com.example.graduationproject.api.model.register.RegisterResponse
+import com.example.graduationproject.api.model.register.RegisterResponse2
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,39 +17,79 @@ class RegisterViewModel : ViewModel() {
         password: String,
         password_confirmation: String,
         phone_number: String,
+        user_type: String,
+        lang: String,
         onRegisterResult: (Boolean, String) -> Unit
     ) {
 
         ApiManager.getApis()
-            .userRegister(name, email, password, password_confirmation, phone_number)
-            .enqueue(object : Callback<RegisterResponse> {
+            .userRegister(
+                name, email, password, password_confirmation, phone_number, user_type, lang
+            )
+            .enqueue(object : Callback<RegisterResponse2> {
                 override fun onResponse(
-                    call: Call<RegisterResponse>,
-                    response: Response<RegisterResponse>
+                    call: Call<RegisterResponse2>,
+                    response: Response<RegisterResponse2>
                 ) {
                     if (response.isSuccessful) {
-                        onRegisterResult(true, "Registration successful")
-                    } else {
-                        val errorResponse = response.errorBody()?.string()
-                        if (errorResponse != null) {
-                            val errorResultObject =
-                                Gson().fromJson(errorResponse, RegisterResponse::class.java)
-                            val errorMessage =
-                                "Registration failed: ${errorResultObject.message}\n" +
-                                        "Name: ${errorResultObject.errors?.name}\n" +
-                                        "Email: ${errorResultObject.errors?.email}\n" +
-                                        "Password: ${errorResultObject.errors?.password}\n" +
-                                        "Phone Number: ${errorResultObject.errors?.phoneNumber}"
-                            onRegisterResult(false, errorMessage)
+                        val registerResponse: RegisterResponse2? = response.body()
+                        if (registerResponse != null) {
+                            // Successful registration
+                            val status: Int? = registerResponse.status
+                            val message: String? = registerResponse.message
+
+                            if (status == 1) {
+                                // Registration successful
+                                onRegisterResult(true, message ?: "")
+                            } else {
+                                // Registration failed
+                                onRegisterResult(false, message ?: "Registration failed")
+                            }
+                        } else {
+                            // Handle null response body if needed
+                            onRegisterResult(false, "Unexpected error occurred")
                         }
+                    } else {
+                        // Handle unsuccessful response
+                        onRegisterResult(false, "Server error: ${response.code()}")
                     }
                 }
-                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-                    onRegisterResult(false, "Registration failed: ${t.message}")
+
+                override fun onFailure(call: Call<RegisterResponse2>, t: Throwable) {
+                    // Handle failure, for example, show an error message
+                    onRegisterResult(false, "Network error: ${t.message}")
                 }
             })
     }
 }
+
+
+//
+//override fun onResponse(
+//    call: Call<RegisterResponse>,
+//    response: Response<RegisterResponse>
+//) {
+//    if (response.isSuccessful) {
+//        onRegisterResult(true, "Registration successful")
+//    } else {
+//        val errorResponse = response.errorBody()?.string()
+//        if (errorResponse != null) {
+//            val errorResultObject =
+//                Gson().fromJson(errorResponse, RegisterResponse::class.java)
+//            val errorMessage =
+//                "Registration failed: ${errorResultObject.message}\n" +
+//                        "Name: ${errorResultObject.errors?.name}\n" +
+//                        "Email: ${errorResultObject.errors?.email}\n" +
+//                        "Password: ${errorResultObject.errors?.password}\n" +
+//                        "Phone Number: ${errorResultObject.errors?.phoneNumber}"
+//            onRegisterResult(false, errorMessage)
+//        }
+//    }
+//}
+//override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+//    onRegisterResult(false, "Registration failed: ${t.message}")
+//}
+//}
 
 //viewModelScope.launch {
 //            try {

@@ -1,7 +1,9 @@
 package com.example.graduationproject.api
 
 import com.example.graduationproject.api.model.login.LoginResponse
+import com.example.graduationproject.api.model.login.LoginResponse2
 import com.example.graduationproject.api.model.register.RegisterResponse
+import com.example.graduationproject.api.model.register.RegisterResponse2
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -20,8 +22,10 @@ interface WebServices {
         @Field("email") email: String,
         @Field("password") password: String,
         @Field("password_confirmation") password_confirmation: String,
-        @Field("phone_number") phone_number: String
-    ): Call<RegisterResponse>
+        @Field("phone_number") phone_number: String,
+        @Field("user_type") user_type: String,
+        @Field("lang") lang: String
+        ): Call<RegisterResponse2>
 
     //https://alshaerawy.aait-sa.com/api/
     // auth/user/login
@@ -31,5 +35,7 @@ interface WebServices {
     fun userLogin(
         @Field("email") email: String,
         @Field("password") password: String,
-    ): Call<LoginResponse>
+        @Field("lang") lang: String,
+
+    ): Call<LoginResponse2>
 }

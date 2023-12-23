@@ -14,17 +14,24 @@ import com.example.graduationproject.ui.register.RegisterActivity
 class LoginActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityLoginBinding
     private lateinit var viewModelLogin: LoginViewModel
+    private lateinit var tokenManager: TokenManager // Add this line
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityLoginBinding.inflate(layoutInflater)
         val view = viewBinding.root
         setContentView(view)
-        viewModelLogin = LoginViewModel()
+
+        // Initialize the TokenManager
+        tokenManager = TokenManager(this)
+
+        // Pass the TokenManager to the LoginViewModel
+        viewModelLogin = LoginViewModel(tokenManager)
+
         onClickLogin()
         if_register()
         forgetPass()
-
     }
 
     private fun onClickLogin() {
@@ -40,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
 
         //Log.d("LoginActivity", "Email: $email, Password: $password")
 
-        viewModelLogin.performLogin(email, password) { success, message ->
+        viewModelLogin.performLogin(email, password, "ar") { success, message ->
 //            Log.d("LoginActivity", "Inside performLogin callback")
             if (success) {
                 Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
