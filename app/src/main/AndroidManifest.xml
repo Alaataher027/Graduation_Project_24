@@ -27,7 +27,7 @@
             android:name=".ui.PasswordChanged"
             android:exported="false" />
         <activity
-            android:name=".ui.ForgetPassword"
+            android:name=".ui.ForgetPass.ForgetPassword"
             android:exported="false" />
         <activity
             android:name=".ui.OtpVertification"

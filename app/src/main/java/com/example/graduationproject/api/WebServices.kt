@@ -1,8 +1,7 @@
 package com.example.graduationproject.api
 
-import com.example.graduationproject.api.model.login.LoginResponse
+import com.example.graduationproject.api.model.ForgetPasswordResponse
 import com.example.graduationproject.api.model.login.LoginResponse2
-import com.example.graduationproject.api.model.register.RegisterResponse
 import com.example.graduationproject.api.model.register.RegisterResponse2
 import retrofit2.Call
 import retrofit2.http.Field
@@ -38,4 +37,15 @@ interface WebServices {
         @Field("lang") lang: String,
 
     ): Call<LoginResponse2>
+
+
+    //https://alshaerawy.aait-sa.com/api/
+    // password/email
+    @FormUrlEncoded
+    @POST("password/email")
+    fun forgetPassword(
+        @Field("email") email: String,
+        @Field("lang") lang: String,
+
+        ): Call<ForgetPasswordResponse>
 }
