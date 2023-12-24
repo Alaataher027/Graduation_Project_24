@@ -61,4 +61,15 @@ dependencies {
     // Lifecycle utilities for Compose
     implementation "androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version"
 
+    // Use a compatible version of androidx.databinding:databinding-ktx
+    implementation "androidx.databinding:databinding-ktx:4.3.1"
+
+// Use a compatible version of org.jetbrains.kotlinx:kotlinx-coroutines-android
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1"
+
+    // Specify explicit versions for androidx.navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+
 }

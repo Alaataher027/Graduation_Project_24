@@ -15,6 +15,9 @@
         android:theme="@style/Theme.GraduationProject"
         tools:targetApi="31">
         <activity
+            android:name=".ui.mainActivityBuyer.EditProfileBuyer"
+            android:exported="false" />
+        <activity
             android:name=".ui.CreateNewPassword"
             android:exported="false" />
         <activity
@@ -48,7 +51,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.mainActivityBuyer.MainActivityBuyer"
             android:exported="false" />
     </application>
 

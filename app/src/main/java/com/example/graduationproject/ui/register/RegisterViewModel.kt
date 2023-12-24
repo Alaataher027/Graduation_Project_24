@@ -51,7 +51,7 @@ class RegisterViewModel : ViewModel() {
                         }
                     } else {
                         // Handle unsuccessful response
-                        onRegisterResult(false, "Server error: ${response.code()}")
+                        onRegisterResult(false, "Server error: ${response.code()}") // ${response.message()
                     }
                 }
 

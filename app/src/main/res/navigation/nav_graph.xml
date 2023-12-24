@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- nav_graph.xml -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.graduationproject.ui.mainActivityBuyer.fragment.profileFragment.ProfileFragmentBuyer"
+        android:label="fragment_profile"
+        tools:layout="@layout/buyer_fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileActivity"
+            app:destination="@id/editProfileActivity" />
+    </fragment>
+
+    <activity
+        android:id="@+id/editProfileActivity"
+        app:destination="@id/editProfileActivity"
+        android:label="EditProfileActivity"
+        tools:layout="@layout/activity_edit_profile_buyer" />
+
+</navigation>

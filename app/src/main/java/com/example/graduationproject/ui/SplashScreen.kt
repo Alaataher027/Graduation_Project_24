@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.example.graduationproject.MainActivity
+import com.example.graduationproject.ui.mainActivityBuyer.MainActivityBuyer
 import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivitySplashScreenBinding
 import com.example.graduationproject.ui.login.TokenManager
@@ -42,7 +41,7 @@ class SplashScreen : AppCompatActivity() {
             startActivity(intent)
         } else {
             // Token exists, navigate to MainActivity
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivityBuyer::class.java)
             startActivity(intent)
         }
 

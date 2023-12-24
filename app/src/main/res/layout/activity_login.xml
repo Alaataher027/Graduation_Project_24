@@ -10,8 +10,8 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins_"
         android:padding="20dp"
         android:paddingStart="30dp"
         android:text="@string/login"
@@ -28,8 +28,8 @@
         android:layout_height="wrap_content"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
         android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
 
@@ -61,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:hint="@string/enter_your_password"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -69,14 +70,13 @@
         android:id="@+id/forget_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/forgot_password"
-        app:layout_constraintTop_toBottomOf="@id/password"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="12dp"
-        android:textSize="15dp"
-        android:textColor="#000000"
         android:fontFamily="@font/poppins_"
-        />
+        android:text="@string/forgot_password"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password" />
 
     <Button
         android:id="@+id/login_btn"
@@ -116,8 +116,8 @@
         android:layout_marginTop="12dp"
         android:adjustViewBounds="true"
         android:src="@drawable/facebook_ic"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/google"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/or" />
 
     <ImageView
@@ -127,8 +127,8 @@
         android:layout_marginTop="12dp"
         android:adjustViewBounds="true"
         android:src="@drawable/google_ic"
-        app:layout_constraintStart_toEndOf="@id/facebook"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/facebook"
         app:layout_constraintTop_toBottomOf="@id/or" />
 
 
@@ -136,15 +136,15 @@
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_"
-        android:layout_marginBottom="20dp"
         android:layout_marginEnd="70dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppins_"
         android:text="@string/don_t_have_an_account"
         android:textColor="@color/black"
         android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/regist_now"
@@ -157,8 +157,7 @@
         android:textColor="@color/my_light_primary"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/register"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintStart_toEndOf="@+id/register" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
