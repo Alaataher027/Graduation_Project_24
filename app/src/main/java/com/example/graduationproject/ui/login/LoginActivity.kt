@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.graduationproject.ui.mainActivityBuyer.MainActivityBuyer
 import com.example.graduationproject.databinding.ActivityLoginBinding
-import com.example.graduationproject.ui.ForgetPassword
+import com.example.graduationproject.ui.ForgetPass.ForgetPassword
 import com.example.graduationproject.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
