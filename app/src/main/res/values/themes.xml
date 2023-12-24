@@ -4,6 +4,7 @@
          Customize your light theme here.
          <item name="colorPrimary">#27B545</item>
         <item name="colorSecondary">@color/white</item>
+
     </style>
 
     <style name="Theme.GraduationProject" parent="Base.Theme.GraduationProject" />
@@ -12,17 +13,13 @@
         <item name="android:background">@drawable/rectangle_btn</item>
     </style>
 
-    <style name="btn2">
+    <style name="btn2" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/rectangle_w</item>
     </style>
 
     <style name="input">
         <item name="android:background">@drawable/rectangle_input</item>
     </style>
-
-
-
-
 
 
 </resources>

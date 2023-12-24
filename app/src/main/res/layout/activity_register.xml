@@ -82,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:hint="@string/password"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -104,6 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:hint="@string/confirm_password"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -134,17 +136,21 @@
         android:id="@+id/radio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/number"
         android:layout_marginStart="20dp"
-        android:orientation="vertical">
-        <RadioButton android:id="@+id/radio_seller"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/number">
+
+        <RadioButton
+            android:id="@+id/radio_seller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/seller"/>
-        <RadioButton android:id="@+id/radio_buyer"
+            android:text="@string/seller" />
+
+        <RadioButton
+            android:id="@+id/radio_buyer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/buyer"/>
+            android:text="@string/buyer" />
     </RadioGroup>
 
     <Button

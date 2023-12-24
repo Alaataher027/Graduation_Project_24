@@ -36,4 +36,19 @@
     <string name="enter_the_code">Enter the code</string>
     <string name="seller">Seller</string>
     <string name="buyer">Buyer</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="notification">Notification</string>
+    <string name="profile">Profile</string>
+    <string name="edit_your_profile">Edit your profile</string>
+    <string name="phone">phone</string>
+    <string name="address">Address</string>
+    <string name="save">Save</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="name">Name</string>
+    <string name="governorate">Governorate</string>
+    <string name="city">City</string>
+    <string name="street">Street</string>
+    <string name="residential_quarter">residential quarter</string>
+    <string name="notifications">Notifications</string>
 </resources>
