@@ -4,9 +4,11 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
 import com.example.graduationproject.api.model.login.Data
+import com.example.graduationproject.api.model.login.ErrorResponse
 import com.example.graduationproject.api.model.login.LoginResponse
 import com.example.graduationproject.api.model.login.LoginResponse2
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,19 +34,32 @@ class LoginViewModel(private val tokenManager: TokenManager) : ViewModel() {
                             val status: Int? = loginResponse.status
                             val message: String? = loginResponse.message
 
+
                             if (status == 200) {
                                 val data: Data? = loginResponse.data
                                 val accessToken: String? = data?.accessToken
-
+                                val userType: String? = data?.user?.userType
+                                // Inside the performLogin method
                                 if (!accessToken.isNullOrBlank()) {
                                     // Save the access token
                                     tokenManager.saveToken(accessToken)
+                                    Log.d("LoginViewModel", "User Type saved: $userType")
+
+                                    // Log the saved token
+                                    Log.d("TokenManager", "Access token saved: $accessToken")
+
+                                    // Save user type
+                                    val userType: String? = data?.user?.userType
+                                    if (!userType.isNullOrBlank()) {
+                                        tokenManager.saveUserType(userType)
+                                    }
 
                                     // Invoke the callback with success
                                     onLoginResult(true, message ?: "")
                                 } else {
                                     onLoginResult(false, "Invalid access token")
                                 }
+
                             } else {
                                 onLoginResult(false, message ?: "Login failed")
                             }
@@ -52,7 +67,14 @@ class LoginViewModel(private val tokenManager: TokenManager) : ViewModel() {
                             onLoginResult(false, "Unexpected error occurred")
                         }
                     } else {
-                        onLoginResult(false, "Server error: ${response.code()}")
+//                        onLoginResult(false, "Server error: ${response.code()}")
+                        val json = response.errorBody()?.charStream()
+                        Log.e("Tag", "$json")
+                        val type = object : TypeToken<ErrorResponse>() {}.type
+                        onLoginResult(
+                            false,
+                            "${Gson().fromJson<ErrorResponse>(json, type).message}"
+                        )
                     }
                 }
 
@@ -62,8 +84,7 @@ class LoginViewModel(private val tokenManager: TokenManager) : ViewModel() {
             })
     }
 }
-
-
+// coroutiens:
 
 //{
 //    override fun onResponse(

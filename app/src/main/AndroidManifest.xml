@@ -8,17 +8,42 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject"
         tools:targetApi="31">
         <activity
-            android:name=".ui.mainActivityBuyer.EditProfileBuyer"
+            android:name=".ui.mainActivitySeller.ListComponents.profile.EditProfileSeller"
             android:exported="false" />
         <activity
-            android:name=".ui.CreateNewPassword"
+            android:name=".ui.mainActivitySeller.ListComponents.SellerListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mainActivitySeller.ListComponents.profile.SellerProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mainActivityCustomer.ListComponents.profile.CustomerProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mainActivityCustomer.ListComponents.material.MaterialsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mainActivityCustomer.fragment.home.CreatPostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mainActivityCustomer.ListComponents.CustomerListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.mainActivitySeller.MainActivitySeller"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mainActivityCustomer.ListComponents.profile.EditProfileCustomer"
+            android:exported="false" />
+        <activity
+            android:name=".ui.resetPass.CreateNewPassword"
             android:exported="false" />
         <activity
             android:name=".ui.GetStarted"
@@ -30,7 +55,7 @@
             android:name=".ui.ForgetPass.ForgetPassword"
             android:exported="false" />
         <activity
-            android:name=".ui.OtpVertification"
+            android:name=".ui.checkOTP.OtpVertification"
             android:exported="false" />
         <activity
             android:name=".ui.login.LoginActivity"
@@ -51,7 +76,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.mainActivityBuyer.MainActivityBuyer"
+            android:name=".ui.mainActivityCustomer.MainActivityCustomer"
             android:exported="false" />
     </application>
 

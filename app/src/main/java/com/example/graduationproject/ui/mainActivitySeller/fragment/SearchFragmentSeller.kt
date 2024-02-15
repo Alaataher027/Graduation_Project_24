@@ -1,9 +1,9 @@
-package com.example.graduationproject.ui.mainActivityBuyer.fragment
+package com.example.graduationproject.ui.mainActivitySeller.fragment
 
 import androidx.fragment.app.Fragment
 import com.example.graduationproject.R
 
-class SearchFragmentSeller : Fragment(R.layout.buyer_fragment_search) {
+class SearchFragmentSeller : Fragment(R.layout.seller_fragment_search) {
 
 
 }
