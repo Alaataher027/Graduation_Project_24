@@ -30,9 +30,7 @@
         android:textColorHint="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
-
-        >
+        app:layout_constraintTop_toBottomOf="@id/title">
 
         <com.google.android.material.textfield.TextInputEditText
 
@@ -147,10 +145,10 @@
             android:text="@string/seller" />
 
         <RadioButton
-            android:id="@+id/radio_buyer"
+            android:id="@+id/radio_customer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/buyer" />
+            android:text="@string/custumer" />
     </RadioGroup>
 
     <Button

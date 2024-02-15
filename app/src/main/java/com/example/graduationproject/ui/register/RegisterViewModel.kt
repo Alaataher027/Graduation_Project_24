@@ -1,10 +1,11 @@
 package com.example.graduationproject.ui.register
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
-import com.example.graduationproject.api.model.register.RegisterResponse
 import com.example.graduationproject.api.model.register.RegisterResponse2
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,7 +52,14 @@ class RegisterViewModel : ViewModel() {
                         }
                     } else {
                         // Handle unsuccessful response
-                        onRegisterResult(false, "Server error: ${response.code()}") // ${response.message()
+//                        onRegisterResult(false, "Server error: ${response.code()}") // ${response.message()
+                        val json = response.errorBody()?.charStream()
+                        Log.e("Tag", "$json")
+                        val type = object : TypeToken<RegisterResponse2>() {}.type
+                        onRegisterResult(
+                            false,
+                            "${Gson().fromJson<RegisterResponse2>(json, type).message}"
+                        )
                     }
                 }
 

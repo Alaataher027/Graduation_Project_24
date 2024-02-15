@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Graduation Project</string>
+    <string name="app_name">Rekia</string>
     <string name="get_started">Get Started</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
@@ -51,4 +51,32 @@
     <string name="street">Street</string>
     <string name="residential_quarter">residential quarter</string>
     <string name="notifications">Notifications</string>
+    <string name="chat">Chat</string>
+    <string name="rekia">Rekia</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu">menu</string>
+    <string name="add_post">Add post</string>
+    <string name="saved_posts">Saved Posts</string>
+    <string name="about_us">about us</string>
+    <string name="settings">settings</string>
+    <string name="guidance">guidance</string>
+    <string name="privacy">privacy</string>
+    <string name="log_out">log out</string>
+    <string name="material">Material</string>
+    <string name="technical_support">Technical support</string>
+    <string name="orders">Orders</string>
+    <string name="order">Order</string>
+    <string name="creat_post">Creat Post</string>
+    <string name="share">Share</string>
+    <string name="select">Select</string>
+    <string name="quantity">Quantity</string>
+    <string name="what_do_you_want_n_to_recycle">what do you want \n to recycle ?</string>
+    <string name="custumer">Custumer</string>
+    <string name="edit">Edit</string>
+    <string name="customer">customer</string>
+    <string name="posts">Posts</string>
+    <string name="tax_number">TAX number</string>
+    <string name="save_changes">Save changes</string>
+    <string name="are_you_sure_you_want_to_log_out">Are you sure you want to log out?</string>
 </resources>

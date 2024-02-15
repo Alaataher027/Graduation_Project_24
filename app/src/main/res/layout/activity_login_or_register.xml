@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/layer"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:adjustViewBounds="true"
         android:src="@drawable/layer"
         app:layout_constraintBottom_toTopOf="@id/cycle_pic"
@@ -23,7 +23,7 @@
     <ImageView
         android:id="@+id/cycle_pic"
         android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_height="350dp"
         android:adjustViewBounds="true"
         android:src="@drawable/privacy_policy_rafiki"
         app:layout_constraintBottom_toTopOf="@id/login_btn"
@@ -38,6 +38,8 @@
         android:layout_marginStart="22dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="22dp"
+        android:backgroundTint="@color/my_light_primary"
+        android:backgroundTintMode="src_atop"
         android:fontFamily="@font/poppins_"
         android:gravity="center"
         android:padding="7dp"
@@ -45,8 +47,6 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="25dp"
-        android:backgroundTint="@color/my_light_primary"
-        android:backgroundTintMode="src_atop"
         app:layout_constraintBottom_toTopOf="@id/register_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,6 @@
         android:textAllCaps="false"
         android:textColor="@color/my_light_primary"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@id/guest"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_btn" />
@@ -77,7 +76,6 @@
         android:id="@+id/guest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
         android:layout_marginBottom="15dp"
         android:fontFamily="@font/poppins_"
         android:text="@string/continue_as_a_guest"

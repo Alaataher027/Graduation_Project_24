@@ -27,22 +27,10 @@ class RegisterActivity : AppCompatActivity() {
         val password = viewBinding.password.editText?.text.toString()
         val password_confirmation = viewBinding.confirmPassword.editText?.text.toString()
         val phoneNumber = viewBinding.number.editText?.text.toString()
-//        var user_type:String = "DefaultUserType"
-//        viewBinding.radioSeller.setOnCheckedChangeListener { buttonView, isChecked ->
-//            if (isChecked) {
-//                user_type = "Seller"
-//            }
-//        }
-//
-//        viewBinding.radioBuyer.setOnCheckedChangeListener { buttonView, isChecked ->
-//            if (isChecked) {
-//                user_type  = "Buyer"
-//            }
-//        }
 
         val user_type = when {
             viewBinding.radioSeller.isChecked -> "Seller"
-            viewBinding.radioBuyer.isChecked -> "Buyer"
+            viewBinding.radioCustomer.isChecked -> "Customer"
             else -> "DefaultUserType" // Set a default value if neither is checked
         }
 

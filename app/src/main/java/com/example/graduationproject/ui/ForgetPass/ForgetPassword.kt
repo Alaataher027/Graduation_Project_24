@@ -4,10 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityForgetPasswordBinding
-import com.example.graduationproject.ui.OtpVertification
+import com.example.graduationproject.ui.checkOTP.OtpVertification
 import com.example.graduationproject.ui.login.LoginActivity
 
 class ForgetPassword : AppCompatActivity() {

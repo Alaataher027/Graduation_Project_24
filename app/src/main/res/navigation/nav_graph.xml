@@ -8,9 +8,9 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.graduationproject.ui.mainActivityBuyer.fragment.profileFragment.ProfileFragmentBuyer"
+        android:name="com.example.graduationproject.ui.mainActivityCustomer.fragment.chatFragment.ChatFragmentCustomer"
         android:label="fragment_profile"
-        tools:layout="@layout/buyer_fragment_profile">
+        tools:layout="@layout/customer_fragment_chat">
         <action
             android:id="@+id/action_profileFragment_to_editProfileActivity"
             app:destination="@id/editProfileActivity" />
@@ -20,6 +20,6 @@
         android:id="@+id/editProfileActivity"
         app:destination="@id/editProfileActivity"
         android:label="EditProfileActivity"
-        tools:layout="@layout/activity_edit_profile_buyer" />
+        tools:layout="@layout/activity_edit_profile_customer" />
 
 </navigation>
