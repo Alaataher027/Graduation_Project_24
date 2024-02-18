@@ -1,7 +1,9 @@
-package com.example.graduationproject.ui.mainActivityCustomer.ListComponents.logOut
+package com.example.graduationproject.ui.logOut
 
 import android.content.Context
 import android.util.Log
+
+          /////////////// NOT Used /////////////////
 
 object SessionManager {
     private const val PREF_NAME = "MyAppPreferences"

@@ -8,7 +8,6 @@ class TokenManager(val context: Context) {
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("TokenPrefs", Context.MODE_PRIVATE)
 
-
     fun saveToken(token: String) {
         sharedPreferences.edit().putString("access_token", token).apply()
     }
@@ -24,4 +23,9 @@ class TokenManager(val context: Context) {
     fun getToken(): String? {
         return sharedPreferences.getString("access_token", null)
     }
+
+    fun clearToken() {
+        sharedPreferences.edit().remove("access_token").apply()
+    }
+
 }

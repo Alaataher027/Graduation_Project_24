@@ -9,8 +9,8 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.graduationproject.databinding.ActivityListCustomerBinding
 import com.example.graduationproject.ui.login.LoginActivity
 import com.example.graduationproject.ui.login.TokenManager
-import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.logOut.LogOutViewModel
-import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.logOut.SessionManager
+import com.example.graduationproject.ui.logOut.LogOutViewModel
+import com.example.graduationproject.ui.logOut.SessionManager
 import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.material.MaterialsActivity
 import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.profile.CustomerProfileActivity
 
@@ -34,7 +34,7 @@ class CustomerListActivity : AppCompatActivity() {
         }
 //        tokenManager = TokenManager(this)
 
-        onClickLogOut()
+//        onClickLogOut()
         onClickProfile()
         navToMaterial()
     }
@@ -46,30 +46,30 @@ class CustomerListActivity : AppCompatActivity() {
         }
     }
 
-    private fun onClickLogOut() {
-        binding.logoutBtn.setOnClickListener {
-            performLogout()
-        }
-    }
+//    private fun onClickLogOut() {
+//        binding.logoutBtn.setOnClickListener {
+//            performLogout()
+//        }
+//    }
 
-    private fun performLogout() {
-        val accessToken = SessionManager.getToken(this@CustomerListActivity)
-        if (accessToken != null) {
-            LogOutViewModel().performLogOut(accessToken) { isSuccess, message ->
-                if (isSuccess) {
-                    Toast.makeText(this@CustomerListActivity, message, Toast.LENGTH_SHORT).show()
-                    // Navigate to login screen after successful logout
-                    navToLogin()
-                } else {
-                    Toast.makeText(this@CustomerListActivity, message, Toast.LENGTH_SHORT).show()
-                }
-            }
-        } else {
-            // Handle case where access token is null
-            Toast.makeText(this@CustomerListActivity, "Access token is null", Toast.LENGTH_SHORT)
-                .show()
-        }
-    }
+//    private fun performLogout() {
+//        val accessToken = SessionManager.getToken(this@CustomerListActivity)
+//        if (accessToken != null) {
+//            LogOutViewModel().performLogOut(accessToken) { isSuccess, message ->
+//                if (isSuccess) {
+//                    Toast.makeText(this@CustomerListActivity, message, Toast.LENGTH_SHORT).show()
+//                    // Navigate to login screen after successful logout
+//                    navToLogin()
+//                } else {
+//                    Toast.makeText(this@CustomerListActivity, message, Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        } else {
+//            // Handle case where access token is null
+//            Toast.makeText(this@CustomerListActivity, "Access token is null", Toast.LENGTH_SHORT)
+//                .show()
+//        }
+//    }
 
 
     private fun navToLogin() {
