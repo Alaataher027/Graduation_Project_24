@@ -8,15 +8,15 @@ import android.widget.Toast
 import com.example.graduationproject.ui.mainActivityCustomer.MainActivityCustomer
 import com.example.graduationproject.databinding.ActivityLoginBinding
 import com.example.graduationproject.ui.ForgetPass.ForgetPassword
-import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.logOut.SessionManager
-import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.logOut.SessionManager.saveToken
+import com.example.graduationproject.ui.logOut.SessionManager
+import com.example.graduationproject.ui.logOut.SessionManager.saveToken
 import com.example.graduationproject.ui.mainActivitySeller.MainActivitySeller
 import com.example.graduationproject.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityLoginBinding
     private lateinit var viewModelLogin: LoginViewModel
-    private lateinit var tokenManager: TokenManager // Add this line
+    private lateinit var tokenManager: TokenManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,16 +60,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-
-    private fun saveAccessToken(token: String?) {
-        if (token != null) {
-            SessionManager.saveToken(this@LoginActivity, token)
-        } else {
-            // Handle the case when the token is null
-            Log.e("LoginActivity", "Access token is null")
-        }
-    }
-
     private fun forgetPass() {
         viewBinding.forgetPassword.setOnClickListener {
             val intent = Intent(this, ForgetPassword::class.java)
@@ -92,7 +82,7 @@ class LoginActivity : AppCompatActivity() {
             // Navigate to SellerActivity
             val intent = Intent(this, MainActivitySeller::class.java)
             startActivity(intent)
-        } else if(userType == "Customer"){
+        } else if (userType == "Customer") {
             // Navigate to BuyerActivity
             val intent = Intent(this, MainActivityCustomer::class.java)
             startActivity(intent)

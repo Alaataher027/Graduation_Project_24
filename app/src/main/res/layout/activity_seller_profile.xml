@@ -145,7 +145,7 @@
         android:backgroundTint="@color/my_light_primary"
         android:paddingHorizontal="40dp"
         android:paddingVertical="10dp"
-        android:text="@string/order"
+        android:text="@string/orders"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"

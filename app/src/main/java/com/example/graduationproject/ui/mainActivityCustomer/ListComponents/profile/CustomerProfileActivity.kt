@@ -13,6 +13,7 @@ class CustomerProfileActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         navigateToEditProfile()
+        onClickBackBtn()
     }
 
         private fun navigateToEditProfile() {
@@ -20,6 +21,13 @@ class CustomerProfileActivity : AppCompatActivity() {
         viewBinding.editBtn.setOnClickListener() {
             val intent = Intent(this, EditProfileCustomer::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun onClickBackBtn() {
+        viewBinding.buttonBack.setOnClickListener {
+            // Handle the click event, for example, navigate back one step
+            onBackPressed()
         }
     }
 }

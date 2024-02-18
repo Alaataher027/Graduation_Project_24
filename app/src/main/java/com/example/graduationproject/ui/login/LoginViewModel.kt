@@ -33,8 +33,6 @@ class LoginViewModel(private val tokenManager: TokenManager) : ViewModel() {
                         if (loginResponse != null) {
                             val status: Int? = loginResponse.status
                             val message: String? = loginResponse.message
-
-
                             if (status == 200) {
                                 val data: Data? = loginResponse.data
                                 val accessToken: String? = data?.accessToken
@@ -43,6 +41,7 @@ class LoginViewModel(private val tokenManager: TokenManager) : ViewModel() {
                                 if (!accessToken.isNullOrBlank()) {
                                     // Save the access token
                                     tokenManager.saveToken(accessToken)
+
                                     Log.d("LoginViewModel", "User Type saved: $userType")
 
                                     // Log the saved token

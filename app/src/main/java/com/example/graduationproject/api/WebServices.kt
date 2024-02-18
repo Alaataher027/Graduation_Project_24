@@ -5,6 +5,7 @@ import com.example.graduationproject.api.model.ForgetPasswordResponse
 import com.example.graduationproject.api.model.logout.LogOutResponse
 import com.example.graduationproject.api.model.ResetPasswordResponse
 import com.example.graduationproject.api.model.login.LoginResponse2
+import com.example.graduationproject.api.model.post.PostResponse
 import com.example.graduationproject.api.model.register.RegisterResponse2
 import retrofit2.Call
 import retrofit2.http.Field
@@ -82,6 +83,12 @@ interface WebServices {
     fun logOut(
         @Header("Authorization") accessToken: String
     ): Call<LogOutResponse>
+
+//    https://alshaerawy.aait-sa.com/api/posts/18/add
+//    @POST("posts/18/add")
+//    fun addPost(
+//        @Header("Authorization") accessToken: String
+//    ): Call<PostResponse>
 
 
 //    @GET("auth/user-profile")
