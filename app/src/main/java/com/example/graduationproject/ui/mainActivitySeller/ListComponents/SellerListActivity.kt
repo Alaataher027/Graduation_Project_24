@@ -4,17 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.example.graduationproject.databinding.ActivityListSellerBinding
 import com.example.graduationproject.ui.login.LoginActivity
 import com.example.graduationproject.ui.logOut.LogOutViewModel
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.material.MaterialsActivity
-import com.example.graduationproject.ui.mainActivitySeller.ListComponents.profile.SellerProfileActivity
+import com.example.graduationproject.ui.mainActivitySeller.ListComponents.profile.profileView.SellerProfileActivity
 
 class SellerListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListSellerBinding
-
     private lateinit var tokenManager: TokenManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +27,8 @@ class SellerListActivity : AppCompatActivity() {
         onClickLogOut()
         onClickProfile()
         navToMaterial()
-
     }
+
 
     private fun onClickBack() {
         binding.buttonBack.setOnClickListener {

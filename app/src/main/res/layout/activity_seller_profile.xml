@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mainActivitySeller.ListComponents.profile.SellerProfileActivity">
+    tools:context=".ui.mainActivitySeller.ListComponents.profile.profileView.SellerProfileActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -122,6 +122,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
+
     <TextView
         android:id="@+id/type_user"
         android:layout_width="wrap_content"
@@ -131,10 +132,22 @@
         android:textColor="@color/gray_name_user"
         android:textSize="18dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/order_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name_user" />
 
+    <ImageButton
+        android:id="@+id/refresh_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_refresh_24"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/order_btn"
+        android:layout_marginTop="345dp"
+        />
     <!-- Button 1 -->
     <Button
         android:id="@+id/order_btn"
@@ -148,9 +161,9 @@
         android:text="@string/orders"
         android:textColor="@color/white"
         android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@id/edit_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/type_user" />
-
 
     <!-- Button 2 -->
     <Button
@@ -165,6 +178,7 @@
         android:text="@string/edit"
         android:textColor="@color/white"
         android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@id/order_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/type_user" />
 
@@ -201,7 +215,10 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/rectangle_edit22"
+
+                android:gravity="center"
+                android:textSize="19dp" />
 
 
             <TextView
@@ -213,12 +230,14 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/phone_seller"
+                android:id="@+id/phone_sellertextView"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/rectangle_edit22"
+                android:gravity="center"
+                android:textSize="19dp" />
 
 
             <TextView
@@ -235,7 +254,9 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/rectangle_edit22"
+                android:gravity="center"
+                android:textSize="19dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -251,7 +272,9 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/rectangle_edit22"
+                android:gravity="center"
+                android:textSize="19dp" />
 
 
             <TextView
@@ -268,7 +291,9 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="25dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/rectangle_edit22"
+                android:gravity="center"
+                android:textSize="19dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -284,7 +309,9 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="25dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/rectangle_edit22"
+                android:gravity="center"
+                android:textSize="19dp" />
 
 
         </LinearLayout>
