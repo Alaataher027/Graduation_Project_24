@@ -5,15 +5,17 @@ import com.example.graduationproject.api.model.ForgetPasswordResponse
 import com.example.graduationproject.api.model.logout.LogOutResponse
 import com.example.graduationproject.api.model.ResetPasswordResponse
 import com.example.graduationproject.api.model.login.LoginResponse2
-import com.example.graduationproject.api.model.post.PostResponse
+import com.example.graduationproject.api.model.profile.ProfileResponse
 import com.example.graduationproject.api.model.register.RegisterResponse2
+import com.example.graduationproject.api.model.editProfile.EditProfileResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Query
 
 interface WebServices {
     //https://alshaerawy.aait-sa.com/api/ >> base
@@ -84,16 +86,58 @@ interface WebServices {
         @Header("Authorization") accessToken: String
     ): Call<LogOutResponse>
 
-//    https://alshaerawy.aait-sa.com/api/posts/18/add
-//    @POST("posts/18/add")
-//    fun addPost(
-//        @Header("Authorization") accessToken: String
-//    ): Call<PostResponse>
+    @POST("auth/user/user-profile")
+    fun getUserProfile(
+        @Header("Authorization") accessToken: String,
+    ): Call<ProfileResponse>
 
 
-//    @GET("auth/user-profile")
-//    fun getUserProfile(
-//        @Header("Authorization") accessToken: String
-//    ): Call<UserProfileResponse>
+    //https://alshaerawy.aait-sa.com/api/auth/user/edit
+//    @PUT("auth/user/edit")
+//    fun editSellerProfile(
+//        @Header("Authorization") accessToken: String,
+//        @Query("email") email: String?,
+//        @Query("phone_number") phoneNumber: String?,
+//        @Query("governorate") governorate: String?,
+//        @Query("city") city: String?,
+//        @Query("street") street: String?,
+//        @Query("residential_quarter") residentialQuarter: String?
+//    ): Call<EditProfileResponse>
+
+    @PUT("auth/user/edit")
+    fun editSellerEmail(
+        @Header("Authorization") accessToken: String,
+        @Query("email") email: String
+    ): Call<EditProfileResponse>
+
+    @PUT("auth/user/edit")
+    fun editSellerPhone(
+        @Header("Authorization") accessToken: String,
+        @Query("phone_number") phoneNumber: String
+    ): Call<EditProfileResponse>
+
+    @PUT("auth/user/edit")
+    fun editSellerGovernorate(
+        @Header("Authorization") accessToken: String,
+        @Query("governorate") governorate: String
+    ): Call<EditProfileResponse>
+
+    @PUT("auth/user/edit")
+    fun editSellerCity(
+        @Header("Authorization") accessToken: String,
+        @Query("city") city: String
+    ): Call<EditProfileResponse>
+
+    @PUT("auth/user/edit")
+    fun editSellerStreet(
+        @Header("Authorization") accessToken: String,
+        @Query("street") street: String
+    ): Call<EditProfileResponse>
+
+    @PUT("auth/user/edit")
+    fun editSellerQuarter(
+        @Header("Authorization") accessToken: String,
+        @Query("residential_quarter") residentialQuarter: String
+    ): Call<EditProfileResponse>
 
 }

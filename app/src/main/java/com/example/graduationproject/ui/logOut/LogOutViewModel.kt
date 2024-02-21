@@ -14,7 +14,7 @@ class LogOutViewModel(private val tokenManager: TokenManager) : ViewModel() {
 
     fun performLogOut(accessToken: String, onLogOutResult: (Boolean, String) -> Unit) {
         Log.i("LogOutViewModel", "Starting logout process with access token: $accessToken")
-        ApiManager.getApis()
+        ApiManager.getApisToken(accessToken)
             .logOut(accessToken) // Pass the access token to the logout function
             .enqueue(object : Callback<LogOutResponse> {
                 override fun onResponse(
