@@ -74,7 +74,6 @@
             android:layout_marginStart="130dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_"
-            android:text="Bruno Pham"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"/>
