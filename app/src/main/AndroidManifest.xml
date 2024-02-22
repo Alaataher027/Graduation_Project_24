@@ -24,7 +24,7 @@
             android:name=".ui.mainActivitySeller.ListComponents.profile.profileView.SellerProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.mainActivityCustomer.ListComponents.profile.CustomerProfileActivity"
+            android:name=".ui.mainActivityCustomer.ListComponents.profile.profileView.CustomerProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.mainActivityCustomer.ListComponents.material.MaterialsActivity"
@@ -40,7 +40,7 @@
             android:name=".ui.mainActivitySeller.MainActivitySeller"
             android:exported="false" />
         <activity
-            android:name=".ui.mainActivityCustomer.ListComponents.profile.EditProfileCustomer"
+            android:name=".ui.mainActivityCustomer.ListComponents.profile.editProfile.EditProfileCustomer"
             android:exported="false" />
         <activity
             android:name=".ui.resetPass.CreateNewPassword"

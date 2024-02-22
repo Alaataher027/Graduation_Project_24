@@ -1,4 +1,4 @@
-package com.example.graduationproject.ui.mainActivitySeller.ListComponents.profile.editProfile
+package com.example.graduationproject.ui.mainActivityCustomer.ListComponents.profile.editProfile
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -8,8 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
-class EditProfileSellerViewModel : ViewModel() {
+class EditProfileCustomerViewModel : ViewModel() {
 
     fun updateEmail(
         accessToken: String,
@@ -17,7 +16,7 @@ class EditProfileSellerViewModel : ViewModel() {
         onSuccess: (String) -> Unit,
         onError: (String) -> Unit
     ) {
-        Log.d("EditSellerViewModel", "Updating email...")
+        Log.d("EditCustomerViewModel", "Updating email...")
 
         ApiManager.getApisToken(accessToken).editEmail(accessToken, email)
             .enqueue(object : Callback<EditProfileResponse> {
@@ -53,7 +52,7 @@ class EditProfileSellerViewModel : ViewModel() {
         onSuccess: (String) -> Unit,
         onError: (String) -> Unit
     ) {
-        Log.d("EditSellerViewModel", "Updating phone number...")
+        Log.d("EditCustomerViewModel", "Updating phone number...")
 
         ApiManager.getApisToken(accessToken).editPhone(accessToken, phoneNumber)
             .enqueue(object : Callback<EditProfileResponse> {
@@ -90,7 +89,7 @@ class EditProfileSellerViewModel : ViewModel() {
         onSuccess: (String) -> Unit,
         onError: (String) -> Unit
     ) {
-        Log.d("EditSellerViewModel", "Updating governorate...")
+        Log.d("EditCustomerViewModel", "Updating governorate...")
 
         ApiManager.getApisToken(accessToken).editGovernorate(accessToken, governorate)
             .enqueue(object : Callback<EditProfileResponse> {
@@ -127,7 +126,7 @@ class EditProfileSellerViewModel : ViewModel() {
         onSuccess: (String) -> Unit,
         onError: (String) -> Unit
     ) {
-        Log.d("EditSellerViewModel", "Updating city...")
+        Log.d("EditCustomerViewModel", "Updating city...")
 
         ApiManager.getApisToken(accessToken).editCity(accessToken, city)
             .enqueue(object : Callback<EditProfileResponse> {
@@ -139,12 +138,20 @@ class EditProfileSellerViewModel : ViewModel() {
                         val status: Int? = response.body()?.status
                         val message: String? = response.body()?.message
 
+                        Log.d("EditCustomerProfiel", "first :${response.body()?.data?.city}")
+
                         if (status == 200) {
+                            Log.d("EditCustomerProfiel", "success :${response.body()?.data?.city}")
+
                             onSuccess(message ?: "city updated successfully")
                         } else {
+                            Log.d("EditCustomerProfiel", "not 200 :${response.body()?.data?.city}")
+
                             onError(message ?: "Unknown error")
                         }
                     } else {
+                        Log.d("EditCustomerProfiel", "error :${response.body()?.data?.city}")
+
                         val errorMessage = "Error ${response.code()}: ${response.message()}"
                         onError(errorMessage)
                     }
@@ -157,15 +164,15 @@ class EditProfileSellerViewModel : ViewModel() {
             })
     }
 
-    fun updateStreet(
+    fun updateTAX(
         accessToken: String,
-        street: String,
+        tax: String,
         onSuccess: (String) -> Unit,
         onError: (String) -> Unit
     ) {
-        Log.d("EditSellerViewModel", "Updating street...")
+        Log.d("EditCustomerViewModel", "Updating TAX...")
 
-        ApiManager.getApisToken(accessToken).editSellerStreet(accessToken, street)
+        ApiManager.getApisToken(accessToken).editTAXNumber(accessToken, tax)
             .enqueue(object : Callback<EditProfileResponse> {
                 override fun onResponse(
                     call: Call<EditProfileResponse>,
@@ -175,12 +182,18 @@ class EditProfileSellerViewModel : ViewModel() {
                         val status: Int? = response.body()?.status
                         val message: String? = response.body()?.message
 
+
+                        Log.d("EditCustomerProfiel", "success :${response.body()?.data?.tIN}")
                         if (status == 200) {
-                            onSuccess(message ?: "city updated successfully")
+                            Log.d("EditCustomerProfiel", "success :${response.body()?.data?.tIN}")
+
+                            onSuccess(message ?: "tax updated successfully")
                         } else {
+                            Log.d("EditCustomerProfiel", "not 200: ${response.body()?.data?.tIN}")
                             onError(message ?: "Unknown error")
                         }
                     } else {
+                        Log.d("EditCustomerProfiel", " error: ${response.body()?.data?.tIN}")
                         val errorMessage = "Error ${response.code()}: ${response.message()}"
                         onError(errorMessage)
                     }
@@ -192,97 +205,4 @@ class EditProfileSellerViewModel : ViewModel() {
                 }
             })
     }
-
-    fun updateResidentialQuarter(
-        accessToken: String,
-        residentialQuarter: String,
-        onSuccess: (String) -> Unit,
-        onError: (String) -> Unit
-    ) {
-        Log.d("EditSellerViewModel", "Updating residentialQuarter...")
-
-        ApiManager.getApisToken(accessToken).editSellerQuarter(accessToken, residentialQuarter)
-            .enqueue(object : Callback<EditProfileResponse> {
-                override fun onResponse(
-                    call: Call<EditProfileResponse>,
-                    response: Response<EditProfileResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        val status: Int? = response.body()?.status
-                        val message: String? = response.body()?.message
-
-                        if (status == 200) {
-                            onSuccess(message ?: "city updated successfully")
-                        } else {
-                            onError(message ?: "Unknown error")
-                        }
-                    } else {
-                        Log.d("EditSellerProfile",  " ${accessToken},cite:  ${response.body()?.data?.city}")
-                        val errorMessage = "Error ${response.code()}: ${response.message()}"
-                        onError(errorMessage)
-                    }
-                }
-
-                override fun onFailure(call: Call<EditProfileResponse>, t: Throwable) {
-                    val errorMessage = t.message ?: "Unknown error"
-                    onError(errorMessage)
-                }
-            })
-    }
-
-
-//    fun updateProfile(
-//        accessToken: String,
-//        email: String?,
-//        phoneNumber: String?,
-//        governorate: String?,
-//        city: String?,
-//        street: String?,
-//        residentialQuarter: String?,
-//        onSuccess: (String) -> Unit,
-//        onError: (String) -> Unit
-//    ) {
-//        Log.d("EditSellerViewModel", "Updating profile...")
-//
-//        ApiManager.getApisToken(accessToken).editSellerProfile(
-//            accessToken,
-//            email,
-//            phoneNumber,
-//            governorate,
-//            city,
-//            street,
-//            residentialQuarter
-//        ).enqueue(object : Callback<EditProfileResponse> {
-//            override fun onResponse(
-//                call: Call<EditProfileResponse>,
-//                response: Response<EditProfileResponse>
-//            ) {
-//
-//                if (response.isSuccessful) {
-//                    Log.d("EditSellerViewModel", "Profile updated successfully")
-//
-//                    val status: Int? = response.body()?.status
-//                    val message: String? = response.body()?.message
-//
-//                    if (status == 200) {
-//                        Log.d("EditSellerViewModel", "Status 200: $message")
-//                        onSuccess(message ?: "Profile updated successfully")
-//                    } else {
-//                        Log.e("EditSellerViewModel", "Status not 200: $message")
-//                        onError(message ?: "Unknown error")
-//                    }
-//                } else {
-//                    val errorMessage = "Error ${response.code()}: ${response.message()}"
-//                    Log.e("EditSellerViewModel", errorMessage)
-//                    onError(errorMessage)
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<EditProfileResponse>, t: Throwable) {
-//                val errorMessage = t.message ?: "Unknown error"
-//                Log.e("EditSellerViewModel", errorMessage)
-//                onError(errorMessage)
-//            }
-//        })
-//    }
 }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mainActivityCustomer.ListComponents.profile.EditProfileCustomer">
+    tools:context=".ui.mainActivityCustomer.ListComponents.profile.editProfile.EditProfileCustomer">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"

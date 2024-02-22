@@ -53,7 +53,7 @@ data class Data(
 	val name: String? = null,
 
 	@field:SerializedName("TIN")
-	val tIN: Int? = null,
+	val tIN: String? = null,
 
 	@field:SerializedName("phone_number")
 	val phoneNumber: String? = null,

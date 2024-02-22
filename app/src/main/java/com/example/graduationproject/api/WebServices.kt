@@ -105,25 +105,25 @@ interface WebServices {
 //    ): Call<EditProfileResponse>
 
     @PUT("auth/user/edit")
-    fun editSellerEmail(
+    fun editEmail(
         @Header("Authorization") accessToken: String,
         @Query("email") email: String
     ): Call<EditProfileResponse>
 
     @PUT("auth/user/edit")
-    fun editSellerPhone(
+    fun editPhone(
         @Header("Authorization") accessToken: String,
         @Query("phone_number") phoneNumber: String
     ): Call<EditProfileResponse>
 
     @PUT("auth/user/edit")
-    fun editSellerGovernorate(
+    fun editGovernorate(
         @Header("Authorization") accessToken: String,
         @Query("governorate") governorate: String
     ): Call<EditProfileResponse>
 
     @PUT("auth/user/edit")
-    fun editSellerCity(
+    fun editCity(
         @Header("Authorization") accessToken: String,
         @Query("city") city: String
     ): Call<EditProfileResponse>
@@ -138,6 +138,12 @@ interface WebServices {
     fun editSellerQuarter(
         @Header("Authorization") accessToken: String,
         @Query("residential_quarter") residentialQuarter: String
+    ): Call<EditProfileResponse>
+
+    @PUT("auth/user/edit")
+    fun editTAXNumber(
+        @Header("Authorization") accessToken: String,
+        @Query("TIN") tIN: String
     ): Call<EditProfileResponse>
 
 }
