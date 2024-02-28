@@ -1,11 +1,14 @@
 package com.example.graduationproject.ui.mainActivitySeller.ListComponents.profile.editProfile
 
 import android.app.Activity
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityEditProfileSellerBinding
 import com.example.graduationproject.databinding.ActivitySellerProfileBinding
+import com.example.graduationproject.databinding.DialogOptionsBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivitySeller.ListComponents.profile.profileView.SellerProfileViewModel
 
@@ -27,6 +30,39 @@ class EditProfileSeller : AppCompatActivity() {
         fetchUserProfileData()
         onClickBackBtn()
         updateData()
+        showDialogOnClickImage()
+
+    }
+
+    private fun showDialogOnClickImage() {
+        viewBinding.imageProfile.setOnClickListener {
+            val dialogBinding = DialogOptionsBinding.inflate(layoutInflater)
+            val alertDialogBuilder = AlertDialog.Builder(this)
+                .setTitle("")
+                .setView(dialogBinding.root)
+
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
+
+            dialogBinding.option1Button.setOnClickListener {
+                alertDialog.dismiss() // Dismiss the dialog if needed
+                // Handle Option 1 click
+                Toast.makeText(this, "Take photo", Toast.LENGTH_SHORT).show()
+            }
+
+            dialogBinding.option2Button.setOnClickListener {
+                alertDialog.dismiss() // Dismiss the dialog if needed
+                // Handle Option 2 click
+                Toast.makeText(this, "Add from Gallery", Toast.LENGTH_SHORT).show()
+            }
+
+            dialogBinding.option3Button.setOnClickListener {
+                alertDialog.dismiss() // Dismiss the dialog if needed
+                // Handle Option 3 click
+                Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
+            }
+
+        }
     }
 
 
@@ -52,7 +88,6 @@ class EditProfileSeller : AppCompatActivity() {
             )
         }
     }
-
 
 
     private fun updateData() {

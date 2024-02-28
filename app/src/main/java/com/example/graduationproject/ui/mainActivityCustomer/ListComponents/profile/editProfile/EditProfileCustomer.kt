@@ -1,9 +1,11 @@
 package com.example.graduationproject.ui.mainActivityCustomer.ListComponents.profile.editProfile
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.graduationproject.databinding.ActivityEditProfileCustomerBinding
+import com.example.graduationproject.databinding.DialogOptionsBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.profile.profileView.CustomerProfileViewModel
 
@@ -25,8 +27,39 @@ class EditProfileCustomer : AppCompatActivity() {
         fetchUserProfileData()
         updateData()
         onClickBackBtn()
+        showDialogOnClickImage()
     }
 
+    private fun showDialogOnClickImage() {
+        viewBinding.imageProfile.setOnClickListener {
+            val dialogBinding = DialogOptionsBinding.inflate(layoutInflater)
+            val alertDialogBuilder = AlertDialog.Builder(this)
+                .setTitle("")
+                .setView(dialogBinding.root)
+
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
+
+            dialogBinding.option1Button.setOnClickListener {
+                alertDialog.dismiss() // Dismiss the dialog if needed
+                // Handle Option 1 click
+                Toast.makeText(this, "Take photo", Toast.LENGTH_SHORT).show()
+            }
+
+            dialogBinding.option2Button.setOnClickListener {
+                alertDialog.dismiss() // Dismiss the dialog if needed
+                // Handle Option 2 click
+                Toast.makeText(this, "Add from Gallery", Toast.LENGTH_SHORT).show()
+            }
+
+            dialogBinding.option3Button.setOnClickListener {
+                alertDialog.dismiss() // Dismiss the dialog if needed
+                // Handle Option 3 click
+                Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+    }
 
     private fun fetchUserProfileData() {
         val accessToken = TokenManager(this).getToken()

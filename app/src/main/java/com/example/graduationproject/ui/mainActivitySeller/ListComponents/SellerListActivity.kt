@@ -1,11 +1,14 @@
 package com.example.graduationproject.ui.mainActivitySeller.ListComponents
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.graduationproject.databinding.ActivityListSellerBinding
+import com.example.graduationproject.databinding.DialogLogoutBinding
+import com.example.graduationproject.databinding.DialogOptionsBinding
 import com.example.graduationproject.ui.login.LoginActivity
 import com.example.graduationproject.ui.logOut.LogOutViewModel
 import com.example.graduationproject.ui.login.TokenManager
@@ -14,7 +17,7 @@ import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.mate
 import com.example.graduationproject.ui.mainActivitySeller.ListComponents.profile.profileView.SellerProfileActivity
 
 class SellerListActivity : AppCompatActivity() {
-    private lateinit var viewModel:SellerListViewModel
+    private lateinit var viewModel: SellerListViewModel
     private lateinit var binding: ActivityListSellerBinding
     private lateinit var tokenManager: TokenManager
 
@@ -29,10 +32,36 @@ class SellerListActivity : AppCompatActivity() {
 
         // Set an OnClickListener for the ImageView using view binding
         onClickBack()
-        onClickLogOut()
+        //onClickLogOut()
+        showDialogOnClickLogout()
         onClickProfile()
         navToMaterial()
         loadData()
+    }
+
+    private fun showDialogOnClickLogout() {
+        binding.logoutBtn.setOnClickListener {
+            val dialogBinding = DialogLogoutBinding.inflate(layoutInflater)
+            val alertDialogBuilder = AlertDialog.Builder(this)
+                .setTitle("")
+                .setView(dialogBinding.root)
+
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
+
+            dialogBinding.option1Button.setOnClickListener {
+                alertDialog.dismiss() // Dismiss the dialog if needed
+                // Handle Option 1 click
+                performLogout()
+
+            }
+
+            dialogBinding.option2Button.setOnClickListener {
+                alertDialog.dismiss() // Dismiss the dialog if needed
+            }
+
+
+        }
     }
 
     private fun loadData() {
@@ -67,11 +96,11 @@ class SellerListActivity : AppCompatActivity() {
         }
     }
 
-    private fun onClickLogOut() {
-        binding.logoutBtn.setOnClickListener {
-            performLogout()
-        }
-    }
+//    private fun onClickLogOut() {
+//        binding.logoutBtn.setOnClickListener {
+//            performLogout()
+//        }
+//    }
 
 
     private fun navToLogin() {

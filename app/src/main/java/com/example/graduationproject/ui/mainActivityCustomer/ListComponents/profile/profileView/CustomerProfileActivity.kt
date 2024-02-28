@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.graduationproject.databinding.ActivityCustomerProfileBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.profile.editProfile.EditProfileCustomer
-import com.example.graduationproject.ui.mainActivitySeller.ListComponents.profile.profileView.SellerProfileViewModel
 
 class CustomerProfileActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityCustomerProfileBinding

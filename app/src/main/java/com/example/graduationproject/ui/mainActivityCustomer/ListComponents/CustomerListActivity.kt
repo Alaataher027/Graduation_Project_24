@@ -1,5 +1,6 @@
 package com.example.graduationproject.ui.mainActivityCustomer.ListComponents
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.graduationproject.databinding.ActivityListCustomerBinding
+import com.example.graduationproject.databinding.DialogLogoutBinding
 import com.example.graduationproject.ui.login.LoginActivity
 import com.example.graduationproject.ui.logOut.LogOutViewModel
 import com.example.graduationproject.ui.login.TokenManager
@@ -33,9 +35,33 @@ class CustomerListActivity : AppCompatActivity() {
 
         loadData()
         onClickBack()
-        onClickLogOut()
+        showDialogOnClickLogout()
         onClickProfile()
         navToMaterial()
+    }
+
+    private fun showDialogOnClickLogout() {
+        binding.logoutBtn.setOnClickListener {
+            val dialogBinding = DialogLogoutBinding.inflate(layoutInflater)
+            val alertDialogBuilder = AlertDialog.Builder(this)
+                .setView(dialogBinding.root)
+
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
+
+            dialogBinding.option1Button.setOnClickListener {
+                alertDialog.dismiss() // Dismiss the dialog if needed
+                // Handle Option 1 click
+                performLogout()
+
+            }
+
+            dialogBinding.option2Button.setOnClickListener {
+                alertDialog.dismiss() // Dismiss the dialog if needed
+            }
+
+
+        }
     }
 
     private fun loadData() {
@@ -57,11 +83,6 @@ class CustomerListActivity : AppCompatActivity() {
         }
     }
 
-    private fun onClickLogOut() {
-        binding.logoutBtn.setOnClickListener {
-            performLogout()
-        }
-    }
 
     private fun performLogout() {
         val accessToken = tokenManager.getToken()
