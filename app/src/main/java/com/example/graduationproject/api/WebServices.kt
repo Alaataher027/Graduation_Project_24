@@ -1,5 +1,6 @@
 package com.example.graduationproject.api
 
+import android.media.Image
 import com.example.graduationproject.api.model.CheckCodeResponse
 import com.example.graduationproject.api.model.ForgetPasswordResponse
 import com.example.graduationproject.api.model.logout.LogOutResponse
@@ -8,13 +9,19 @@ import com.example.graduationproject.api.model.login.LoginResponse2
 import com.example.graduationproject.api.model.profile.ProfileResponse
 import com.example.graduationproject.api.model.register.RegisterResponse2
 import com.example.graduationproject.api.model.editProfile.EditProfileResponse
+import com.example.graduationproject.api.model.imageProfile.ImageProfileResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Header
 import retrofit2.http.Headers
+import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Part
 import retrofit2.http.Query
 
 interface WebServices {
@@ -86,6 +93,8 @@ interface WebServices {
         @Header("Authorization") accessToken: String
     ): Call<LogOutResponse>
 
+    //https://alshaerawy.aait-sa.com/api/
+    // auth/user/user-profile
     @POST("auth/user/user-profile")
     fun getUserProfile(
         @Header("Authorization") accessToken: String,
@@ -145,5 +154,24 @@ interface WebServices {
         @Header("Authorization") accessToken: String,
         @Query("TIN") tIN: String
     ): Call<EditProfileResponse>
+
+
+//    //https://alshaerawy.aait-sa.com/api/
+//    // auth/user/profileimg
+//    @FormUrlEncoded
+//    @POST("auth/user/profileimg")
+//    fun imageProfile(
+//        @Header("Authorization") accessToken: String,
+//        @Part("image") image: String
+//    ): Call<ImageProfileResponse>
+
+
+    @Multipart
+    @POST("auth/user/profileimg")
+    fun imageProfile(
+        @Header("Authorization") accessToken: String,
+        @Part image: MultipartBody.Part
+    ): Call<ImageProfileResponse>
+
 
 }

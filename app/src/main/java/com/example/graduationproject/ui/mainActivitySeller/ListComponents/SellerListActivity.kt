@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
+import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityListSellerBinding
 import com.example.graduationproject.databinding.DialogLogoutBinding
 import com.example.graduationproject.databinding.DialogOptionsBinding
@@ -71,6 +75,15 @@ class SellerListActivity : AppCompatActivity() {
                 onDataLoaded = { data ->
                     data?.let {
                         binding.nameUser.text = it.name
+
+                        val requestOptions = RequestOptions().transform(CircleCrop())
+
+                        Glide.with(this)
+                            .load(data.image)
+                            .apply(requestOptions)
+                            .placeholder(R.drawable.placeholder)
+                            .error(R.drawable.error)
+                            .into(binding.imageProfile)
                     }
                 },
                 onError = { errorMessage ->

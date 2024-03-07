@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
+import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityCustomerProfileBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivityCustomer.ListComponents.profile.editProfile.EditProfileCustomer
@@ -31,6 +35,7 @@ class CustomerProfileActivity : AppCompatActivity() {
         onClickRefresh()
 
     }
+
     private fun onClickRefresh() {
         viewBinding.refreshBtn.setOnClickListener {
             loadData()
@@ -57,6 +62,14 @@ class CustomerProfileActivity : AppCompatActivity() {
                         viewBinding.governorateCustomer.text = it.governorate
                         viewBinding.cityCustomer.text = it.city
                         viewBinding.taxCustomer.text = it.tIN
+                        val requestOptions = RequestOptions().transform(CircleCrop())
+
+                        Glide.with(this)
+                            .load(data.image)
+                            .apply(requestOptions)
+                            .placeholder(R.drawable.placeholder)
+                            .error(R.drawable.error)
+                            .into(viewBinding.imageProfile)
 
                     }
                 },

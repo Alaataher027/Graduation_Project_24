@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
+import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivitySellerProfileBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivitySeller.ListComponents.profile.editProfile.EditProfileSeller
@@ -62,6 +66,15 @@ class SellerProfileActivity : AppCompatActivity() {
                         viewBinding.citySeller.text = it.city
                         viewBinding.streetSeller.text = it.street
                         viewBinding.quarterSeller.text = it.residentialQuarter
+
+                        val requestOptions = RequestOptions().transform(CircleCrop())
+
+                        Glide.with(this)
+                            .load(data.image)
+                            .apply(requestOptions)
+                            .placeholder(R.drawable.placeholder)
+                            .error(R.drawable.error)
+                            .into(viewBinding.imageProfile)
                     }
                 },
                 onError = { errorMessage ->

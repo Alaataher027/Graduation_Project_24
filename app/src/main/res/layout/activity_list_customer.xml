@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/nunitobold"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/menu"
             android:textColor="@color/white"
             android:textSize="25dp"
@@ -50,6 +50,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/my_light_primary"
@@ -73,10 +74,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="130dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/poppins_"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/white"
             android:textSize="18dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/type_user"
@@ -84,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="130dp"
             android:layout_marginTop="40dp"
-            android:fontFamily="@font/poppins_"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/custumer"
             android:textColor="@color/white"
             android:textSize="18dp"
@@ -120,6 +121,8 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/profile_list_ic"
+
+                android:fontFamily="@font/poppins_medium"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/profile"
@@ -134,7 +137,9 @@
                 android:layout_margin="8dp"
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
+
                 android:drawableLeft="@drawable/save_list_ic"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/saved_posts"
@@ -150,7 +155,9 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/privacy_list_ic"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingTop="15dp"
+
                 android:paddingBottom="15dp"
                 android:text="@string/privacy"
                 android:textColor="#898A89"
@@ -165,8 +172,10 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/about_us_ic"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
+
                 android:text="@string/about_us"
                 android:textColor="#898A89"
                 android:textSize="20dp" />
@@ -180,9 +189,11 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/setting_list_ic"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/settings"
+
                 android:textColor="#898A89"
                 android:textSize="20dp" />
 
@@ -195,9 +206,11 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/sign_ic"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/guidance"
+
                 android:textColor="#898A89"
                 android:textSize="20dp" />
 
@@ -209,7 +222,9 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/materials_ic"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingTop="15dp"
+
                 android:paddingBottom="15dp"
                 android:text="@string/material"
                 android:textColor="#898A89"
@@ -223,8 +238,10 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/tech_ic"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
+
                 android:text="@string/technical_support"
                 android:textColor="#898A89"
                 android:textSize="20dp" />
@@ -237,8 +254,10 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/order_ic"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
+
                 android:text="@string/orders"
                 android:textColor="#898A89"
                 android:textSize="20dp" />
@@ -251,8 +270,10 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/log_out_ic"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
+
                 android:text="@string/log_out"
                 android:textColor="#898A89"
                 android:textSize="20dp" />
