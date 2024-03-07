@@ -7,6 +7,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
+import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityListCustomerBinding
 import com.example.graduationproject.databinding.DialogLogoutBinding
 import com.example.graduationproject.ui.login.LoginActivity
@@ -21,7 +25,6 @@ class CustomerListActivity : AppCompatActivity() {
     private lateinit var viewModel: CustomerListViewModel
     private lateinit var binding: ActivityListCustomerBinding
     private lateinit var tokenManager: TokenManager
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +63,6 @@ class CustomerListActivity : AppCompatActivity() {
                 alertDialog.dismiss() // Dismiss the dialog if needed
             }
 
-
         }
     }
 
@@ -71,7 +73,14 @@ class CustomerListActivity : AppCompatActivity() {
                 onDataLoaded = { data ->
                     data?.let {
                         binding.nameUser.text = it.name
+                        val requestOptions = RequestOptions().transform(CircleCrop())
 
+                        Glide.with(this)
+                            .load(data.image)
+                            .apply(requestOptions)
+                            .placeholder(R.drawable.placeholder)
+                            .error(R.drawable.error)
+                            .into(binding.imageProfile)
                     }
                 },
                 onError = { errorMessage ->
@@ -119,7 +128,6 @@ class CustomerListActivity : AppCompatActivity() {
             onBackPressed()
         }
     }
-
 
     private fun navToLogin() {
         val intent = Intent(this, LoginActivity::class.java)

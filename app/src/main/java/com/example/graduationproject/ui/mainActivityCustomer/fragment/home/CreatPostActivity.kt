@@ -13,13 +13,22 @@ class CreatPostActivity : AppCompatActivity() {
         viewBinding = ActivityCreatPostBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        navToMaterial()
+        onClickBack()
+//        navToMaterial()
     }
 
-    private fun navToMaterial() {
-        viewBinding.selectMaterial.setOnClickListener {
-            val intent = Intent(this, MaterialsActivity::class.java)
-            startActivity(intent)
+
+    private fun onClickBack() {
+        viewBinding.buttonBack.setOnClickListener {
+            // Handle the click event, for example, navigate back one step
+            onBackPressed()
         }
     }
+
+//    private fun navToMaterial() {
+//        viewBinding.selectMaterial.setOnClickListener {
+//            val intent = Intent(this, MaterialsActivity::class.java)
+//            startActivity(intent)
+//        }
+//    }
 }

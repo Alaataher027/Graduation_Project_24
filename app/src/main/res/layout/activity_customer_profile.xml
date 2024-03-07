@@ -61,7 +61,7 @@
                     android:layout_gravity="start"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/button_back" />
+                    android:src="@drawable/button_back2" />
 
                 <ImageView
                     android:id="@+id/setting_btn"
@@ -77,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/nunitobold"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="@string/profile"
                     android:textColor="@color/my_light_primary"
                     android:textSize="23dp"
@@ -113,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
-        android:fontFamily="@font/poppins_"
+        android:fontFamily="@font/poppins_medium"
         android:textColor="@color/my_light_primary"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -126,7 +126,7 @@
         android:id="@+id/type_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/customer"
         android:textColor="@color/gray_name_user"
         android:textSize="18dp"
@@ -154,6 +154,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/my_light_primary"
+        android:fontFamily="@font/poppins_medium"
         android:paddingHorizontal="40dp"
         android:paddingVertical="10dp"
         android:text="@string/posts"
@@ -172,6 +173,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="@color/my_light_primary"
+        android:fontFamily="@font/poppins_medium"
         android:paddingHorizontal="48dp"
         android:paddingVertical="10dp"
         android:text="@string/edit"
@@ -203,6 +205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/email"
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
@@ -215,6 +218,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/rectangle_edit22"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:textSize="19dp" />
 
@@ -222,6 +226,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/phone_number"
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
@@ -234,6 +239,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/rectangle_edit22"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
 
                 android:textSize="19dp" />
@@ -242,6 +248,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/governorate"
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
@@ -254,6 +261,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/rectangle_edit22"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:textSize="19dp" />
 
@@ -261,6 +269,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/city"
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
@@ -273,12 +282,14 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/rectangle_edit22"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:textSize="19dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:text="@string/tax_number"
                 android:textColor="@color/gray_name_user"
@@ -289,9 +300,10 @@
                 android:id="@+id/tax_customer"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginBottom="25dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
                 android:background="@drawable/rectangle_edit22"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:textSize="19dp" />
 

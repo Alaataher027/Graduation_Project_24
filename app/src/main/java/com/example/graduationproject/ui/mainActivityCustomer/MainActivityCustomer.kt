@@ -40,15 +40,15 @@ class MainActivityCustomer : AppCompatActivity() {
             true
         }
 
-//        onClickAddPost()
+        onClickAddPost()
     }
 
-//    private fun onClickAddPost() {
-//        viewBinding.addButton.setOnClickListener {
-//            val intent = Intent(this, CreatPostActivity::class.java)
-//            startActivity(intent)
-//        }
-//    }
+    private fun onClickAddPost() {
+        viewBinding.addButton.setOnClickListener {
+            val intent = Intent(this, CreatPostActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
     private fun setCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
