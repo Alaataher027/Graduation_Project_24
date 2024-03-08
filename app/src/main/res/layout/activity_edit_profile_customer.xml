@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mainActivityCustomer.ListComponents.profile.editProfile.EditProfileCustomer">
+    tools:context=".ui.listActivityCustomer.ListComponents.profile.editProfile.EditProfileCustomer">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -144,7 +144,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22"
+                android:background="@drawable/edit_text_bg"
                 android:fontFamily="@font/poppins_medium" />
 
             <!-- EditText 2 -->
@@ -164,8 +164,8 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:fontFamily="@font/poppins_medium"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily="@font/poppins_medium" />
 
             <!-- EditText 3 -->
 
@@ -184,9 +184,8 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:fontFamily="@font/poppins_medium"
-                android:background="@drawable/rectangle_edit22"
-                android:drawableEnd="@drawable/arrow_down" />
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily="@font/poppins_medium" />
 
             <!-- EditText 4 -->
 
@@ -205,8 +204,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22"
-                android:drawableEnd="@drawable/arrow_down"
+                android:background="@drawable/edit_text_bg"
                 android:fontFamily="@font/poppins_medium" />
 
 
@@ -215,8 +213,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tax_number"
                 android:fontFamily="@font/poppins_medium"
+                android:text="@string/tax_number"
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -227,7 +225,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="25dp"
-                android:background="@drawable/rectangle_edit22"
+                android:background="@drawable/edit_text_bg"
                 android:fontFamily="@font/poppins_medium" />
 
             <Button

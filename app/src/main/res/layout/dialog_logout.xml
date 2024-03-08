@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="150dp"
-    tools:context=".ui.mainActivitySeller.ListComponents.profile.editProfile.EditProfileSeller">
+    tools:context=".ui.listActivitySeller.ListComponents.profile.editProfile.EditProfileSeller">
 
     <TextView
         android:id="@+id/header_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/do_you_want_to_log_out"
         android:textColor="#6B6A6A"
         android:textSize="16dp"
@@ -34,7 +35,7 @@
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:fontFamily="@font/poppins_"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/log_out"
             android:textColor="@color/my_light_primary"
             android:textSize="14dp" />
@@ -50,8 +51,7 @@
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-
-            android:fontFamily="@font/poppins_"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/cancel"
             android:textColor="#E71E1E"
             android:textSize="14dp" />

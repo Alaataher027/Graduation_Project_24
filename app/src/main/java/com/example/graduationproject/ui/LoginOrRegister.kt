@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.graduationproject.databinding.ActivityLoginOrRegisterBinding
 import com.example.graduationproject.ui.login.LoginActivity
-import com.example.graduationproject.ui.mainActivityCustomer.MainActivityCustomer
+import com.example.graduationproject.ui.mainActivity.MainActivity
 import com.example.graduationproject.ui.register.RegisterActivity
 
 class LoginOrRegister : AppCompatActivity() {
@@ -29,7 +29,7 @@ class LoginOrRegister : AppCompatActivity() {
         }
 
         viewBinding.guest.setOnClickListener {
-            val intent = Intent(this, MainActivityCustomer::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
