@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mainActivitySeller.ListComponents.SellerListActivity">
+    tools:context=".ui.listActivitySeller.ListComponents.SellerListActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -73,8 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="130dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/poppins_"
-            android:text="Bruno Pham"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"/>
@@ -85,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="130dp"
             android:layout_marginTop="40dp"
-            android:fontFamily="@font/poppins_"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/seller"
             android:textColor="@color/white"
             android:textSize="18dp"
@@ -120,6 +119,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:backgroundTint="#F6F7F6"
+                android:fontFamily="@font/poppins_medium"
+
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/profile_list_ic"
                 android:paddingTop="15dp"
@@ -137,6 +138,8 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/save_list_ic"
+                android:fontFamily="@font/poppins_medium"
+
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/saved_posts"
@@ -152,6 +155,8 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/privacy_list_ic"
+                android:fontFamily="@font/poppins_medium"
+
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/privacy"
@@ -168,6 +173,8 @@
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/about_us_ic"
                 android:paddingTop="15dp"
+                android:fontFamily="@font/poppins_medium"
+
                 android:paddingBottom="15dp"
                 android:text="@string/about_us"
                 android:textColor="#898A89"
@@ -184,6 +191,8 @@
                 android:drawableLeft="@drawable/setting_list_ic"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
+                android:fontFamily="@font/poppins_medium"
+
                 android:text="@string/settings"
                 android:textColor="#898A89"
                 android:textSize="20dp" />
@@ -197,6 +206,8 @@
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/sign_ic"
+                android:fontFamily="@font/poppins_medium"
+
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/guidance"
@@ -212,6 +223,8 @@
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/materials_ic"
                 android:paddingTop="15dp"
+                android:fontFamily="@font/poppins_medium"
+
                 android:paddingBottom="15dp"
                 android:text="@string/material"
                 android:textColor="#898A89"
@@ -228,6 +241,7 @@
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/technical_support"
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="#898A89"
                 android:textSize="20dp" />
 
@@ -238,6 +252,7 @@
                 android:layout_margin="8dp"
                 android:backgroundTint="#F6F7F6"
                 android:backgroundTintMode="src_atop"
+                android:fontFamily="@font/poppins_medium"
                 android:drawableLeft="@drawable/order_ic"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
@@ -251,6 +266,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:backgroundTint="#F6F7F6"
+                android:fontFamily="@font/poppins_medium"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/log_out_ic"
                 android:paddingTop="15dp"

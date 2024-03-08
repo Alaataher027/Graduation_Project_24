@@ -8,9 +8,9 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.graduationproject.ui.mainActivityCustomer.fragment.chatFragment.ChatFragmentCustomer"
+        android:name="com.example.graduationproject.ui.mainActivity.fragment.chatFragment.ChatFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/customer_fragment_chat">
+        tools:layout="@layout/fragment_chat">
         <action
             android:id="@+id/action_profileFragment_to_editProfileActivity"
             app:destination="@id/editProfileActivity" />

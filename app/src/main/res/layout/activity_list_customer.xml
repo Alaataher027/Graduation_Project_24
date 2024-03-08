@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mainActivityCustomer.ListComponents.CustomerListActivity">
+    tools:context=".ui.listActivityCustomer.ListComponents.CustomerListActivity">
 
     <!-- ActionBar بلون أخضر -->
     <androidx.appcompat.widget.Toolbar
@@ -50,19 +50,21 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/my_light_primary"
+        app:cardPreventCornerOverlap="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
 
         <ImageView
             android:id="@+id/image_profile"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="30dp"
             android:src="@drawable/image_profile"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_medium"
             android:textColor="@color/white"
             android:textSize="18dp"
@@ -84,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/custumer"
             android:textColor="@color/white"

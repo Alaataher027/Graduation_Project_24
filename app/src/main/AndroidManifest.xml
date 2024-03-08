@@ -29,32 +29,32 @@
         android:theme="@style/Theme.GraduationProject"
         tools:targetApi="31">
         <activity
-            android:name=".ui.mainActivitySeller.ListComponents.profile.editProfile.EditProfileSeller"
+            android:name=".ui.listActivitySeller.ListComponents.profile.editProfile.EditProfileSeller"
             android:exported="false" />
         <activity
-            android:name=".ui.mainActivitySeller.ListComponents.SellerListActivity"
+            android:name=".ui.listActivitySeller.ListComponents.SellerListActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.mainActivitySeller.ListComponents.profile.profileView.SellerProfileActivity"
+            android:name=".ui.listActivitySeller.ListComponents.profile.profileView.SellerProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.mainActivityCustomer.ListComponents.profile.profileView.CustomerProfileActivity"
+            android:name=".ui.listActivityCustomer.ListComponents.profile.profileView.CustomerProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.mainActivityCustomer.ListComponents.material.MaterialsActivity"
+            android:name=".ui.listActivityCustomer.ListComponents.material.MaterialsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.mainActivityCustomer.fragment.home.CreatPostActivity"
+            android:name=".ui.mainActivity.fragment.home.CreatPostActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.mainActivityCustomer.ListComponents.CustomerListActivity"
+            android:name=".ui.listActivityCustomer.ListComponents.CustomerListActivity"
             android:exported="false" />
 
         <activity
-            android:name=".ui.mainActivitySeller.MainActivitySeller"
+            android:name=".ui.listActivitySeller.MainActivitySeller"
             android:exported="false" />
         <activity
-            android:name=".ui.mainActivityCustomer.ListComponents.profile.editProfile.EditProfileCustomer"
+            android:name=".ui.listActivityCustomer.ListComponents.profile.editProfile.EditProfileCustomer"
             android:exported="false" />
         <activity
             android:name=".ui.resetPass.CreateNewPassword"
@@ -90,7 +90,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.mainActivityCustomer.MainActivityCustomer"
+            android:name=".ui.mainActivity.MainActivity"
             android:exported="false" />
     </application>
 
