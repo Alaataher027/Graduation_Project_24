@@ -2,15 +2,15 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="15dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginStart="50dp"
-    android:layout_marginEnd="50dp"
-    android:layout_marginBottom="15dp"
     android:layout_width="match_parent"
-    app:cardPreventCornerOverlap="true"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="15dp"
+    app:cardCornerRadius="15dp"
     app:cardElevation="10dp"
-    android:layout_height="wrap_content">
+    app:cardPreventCornerOverlap="true">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,16 +29,77 @@
             tools:src="@tools:sample/backgrounds/scenic" />
 
 
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/quantity"
+            android:textSize="17dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/PersonalImage" />
+
+        <TextView
+            android:id="@+id/quantity_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/poppins_"
+            android:textSize="17dp"
+            app:layout_constraintStart_toEndOf="@id/quantity"
+            app:layout_constraintTop_toBottomOf="@id/PersonalImage"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/price"
+            android:textSize="17dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quantity" />
+
+        <TextView
+            android:id="@+id/price_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/poppins_"
+            android:textSize="17dp"
+            app:layout_constraintStart_toEndOf="@id/price"
+            app:layout_constraintTop_toBottomOf="@id/quantity_num"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:lines="3"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price"
+            tools:text="i have some wood!"
+
+            />
+
         <ImageView
             android:id="@+id/image_post"
             android:layout_width="0dp"
             android:layout_height="220dp"
-            android:src="@drawable/post_image2"
             android:layout_marginTop="5dp"
             android:adjustViewBounds="true"
+            android:src="@drawable/post_image2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/PersonalImage" />
+            app:layout_constraintTop_toBottomOf="@id/content" />
 
         <TextView
             android:id="@+id/name"
@@ -46,9 +107,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/black"
             android:fontFamily="@font/nunitobold"
+            android:textColor="@color/black"
+            android:textSize="20dp"
             app:layout_constraintStart_toEndOf="@id/PersonalImage"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/lorem" />
@@ -57,20 +118,20 @@
             android:id="@+id/image_time"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            app:layout_constraintStart_toEndOf="@id/PersonalImage"
-            app:layout_constraintTop_toBottomOf="@id/name"
             android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
             android:src="@drawable/time"
-            />
+            app:layout_constraintStart_toEndOf="@id/PersonalImage"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
         <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13dp"
-            android:textColor="#6B6A6A"
             android:layout_marginStart="7dp"
             android:fontFamily="@font/nunitobold"
+            android:textColor="#6B6A6A"
+            android:textSize="13dp"
             app:layout_constraintStart_toEndOf="@id/image_time"
             app:layout_constraintTop_toBottomOf="@id/name"
             tools:text="3 hours" />
@@ -80,13 +141,12 @@
             android:id="@+id/list_post_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/list_post2"
-            android:background="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="20dp"
             android:layout_marginTop="20dp"
-            />
+            android:layout_marginEnd="20dp"
+            android:background="@color/white"
+            android:src="@drawable/list_post2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <!-- Button 1 -->
@@ -95,14 +155,15 @@
             android:id="@+id/order_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:backgroundTint="#EDEDED"
             android:backgroundTintMode="src_atop"
             android:drawableLeft="@drawable/baseline_add_shopping_cart_24"
+            android:minWidth="120dp"
+            android:minHeight="50dp"
             android:text="Order"
             android:textColor="@color/my_light_primary"
             android:textSize="15dp"
-            android:minHeight="50dp"
-            android:minWidth="120dp"
             app:layout_constraintCircleRadius="0dp"
             app:layout_constraintEnd_toStartOf="@+id/chat_btn"
             app:layout_constraintStart_toStartOf="parent"
@@ -114,18 +175,19 @@
             android:id="@+id/chat_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
             android:backgroundTint="#EDEDED"
             android:backgroundTintMode="src_atop"
-            android:layout_marginStart="10dp"
             android:drawableLeft="@drawable/baseline_chat_24"
+            android:minWidth="120dp"
+            android:minHeight="50dp"
             android:text="chat"
             android:textColor="@color/my_light_primary"
             android:textSize="15dp"
-            android:minHeight="50dp"
-            android:minWidth="120dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/order_btn"
-            app:layout_constraintTop_toBottomOf="@id/image_post"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/image_post" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

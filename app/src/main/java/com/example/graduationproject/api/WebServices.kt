@@ -10,6 +10,7 @@ import com.example.graduationproject.api.model.profile.ProfileResponse
 import com.example.graduationproject.api.model.register.RegisterResponse2
 import com.example.graduationproject.api.model.editProfile.EditProfileResponse
 import com.example.graduationproject.api.model.imageProfile.ImageProfileResponse
+import com.example.graduationproject.api.model.post.PostResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -155,23 +156,23 @@ interface WebServices {
         @Query("TIN") tIN: String
     ): Call<EditProfileResponse>
 
-
-//    //https://alshaerawy.aait-sa.com/api/
-//    // auth/user/profileimg
-//    @FormUrlEncoded
-//    @POST("auth/user/profileimg")
-//    fun imageProfile(
-//        @Header("Authorization") accessToken: String,
-//        @Part("image") image: String
-//    ): Call<ImageProfileResponse>
-
-
     @Multipart
     @POST("auth/user/profileimg")
     fun imageProfile(
         @Header("Authorization") accessToken: String,
         @Part image: MultipartBody.Part
     ): Call<ImageProfileResponse>
+
+    @Multipart
+    @POST("posts/add")
+    fun createPost(
+        @Header("Authorization") accessToken: String,
+        @Part("description") description: String,
+        @Part("quantity") quantity: String,
+        @Part("material") material: String,
+        @Part("price") price: String,
+        @Part image: MultipartBody.Part
+    ): Call<PostResponse>
 
 
 }
