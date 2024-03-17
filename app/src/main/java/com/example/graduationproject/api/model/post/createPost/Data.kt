@@ -1,4 +1,4 @@
-package com.example.graduationproject.api.model.post
+package com.example.graduationproject.api.model.post.createPost
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable

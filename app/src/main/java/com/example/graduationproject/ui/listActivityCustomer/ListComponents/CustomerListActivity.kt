@@ -73,12 +73,14 @@ class CustomerListActivity : AppCompatActivity() {
                         binding.nameUser.text = it.name
                         val requestOptions = RequestOptions().transform(CircleCrop())
 
-                        Glide.with(this)
-                            .load(data.image)
-                            .apply(requestOptions)
-                            .placeholder(R.drawable.placeholder)
-                            .error(R.drawable.error)
-                            .into(binding.imageProfile)
+                        if (!isDestroyed) { // Check if the activity is destroyed
+                            Glide.with(this)
+                                .load(data.image)
+                                .apply(requestOptions)
+                                .placeholder(R.drawable.placeholder)
+                                .error(R.drawable.error)
+                                .into(binding.imageProfile)
+                        }
                     }
                 },
                 onError = { errorMessage ->

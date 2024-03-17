@@ -1,23 +1,18 @@
-package com.example.graduationproject.ui.mainActivity.fragment.home
+package com.example.graduationproject.ui.mainActivity.fragment.createPost
 
-import android.app.Activity
-import android.content.Intent
-import android.database.Cursor
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
-import com.example.graduationproject.api.model.post.PostResponse
 import com.example.graduationproject.databinding.ActivityCreatPostBinding
 import com.example.graduationproject.ui.login.TokenManager
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import java.io.File
+
 
 class CreatPostActivity : AppCompatActivity() {
 
@@ -33,7 +28,6 @@ class CreatPostActivity : AppCompatActivity() {
         tokenManager = TokenManager(this)
         viewModel = ViewModelProvider(this).get(CreatePostViewModel::class.java)
 
-        setupViews(null)
         onClickBack()
 
         viewBinding.addImage.setOnClickListener {
@@ -41,13 +35,13 @@ class CreatPostActivity : AppCompatActivity() {
         }
     }
 
-
     private val requestImageLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             uri?.let {
-                setupViews(it) // Pass the obtained Uri directly to the uploadImage function
+                setupViews(it)
             }
         }
+
     private fun openGalleryForImage() {
         requestImageLauncher.launch("image/*")
     }
@@ -63,10 +57,10 @@ class CreatPostActivity : AppCompatActivity() {
             val body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
 
             viewBinding.shareBtn.setOnClickListener {
-                val description = viewBinding.descriptionContent.text.toString()
-                val quantity = viewBinding.quantityContent.text.toString()
-                val material = viewBinding.materialContent.text.toString()
-                val price = viewBinding.priceContent.text.toString()
+                val description = RequestBody.create(MediaType.parse("text/plain"), viewBinding.descriptionContent.text.toString())
+                val quantity = RequestBody.create(MediaType.parse("text/plain"), viewBinding.quantityContent.text.toString())
+                val material = RequestBody.create(MediaType.parse("text/plain"), viewBinding.materialContent.text.toString())
+                val price = RequestBody.create(MediaType.parse("text/plain"), viewBinding.priceContent.text.toString())
 
                 viewModel.createPost(
                     accessToken,
@@ -78,7 +72,9 @@ class CreatPostActivity : AppCompatActivity() {
                 ) { isSuccess, message ->
                     if (isSuccess) {
                         Log.d("CreatePost", "successful, ${imageUri}")
+                        Log.d("CreatePost", "body:, ${body}")
                         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                        finish()
                     } else {
                         Log.d("CreatePost", "imageUri:, ${imageUri}")
                         Log.d("CreatePost", "body:, ${body}")

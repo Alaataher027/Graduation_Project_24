@@ -64,13 +64,14 @@ class CustomerProfileActivity : AppCompatActivity() {
                         viewBinding.taxCustomer.text = it.tIN
                         viewBinding.nameUser.text = it.name
                         val requestOptions = RequestOptions().transform(CircleCrop())
-
-                        Glide.with(this)
-                            .load(data.image)
-                            .apply(requestOptions)
-                            .placeholder(R.drawable.placeholder)
-                            .error(R.drawable.error)
-                            .into(viewBinding.imageProfile)
+                        if (!isDestroyed) { // Check if the activity is destroyed
+                            Glide.with(this)
+                                .load(data.image)
+                                .apply(requestOptions)
+                                .placeholder(R.drawable.placeholder)
+                                .error(R.drawable.error)
+                                .into(viewBinding.imageProfile)
+                        }
 
                     }
                 },

@@ -1,4 +1,4 @@
-package com.example.graduationproject.api.model.post
+package com.example.graduationproject.api.model.post.createPost
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

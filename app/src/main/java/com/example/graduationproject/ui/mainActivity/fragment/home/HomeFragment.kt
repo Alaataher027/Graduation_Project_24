@@ -27,53 +27,36 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
         // Set an OnClickListener for the ImageView using view binding
-        navigateToList()
+//        navigateToList()
         createPost()
     }
 
-    private fun navigateToList() {
-        viewBinding.listBtn.setOnClickListener {
-            val userType = tokenManager.getUserType()
-            Log.d("HomeFragment", "user type: ${userType}" )
-
-            if (tokenManager.getToken().isNullOrBlank() || userType.isNullOrBlank()) {
-                Toast.makeText(requireContext(), "Login!", Toast.LENGTH_SHORT).show()
-            } else {
-                // Token and user type exist
-                if (userType == "Seller") {
-                    // Navigate to SellerListActivity
-                    val intent = Intent(requireContext(), SellerListActivity::class.java)
-                    startActivity(intent)
-
-                } else if (userType == "Customer") {
-                    // Navigate to BuyerActivity
-                    val intent = Intent(requireContext(), CustomerListActivity::class.java)
-                    startActivity(intent)
-                }
-            }
-        }
-    }
-
 //    private fun navigateToList() {
-//        // Create an Intent to navigate to another activity
-//        val intent = Intent(requireContext(), CustomerListActivity::class.java)
+//        viewBinding.listBtn.setOnClickListener {
+//            val userType = tokenManager.getUserType()
+//            Log.d("HomeFragment", "user type: ${userType}")
 //
-//        // Optionally, you can add extra data to the intent
-//        // intent.putExtra("key", "value")
+//            if (tokenManager.getToken().isNullOrBlank() || userType.isNullOrBlank()) {
+//                Toast.makeText(requireContext(), "Login!", Toast.LENGTH_SHORT).show()
+//            } else {
+//                // Token and user type exist
+//                if (userType == "Seller") {
+//                    // Navigate to SellerListActivity
+//                    val intent = Intent(requireContext(), SellerListActivity::class.java)
+//                    startActivity(intent)
 //
-//        // Start the activity
-//        startActivity(intent)
+//                } else if (userType == "Customer") {
+//                    // Navigate to BuyerActivity
+//                    val intent = Intent(requireContext(), CustomerListActivity::class.java)
+//                    startActivity(intent)
+//                }
+//            }
+//        }
 //    }
 
     fun createPost() {
         // Assuming you have a list of posts, replace it with your actual data
         val posts = listOf(
-            Post(R.drawable.person1, "John Doe", R.drawable.post_img),
-            Post(R.drawable.person1, "Jane Smith", R.drawable.post_img),
-            Post(R.drawable.person1, "John Doe", R.drawable.post_img),
-            Post(R.drawable.person1, "Jane Smith", R.drawable.post_img),
-            Post(R.drawable.person1, "John Doe", R.drawable.post_img),
-            Post(R.drawable.person1, "Jane Smith", R.drawable.post_img),
             Post(R.drawable.person1, "John Doe", R.drawable.post_img),
             Post(R.drawable.person1, "Jane Smith", R.drawable.post_img),
             // Add more posts as needed

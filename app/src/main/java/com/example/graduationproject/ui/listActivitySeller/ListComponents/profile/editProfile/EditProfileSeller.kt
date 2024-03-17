@@ -173,11 +173,14 @@ class EditProfileSeller : AppCompatActivity() {
 //                            .error(R.drawable.error)
 //                            .into(viewBinding.imageProfile)
 
-                        glideRequestManager?.load(userData.image)
-                            ?.apply(requestOptions)
-                            ?.placeholder(R.drawable.placeholder) // Placeholder image while loading
-                            ?.error(R.drawable.error) // Image to display if loading fails
-                            ?.into(viewBinding.imageProfile)
+                        if (!isDestroyed) { // Check if the activity is destroyed
+
+                            glideRequestManager?.load(userData.image)
+                                ?.apply(requestOptions)
+                                ?.placeholder(R.drawable.placeholder) // Placeholder image while loading
+                                ?.error(R.drawable.error) // Image to display if loading fails
+                                ?.into(viewBinding.imageProfile)
+                        }
                     }
                 },
                 onError = { errorMessage ->

@@ -10,7 +10,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_"
+        android:fontFamily="@font/poppins_medium"
         android:padding="20dp"
         android:paddingStart="30dp"
         android:text="Welcome To \nRekia !"
@@ -23,11 +23,11 @@
 
     <ImageView
         android:id="@+id/get_started"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
         android:adjustViewBounds="true"
-        android:src="@drawable/getstarted"
+        android:src="@drawable/get_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
-        android:fontFamily="@font/poppins_"
+        android:fontFamily="@font/poppins_medium"
         android:gravity="center"
         android:padding="7dp"
         android:text="@string/get_started"

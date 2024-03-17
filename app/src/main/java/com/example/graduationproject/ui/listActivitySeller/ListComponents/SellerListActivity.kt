@@ -76,12 +76,14 @@ class SellerListActivity : AppCompatActivity() {
 
                         val requestOptions = RequestOptions().transform(CircleCrop())
 
-                        Glide.with(this)
-                            .load(data.image)
-                            .apply(requestOptions)
-                            .placeholder(R.drawable.placeholder)
-                            .error(R.drawable.error)
-                            .into(binding.imageProfile)
+                        if (!isDestroyed) { // Check if the activity is destroyed
+                            Glide.with(this)
+                                .load(data.image)
+                                .apply(requestOptions)
+                                .placeholder(R.drawable.placeholder)
+                                .error(R.drawable.error)
+                                .into(binding.imageProfile)
+                        }
                     }
                 },
                 onError = { errorMessage ->
@@ -92,6 +94,7 @@ class SellerListActivity : AppCompatActivity() {
             Toast.makeText(this, "Access token is null", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     private fun onClickBack() {
         binding.buttonBack.setOnClickListener {

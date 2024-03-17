@@ -44,7 +44,7 @@
             android:name=".ui.listActivityCustomer.ListComponents.material.MaterialsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.mainActivity.fragment.home.CreatPostActivity"
+            android:name=".ui.mainActivity.fragment.createPost.CreatPostActivity"
             android:exported="false" />
         <activity
             android:name=".ui.listActivityCustomer.ListComponents.CustomerListActivity"

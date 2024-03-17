@@ -14,8 +14,8 @@ class PostAdapter(private val posts: List<Post>) :
         fun bind(post: Post) {
             // Bind data to views
             binding.name.text = post.name
-            binding.imagePost.setImageResource(post.imagePost)
-            binding.PersonalImage.setImageResource(post.personalImage)
+//            binding.imagePost.setImageResource(post.imagePost)
+//            binding.PersonalImage.setImageResource(post.personalImage)
 
             // Add click listeners or any other actions if needed
         }

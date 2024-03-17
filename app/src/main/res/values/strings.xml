@@ -86,4 +86,12 @@
     <string name="do_you_want_to_log_out">Do you want to log out ?</string>
     <string name="description">Description</string>
     <string name="price">Price</string>
+    <string name="list">List</string>
+    <string name="plastic">Plastic</string>
+    <string name="metal">Metal</string>
+    <string name="paper">Paper</string>
+    <string name="wood">Wood</string>
+    <string name="glass">Glass</string>
+    <string name="steel">Steel</string>
+    <string name="type">Type</string>
 </resources>

@@ -204,12 +204,14 @@ class EditProfileCustomer : AppCompatActivity() {
                         viewBinding.taxCustomer.setText(userData.tIN ?: "")
                         val requestOptions = RequestOptions().transform(CircleCrop())
 
-                        Glide.with(this@EditProfileCustomer)
-                            .load(userData.image)
-                            .apply(requestOptions)
-                            .placeholder(R.drawable.placeholder)
-                            .error(R.drawable.error)
-                            .into(viewBinding.imageProfile)
+                        if (!isDestroyed) { // Check if the activity is destroyed
+                            Glide.with(this@EditProfileCustomer)
+                                .load(userData.image)
+                                .apply(requestOptions)
+                                .placeholder(R.drawable.placeholder)
+                                .error(R.drawable.error)
+                                .into(viewBinding.imageProfile)
+                        }
                     }
                 },
                 onError = { errorMessage ->

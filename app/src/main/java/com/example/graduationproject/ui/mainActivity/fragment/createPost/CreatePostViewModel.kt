@@ -1,25 +1,23 @@
-package com.example.graduationproject.ui.mainActivity.fragment.home
+package com.example.graduationproject.ui.mainActivity.fragment.createPost
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
-import com.example.graduationproject.api.model.post.PostResponse
-import okhttp3.MediaType
+import com.example.graduationproject.api.model.post.createPost.PostResponse
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
+import okhttp3.RequestBody
 
 class CreatePostViewModel : ViewModel() {
 
     fun createPost(
         accessToken: String,
-        description: String,
-        quantity: String,
-        material: String,
-        price: String,
+        description: RequestBody,
+        quantity: RequestBody,
+        material: RequestBody,
+        price: RequestBody,
         image: MultipartBody.Part,
         onResponse: (Boolean, String?) -> Unit
     ) {

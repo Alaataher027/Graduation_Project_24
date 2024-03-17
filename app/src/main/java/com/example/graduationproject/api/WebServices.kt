@@ -1,6 +1,5 @@
 package com.example.graduationproject.api
 
-import android.media.Image
 import com.example.graduationproject.api.model.CheckCodeResponse
 import com.example.graduationproject.api.model.ForgetPasswordResponse
 import com.example.graduationproject.api.model.logout.LogOutResponse
@@ -10,11 +9,10 @@ import com.example.graduationproject.api.model.profile.ProfileResponse
 import com.example.graduationproject.api.model.register.RegisterResponse2
 import com.example.graduationproject.api.model.editProfile.EditProfileResponse
 import com.example.graduationproject.api.model.imageProfile.ImageProfileResponse
-import com.example.graduationproject.api.model.post.PostResponse
+import com.example.graduationproject.api.model.post.createPost.PostResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Header
@@ -24,6 +22,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Query
+
 
 interface WebServices {
     //https://alshaerawy.aait-sa.com/api/ >> base
@@ -167,10 +166,10 @@ interface WebServices {
     @POST("posts/add")
     fun createPost(
         @Header("Authorization") accessToken: String,
-        @Part("description") description: String,
-        @Part("quantity") quantity: String,
-        @Part("material") material: String,
-        @Part("price") price: String,
+        @Part("description") description: RequestBody,
+        @Part("quantity") quantity: RequestBody,
+        @Part("material") material: RequestBody,
+        @Part("price") price: RequestBody,
         @Part image: MultipartBody.Part
     ): Call<PostResponse>
 

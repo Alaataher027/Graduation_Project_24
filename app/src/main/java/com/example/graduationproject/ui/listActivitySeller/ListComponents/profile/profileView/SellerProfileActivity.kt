@@ -70,12 +70,14 @@ class SellerProfileActivity : AppCompatActivity() {
 
                         val requestOptions = RequestOptions().transform(CircleCrop())
 
-                        Glide.with(this)
-                            .load(data.image)
-                            .apply(requestOptions)
-                            .placeholder(R.drawable.placeholder)
-                            .error(R.drawable.error)
-                            .into(viewBinding.imageProfile)
+                        if (!isDestroyed) { // Check if the activity is destroyed
+                            Glide.with(this)
+                                .load(data.image)
+                                .apply(requestOptions)
+                                .placeholder(R.drawable.placeholder)
+                                .error(R.drawable.error)
+                                .into(viewBinding.imageProfile)
+                        }
                     }
                 },
                 onError = { errorMessage ->
