@@ -10,17 +10,21 @@ import com.example.graduationproject.api.model.register.RegisterResponse2
 import com.example.graduationproject.api.model.editProfile.EditProfileResponse
 import com.example.graduationproject.api.model.imageProfile.ImageProfileResponse
 import com.example.graduationproject.api.model.post.createPost.PostResponse
+import com.example.graduationproject.api.model.post.deletePost.DeletePostResponse
+import com.example.graduationproject.api.model.post.postHome.HomePostResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -95,23 +99,12 @@ interface WebServices {
 
     //https://alshaerawy.aait-sa.com/api/
     // auth/user/user-profile
-    @POST("auth/user/user-profile")
+    @POST("auth/user/user-profile/{id}")
     fun getUserProfile(
         @Header("Authorization") accessToken: String,
+        @Path("id") id: Int
     ): Call<ProfileResponse>
 
-
-    //https://alshaerawy.aait-sa.com/api/auth/user/edit
-//    @PUT("auth/user/edit")
-//    fun editSellerProfile(
-//        @Header("Authorization") accessToken: String,
-//        @Query("email") email: String?,
-//        @Query("phone_number") phoneNumber: String?,
-//        @Query("governorate") governorate: String?,
-//        @Query("city") city: String?,
-//        @Query("street") street: String?,
-//        @Query("residential_quarter") residentialQuarter: String?
-//    ): Call<EditProfileResponse>
 
     @PUT("auth/user/edit")
     fun editEmail(
@@ -172,6 +165,19 @@ interface WebServices {
         @Part("price") price: RequestBody,
         @Part image: MultipartBody.Part
     ): Call<PostResponse>
+
+    @GET("posts/home")
+    fun getHomePosts(
+        @Header("Authorization") accessToken: String
+    ): Call<HomePostResponse>
+
+
+    //https://alshaerawy.aait-sa.com/api/posts/{id}
+    @POST("posts/{id}")
+    fun deletePost(
+        @Header("Authorization") accessToken: String,
+        @Path("id") id: Int
+    ): Call<DeletePostResponse>
 
 
 }

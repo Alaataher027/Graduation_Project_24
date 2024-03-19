@@ -94,4 +94,8 @@
     <string name="glass">Glass</string>
     <string name="steel">Steel</string>
     <string name="type">Type</string>
+    <string name="save_post">save post</string>
+    <string name="copy_link">copy link</string>
+    <string name="edit_post">edit post</string>
+    <string name="delete_post">delete post</string>
 </resources>

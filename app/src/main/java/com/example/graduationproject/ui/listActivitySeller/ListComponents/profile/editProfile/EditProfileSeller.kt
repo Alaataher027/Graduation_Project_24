@@ -151,9 +151,11 @@ class EditProfileSeller : AppCompatActivity() {
 
     private fun fetchUserProfileData() {
         val accessToken = TokenManager(this).getToken()
+        val userId = tokenManager.getUserId()
+
         accessToken?.let { token ->
             viewModelShow.viewData(
-                accessToken = token,
+                accessToken = token, userId,
                 onDataLoaded = { userData ->
                     userData?.let {
                         // Populate EditText fields with user profile data

@@ -13,11 +13,12 @@ class CustomerListViewModel : ViewModel() {
 
     fun viewData(
         accessToken: String,
+        userId: Int, // Add userId parameter
         onDataLoaded: (Data?) -> Unit,
         onError: (String) -> Unit
     ) {
         ApiManager.getApisToken(accessToken)
-            .getUserProfile(accessToken)
+            .getUserProfile(accessToken,userId)
             .enqueue(object : Callback<ProfileResponse> {
                 override fun onResponse(
                     call: Call<ProfileResponse>,

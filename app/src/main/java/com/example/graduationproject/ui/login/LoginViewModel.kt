@@ -7,6 +7,7 @@ import com.example.graduationproject.api.model.login.Data
 import com.example.graduationproject.api.model.login.ErrorResponse
 import com.example.graduationproject.api.model.login.LoginResponse
 import com.example.graduationproject.api.model.login.LoginResponse2
+import com.example.graduationproject.api.model.login.User
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import retrofit2.Call
@@ -36,11 +37,13 @@ class LoginViewModel(private val tokenManager: TokenManager) : ViewModel() {
                             if (status == 200) {
                                 val data: Data? = loginResponse.data
                                 val accessToken: String? = data?.accessToken
+                                val id: Int? = loginResponse.data?.user?.id
                                 val userType: String? = data?.user?.userType
                                 // Inside the performLogin method
                                 if (!accessToken.isNullOrBlank()) {
                                     // Save the access token
                                     tokenManager.saveToken(accessToken)
+                                    tokenManager.saveUserId(id?:0)
 
                                     Log.d("LoginViewModel", "User Type saved: $userType")
 

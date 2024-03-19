@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import com.example.graduationproject.databinding.ActivityCreatPostBinding
+import com.example.graduationproject.ui.login.LoginViewModel
 import com.example.graduationproject.ui.login.TokenManager
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -26,7 +27,7 @@ class CreatPostActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         tokenManager = TokenManager(this)
-        viewModel = ViewModelProvider(this).get(CreatePostViewModel::class.java)
+        viewModel = CreatePostViewModel(tokenManager)
 
         onClickBack()
 

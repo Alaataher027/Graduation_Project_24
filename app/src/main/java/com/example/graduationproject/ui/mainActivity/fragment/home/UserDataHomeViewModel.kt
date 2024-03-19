@@ -1,4 +1,4 @@
-package com.example.graduationproject.ui.listActivitySeller.ListComponents.profile.profileView
+package com.example.graduationproject.ui.mainActivity.fragment.home
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -9,11 +9,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SellerProfileViewModel : ViewModel() {
+class UserDataHomeViewModel : ViewModel() {
 
-    fun viewData(
+    fun getData(
         accessToken: String,
-        userId: Int, // Add userId parameter
+        userId: Int,
         onDataLoaded: (Data?) -> Unit,
         onError: (String) -> Unit
     ) {
@@ -24,30 +24,18 @@ class SellerProfileViewModel : ViewModel() {
                     call: Call<ProfileResponse>,
                     response: Response<ProfileResponse>
                 ) {
-
-                    Log.d("SellerProfileViewModel", "first")
-
                     if (response.isSuccessful) {
                         val status: Int? = response.body()?.status
                         val message: String? = response.body()?.message
                         val profileResponse = response.body()
                         val data: Data? = profileResponse?.data
                         if (status == 200) {
-                            Log.d("SellerProfileViewModel", "Email1: ${accessToken},  200: ${response.message()}")
-
                             onDataLoaded(data)
                         } else {
-                            Log.d("SellerProfileViewModel", "Email2: ${data?.email}, else of 200: ${response.message()}")
                             onError(message ?: "Unknown error")
                         }
                     } else {
-
-                        val profileResponse = response.body()
-
-                        val data: Data? = profileResponse?.data
-
                         // Log the email value in data
-                        Log.d("SellerProfileViewModel", "Email3: ${data?.email}, error: ${response.message()}, $accessToken")
                         val errorMessage = "Error ${response.code()}: ${response.message()}"
                         onError(errorMessage)
                     }

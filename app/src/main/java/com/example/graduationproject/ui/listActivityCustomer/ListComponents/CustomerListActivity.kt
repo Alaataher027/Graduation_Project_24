@@ -66,8 +66,9 @@ class CustomerListActivity : AppCompatActivity() {
 
     private fun loadData() {
         val accessToken = tokenManager.getToken()
+        val userId = tokenManager.getUserId()
         if (accessToken != null) {
-            viewModel.viewData(accessToken,
+            viewModel.viewData(accessToken,userId,
                 onDataLoaded = { data ->
                     data?.let {
                         binding.nameUser.text = it.name

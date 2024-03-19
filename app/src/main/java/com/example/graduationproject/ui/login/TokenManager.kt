@@ -2,7 +2,6 @@ package com.example.graduationproject.ui.login
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 
 class TokenManager(val context: Context) {
     private val sharedPreferences: SharedPreferences =
@@ -16,8 +15,24 @@ class TokenManager(val context: Context) {
         sharedPreferences.edit().putString("user_type", userType).apply()
     }
 
+    fun saveUserId(userId: Int) {
+        sharedPreferences.edit().putInt("id", userId).apply()
+    }
+
+    fun saveUserPostId(userId: Int) {
+        sharedPreferences.edit().putInt("user_id", userId).apply()
+    }
+
+    fun getUserPostId(): Int {
+        return sharedPreferences.getInt("user_id", 0)
+    }
+
     fun getUserType(): String? {
         return sharedPreferences.getString("user_type", null)
+    }
+
+    fun getUserId(): Int {
+        return sharedPreferences.getInt("id", 0)
     }
 
     fun getToken(): String? {
@@ -28,4 +43,7 @@ class TokenManager(val context: Context) {
         sharedPreferences.edit().remove("access_token").apply()
     }
 
+    fun clearUserId() {
+        sharedPreferences.edit().remove("user_id").apply()
+    }
 }

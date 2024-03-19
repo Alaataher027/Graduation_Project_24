@@ -53,8 +53,10 @@ class CustomerProfileActivity : AppCompatActivity() {
 
     private fun loadData() {
         val accessToken = tokenManager.getToken()
+        val userId = tokenManager.getUserId()
+
         if (accessToken != null) {
-            viewModel.viewData(accessToken,
+            viewModel.viewData(accessToken,userId,
                 onDataLoaded = { data ->
                     data?.let {
                         viewBinding.emailCustomer.text = it.email
