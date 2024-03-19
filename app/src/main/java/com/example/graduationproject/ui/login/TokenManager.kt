@@ -20,7 +20,7 @@ class TokenManager(val context: Context) {
     }
 
     fun saveUserPostId(userId: Int) {
-        sharedPreferences.edit().putInt("user_id", userId).apply()
+        sharedPreferences.edit().putInt("user_id_post", userId).apply()
     }
 
     fun getUserPostId(): Int {
@@ -45,5 +45,9 @@ class TokenManager(val context: Context) {
 
     fun clearUserId() {
         sharedPreferences.edit().remove("user_id").apply()
+    }
+
+    fun clearUserPostId() {
+        sharedPreferences.edit().remove("user_id_post").apply()
     }
 }

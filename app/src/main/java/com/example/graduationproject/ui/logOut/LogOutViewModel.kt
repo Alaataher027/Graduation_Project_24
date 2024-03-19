@@ -32,6 +32,7 @@ class LogOutViewModel(private val tokenManager: TokenManager) : ViewModel() {
                             Log.i("LogOutViewModel", "Logout successful: $accessToken")
                             tokenManager.clearToken()
                             tokenManager.clearUserId()
+                            tokenManager.clearUserPostId()
                             onLogOutResult(true, message ?: "Logout successful")
                         } else {
                             Log.i("LogOutViewModel", "Logout failed: $accessToken")
