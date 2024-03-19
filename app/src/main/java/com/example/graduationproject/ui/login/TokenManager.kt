@@ -24,7 +24,7 @@ class TokenManager(val context: Context) {
     }
 
     fun getUserPostId(): Int {
-        return sharedPreferences.getInt("user_id", 0)
+        return sharedPreferences.getInt("user_id_post", 0)
     }
 
     fun getUserType(): String? {
