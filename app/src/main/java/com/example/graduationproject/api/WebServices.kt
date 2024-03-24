@@ -9,8 +9,10 @@ import com.example.graduationproject.api.model.profile.ProfileResponse
 import com.example.graduationproject.api.model.register.RegisterResponse2
 import com.example.graduationproject.api.model.editProfile.EditProfileResponse
 import com.example.graduationproject.api.model.imageProfile.ImageProfileResponse
+import com.example.graduationproject.api.model.login.loginGoogle.LoginGoogleResponse
 import com.example.graduationproject.api.model.post.createPost.PostResponse
 import com.example.graduationproject.api.model.post.deletePost.DeletePostResponse
+import com.example.graduationproject.api.model.post.editPost.EditPostResponse
 import com.example.graduationproject.api.model.post.postHome.HomePostResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -56,6 +58,9 @@ interface WebServices {
         @Field("lang") lang: String,
 
         ): Call<LoginResponse2>
+
+    @GET("login/google")
+    fun loginWithGoogle(): Call<LoginGoogleResponse>
 
 
     //https://alshaerawy.aait-sa.com/api/
@@ -178,6 +183,44 @@ interface WebServices {
         @Header("Authorization") accessToken: String,
         @Path("id") id: Int
     ): Call<DeletePostResponse>
+
+
+    //https://alshaerawy.aait-sa.com/api/
+    // posts/{id}/edit
+    @PUT("posts/{id}/edit")
+    fun editPostImage(
+        @Header("Authorization") accessToken: String,
+        @Query("image") image: String,
+        @Path("id") id: Int
+    ): Call<EditPostResponse>
+
+    @PUT("posts/{id}/edit")
+    fun editPostDescription(
+        @Header("Authorization") accessToken: String,
+        @Query("description") description: String,
+        @Path("id") id: Int
+    ): Call<EditPostResponse>
+
+    @PUT("posts/{id}/edit")
+    fun editPostPrice(
+        @Header("Authorization") accessToken: String,
+        @Query("price") price: String,
+        @Path("id") id: Int
+    ): Call<EditPostResponse>
+
+    @PUT("posts/{id}/edit")
+    fun editPostMaterial(
+        @Header("Authorization") accessToken: String,
+        @Query("material") material: String,
+        @Path("id") id: Int
+    ): Call<EditPostResponse>
+
+    @PUT("posts/{id}/edit")
+    fun editPostQuantity(
+        @Header("Authorization") accessToken: String,
+        @Query("quantity") quantity: String,
+        @Path("id") id: Int
+    ): Call<EditPostResponse>
 
 
 }

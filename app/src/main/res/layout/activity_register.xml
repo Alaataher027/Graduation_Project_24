@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_"
         android:text="@string/sign_up"
         android:textColor="@color/my_light_primary"
         android:textSize="30dp"
@@ -191,39 +191,49 @@
 
     </Button>
 
-
-    <ImageView
-        android:id="@+id/or"
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/register_with"
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/register_btn" />
 
-    <ImageView
-        android:id="@+id/facebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/facebook_btn"
-        app:layout_constraintEnd_toStartOf="@id/google"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/or" />
 
-    <ImageView
-        android:id="@+id/google"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/google_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/facebook"
-        app:layout_constraintTop_toBottomOf="@id/or" />
+<!--    <ImageView-->
+<!--        android:id="@+id/or"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="15dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:adjustViewBounds="true"-->
+<!--        android:src="@drawable/register_with"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/register_btn" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/facebook"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:adjustViewBounds="true"-->
+<!--        android:src="@drawable/facebook_btn"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/google"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/or" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/google"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:adjustViewBounds="true"-->
+<!--        android:src="@drawable/google_btn"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@id/facebook"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/or" />-->
 
 
     <TextView

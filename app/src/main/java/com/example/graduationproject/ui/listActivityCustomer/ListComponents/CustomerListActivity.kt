@@ -34,11 +34,56 @@ class CustomerListActivity : AppCompatActivity() {
         tokenManager = TokenManager(this)
 
 
-        loadData()
+        buttonBG()
+//        loadData()
         onClickBack()
         showDialogOnClickLogout()
         onClickProfile()
         navToMaterial()
+    }
+
+
+    private fun buttonBG() {
+        val profileBtn = binding.profileBtn
+        profileBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        profileBtn.backgroundTintList = null
+
+        val savedPostsBtn = binding.savedBtn
+        savedPostsBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        savedPostsBtn.backgroundTintList = null
+
+        val privacyBtn = binding.privacyBtn
+        privacyBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        privacyBtn.backgroundTintList = null
+
+        val aboutUSBtn = binding.aboutusBtn
+        aboutUSBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        aboutUSBtn.backgroundTintList = null
+
+        val settingsBtn = binding.settingsBtn
+        settingsBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        settingsBtn.backgroundTintList = null
+
+        val guidanceBtn = binding.guidBtn
+        guidanceBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        guidanceBtn.backgroundTintList = null
+
+        val materialBtn = binding.materialBtn
+        materialBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        materialBtn.backgroundTintList = null
+
+        val TecBtn = binding.techBtn
+        TecBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        TecBtn.backgroundTintList = null
+
+        val ordersBtn = binding.orderBtn
+        ordersBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        ordersBtn.backgroundTintList = null
+
+        val logOutBtn = binding.logoutBtn
+        logOutBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        logOutBtn.backgroundTintList = null
+
     }
 
     private fun showDialogOnClickLogout() {
@@ -64,34 +109,34 @@ class CustomerListActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadData() {
-        val accessToken = tokenManager.getToken()
-        val userId = tokenManager.getUserId()
-        if (accessToken != null) {
-            viewModel.viewData(accessToken,userId,
-                onDataLoaded = { data ->
-                    data?.let {
-                        binding.nameUser.text = it.name
-                        val requestOptions = RequestOptions().transform(CircleCrop())
-
-                        if (!isDestroyed) { // Check if the activity is destroyed
-                            Glide.with(this)
-                                .load(data.image)
-                                .apply(requestOptions)
-                                .placeholder(R.drawable.placeholder)
-                                .error(R.drawable.error)
-                                .into(binding.imageProfile)
-                        }
-                    }
-                },
-                onError = { errorMessage ->
-                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-                }
-            )
-        } else {
-            Toast.makeText(this, "Access token is null", Toast.LENGTH_SHORT).show()
-        }
-    }
+//    private fun loadData() {
+//        val accessToken = tokenManager.getToken()
+//        val userId = tokenManager.getUserId()
+//        if (accessToken != null) {
+//            viewModel.viewData(accessToken,userId,
+//                onDataLoaded = { data ->
+//                    data?.let {
+//                        binding.nameUser.text = it.name
+//                        val requestOptions = RequestOptions().transform(CircleCrop())
+//
+//                        if (!isDestroyed) { // Check if the activity is destroyed
+//                            Glide.with(this)
+//                                .load(data.image)
+//                                .apply(requestOptions)
+//                                .placeholder(R.drawable.placeholder)
+//                                .error(R.drawable.error)
+//                                .into(binding.imageProfile)
+//                        }
+//                    }
+//                },
+//                onError = { errorMessage ->
+//                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+//                }
+//            )
+//        } else {
+//            Toast.makeText(this, "Access token is null", Toast.LENGTH_SHORT).show()
+//        }
+//    }
 
 
     private fun performLogout() {

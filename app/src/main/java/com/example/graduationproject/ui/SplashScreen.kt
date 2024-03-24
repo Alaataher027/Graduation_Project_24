@@ -15,7 +15,7 @@ import com.example.graduationproject.ui.login.TokenManager
 
 class SplashScreen : AppCompatActivity() {
 
-    private val SPLASH_DELAY = 2000 // 2 seconds
+    private val SPLASH_DELAY = 2500 // 2 seconds
     private lateinit var viewBinding: ActivitySplashScreenBinding
     private lateinit var tokenManager: TokenManager
 

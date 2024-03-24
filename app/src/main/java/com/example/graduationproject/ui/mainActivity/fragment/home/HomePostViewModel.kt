@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomePostViewModel(private val tokenManager: TokenManager) : ViewModel() {
+class HomePostViewModel() : ViewModel() {
 
 
     private val _homePosts = MutableLiveData<List<DataItem?>>()
@@ -28,29 +28,23 @@ class HomePostViewModel(private val tokenManager: TokenManager) : ViewModel() {
                     response: Response<HomePostResponse>
                 ) {
                     if (response.isSuccessful) {
-                        val homePostResponse: HomePostResponse? = response.body()
-//                        // Check if data is not null and not empty
-//                        val dataItems = homePostResponse?.data
-//                        if (!dataItems.isNullOrEmpty()) {
-//                            // Access userId from the first DataItem
-//                            val userId: Int? = dataItems[0]?.userId
-//                            tokenManager.saveUserPostId(userId?:0)
-//
-//                            Log.d("HomePostViewModel", "User Id: $userId")
-//                        } else {
-//                            Log.d("HomePostViewModel", "No data items received")
-//                        }
+                        val homePosts = response.body()?.data ?: emptyList()
+                        _homePosts.value = homePosts
+                        Log.d("HomePosts", "${response.body()}")
 
-                        _homePosts.value = response.body()?.data ?: emptyList()
+                        // Print updated_at for each DataItem
+                        homePosts.forEach { dataItem ->
+                            Log.d("HomePosts", "updated_at: ${dataItem?.updatedAt}")
+                        }
                     }
                 }
 
                 override fun onFailure(call: Call<HomePostResponse>, t: Throwable) {
                     Log.e("HomePostViewModel", "Failed to fetch home posts", t)
-
                 }
             })
     }
+
 
 
 }
