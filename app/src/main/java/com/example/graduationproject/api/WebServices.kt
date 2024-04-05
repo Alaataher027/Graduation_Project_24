@@ -14,9 +14,13 @@ import com.example.graduationproject.api.model.post.createPost.PostResponse
 import com.example.graduationproject.api.model.post.deletePost.DeletePostResponse
 import com.example.graduationproject.api.model.post.editPost.EditPostResponse
 import com.example.graduationproject.api.model.post.postHome.HomePostResponse
+import com.example.graduationproject.api.model.post.savePost.SavePostResponse
+import com.example.graduationproject.api.model.post.savePost.SavePostsListResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -178,49 +182,84 @@ interface WebServices {
 
 
     //https://alshaerawy.aait-sa.com/api/posts/{id}
-    @POST("posts/{id}")
+    @DELETE("posts/{id}")
     fun deletePost(
         @Header("Authorization") accessToken: String,
         @Path("id") id: Int
     ): Call<DeletePostResponse>
 
 
+    // function to save a post
+    @POST("posts/save-post/{postId}")
+    fun savePost(
+        @Header("Authorization") accessToken: String,
+        @Path("postId") postId: String
+    ): Call<SavePostResponse>
+
+    //https://alshaerawy.aait-sa.com/api/posts/saved/list
+    @GET("posts/saved/list")
+    fun getSavedPosts(@Header("Authorization") accessToken: String): Call<SavePostsListResponse>
+
+
     //https://alshaerawy.aait-sa.com/api/
     // posts/{id}/edit
-    @PUT("posts/{id}/edit")
+    @Headers("X-Requested-With:XMLHttpRequest")
+    @FormUrlEncoded
+    @POST("posts/{id}/edit")
     fun editPostImage(
         @Header("Authorization") accessToken: String,
-        @Query("image") image: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Field("image") image: MultipartBody.Part
     ): Call<EditPostResponse>
 
-    @PUT("posts/{id}/edit")
+    //    https://alshaerawy.aait-sa.com/api/posts/%7Bid%7D/edit
+    @FormUrlEncoded
+    @Headers("X-Requested-With:XMLHttpRequest")
+    @POST("posts/{id}/edit")
     fun editPostDescription(
         @Header("Authorization") accessToken: String,
-        @Query("description") description: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Field("description") description: String
     ): Call<EditPostResponse>
 
-    @PUT("posts/{id}/edit")
+    @FormUrlEncoded
+    @POST("posts/{id}/edit")
+    @Headers("X-Requested-With:XMLHttpRequest")
     fun editPostPrice(
         @Header("Authorization") accessToken: String,
-        @Query("price") price: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Field("price") price: String
     ): Call<EditPostResponse>
 
-    @PUT("posts/{id}/edit")
+    @FormUrlEncoded
+    @POST("posts/{id}/edit")
+    @Headers("X-Requested-With:XMLHttpRequest")
     fun editPostMaterial(
         @Header("Authorization") accessToken: String,
-        @Query("material") material: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Field("material") material: String
     ): Call<EditPostResponse>
 
-    @PUT("posts/{id}/edit")
+    @FormUrlEncoded
+    @POST("posts/{id}/edit")
+    @Headers("X-Requested-With:XMLHttpRequest")
     fun editPostQuantity(
         @Header("Authorization") accessToken: String,
-        @Query("quantity") quantity: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Field("quantity") quantity: String
     ): Call<EditPostResponse>
 
+
+    @POST("posts/{id}/edit")
+    @Multipart
+    fun editPost(
+        @Header("Authorization") accessToken: String,
+        @Path("id") id: Int,
+        @Part("description") description: RequestBody,
+        @Part("quantity") quantity: RequestBody,
+        @Part("material") material: RequestBody,
+        @Part("price") price: RequestBody,
+        @Part image: MultipartBody.Part
+    ): Call<EditPostResponse>
 
 }

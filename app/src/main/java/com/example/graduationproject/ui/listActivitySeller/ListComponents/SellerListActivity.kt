@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.example.graduationproject.R
+import com.example.graduationproject.SavedPostsActivity
 import com.example.graduationproject.databinding.ActivityListSellerBinding
 import com.example.graduationproject.databinding.DialogLogoutBinding
 import com.example.graduationproject.ui.login.LoginActivity
@@ -40,8 +41,17 @@ class SellerListActivity : AppCompatActivity() {
 
         buttonBG()
 
+        onClickSavedPosts()
 
 //        loadData()
+    }
+
+
+    private fun onClickSavedPosts() {
+        binding.savedBtn.setOnClickListener {
+            intent = Intent(this, SavedPostsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun buttonBG() {

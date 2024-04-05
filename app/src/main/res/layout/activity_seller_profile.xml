@@ -159,7 +159,7 @@
         android:backgroundTint="@color/my_light_primary"
         android:fontFamily="@font/poppins_medium"
         android:paddingVertical="10dp"
-        android:text="@string/orders"
+        android:text="@string/posts"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@id/edit_btn"

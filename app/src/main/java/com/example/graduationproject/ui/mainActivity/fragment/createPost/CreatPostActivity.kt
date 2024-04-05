@@ -7,9 +7,12 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityCreatPostBinding
 import com.example.graduationproject.ui.login.LoginViewModel
 import com.example.graduationproject.ui.login.TokenManager
+import com.example.graduationproject.ui.mainActivity.fragment.home.UserDataHomeViewModel
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -20,6 +23,7 @@ class CreatPostActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityCreatPostBinding
     private lateinit var viewModel: CreatePostViewModel
     private lateinit var tokenManager: TokenManager
+    private lateinit var viewModelProfile: UserDataHomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +32,39 @@ class CreatPostActivity : AppCompatActivity() {
 
         tokenManager = TokenManager(this)
         viewModel = CreatePostViewModel(tokenManager)
+        viewModelProfile = UserDataHomeViewModel()
 
         onClickBack()
 
         viewBinding.addImage.setOnClickListener {
             openGalleryForImage()
         }
+
+        viewUserData()
     }
+
+    private fun viewUserData() {
+        val accessToken = tokenManager.getToken() ?: ""
+        val userId = tokenManager.getUserId()
+
+        viewModelProfile.getData(accessToken, userId, { userData ->
+            // Populate user name
+            viewBinding.userName.text = userData?.name ?: ""
+
+            // Load user image using Glide
+            userData?.let { user ->
+                Glide.with(this@CreatPostActivity)
+                    .load(user.image)
+                    .placeholder(R.drawable.placeholder) // Placeholder image while loading
+                    .error(R.drawable.error) // Image to show in case of error
+                    .into(viewBinding.userImage)
+            }
+        }, { errorMessage ->
+            // Handle error if any
+            Log.e("UserDataError", errorMessage)
+        })
+    }
+
 
     private val requestImageLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->

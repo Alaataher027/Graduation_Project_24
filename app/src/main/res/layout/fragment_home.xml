@@ -12,6 +12,7 @@
         android:background="@color/white"
         android:backgroundTint="@color/white">
 
+
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
@@ -51,7 +52,6 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="25dp"
-                android:padding="2dp"
                 android:src="@drawable/search_green" />
 
         </androidx.appcompat.widget.Toolbar>
@@ -68,16 +68,18 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/tool_bar">
+                app:layout_constraintTop_toBottomOf="@id/card">
 
                 <!-- Button 1 -->
                 <Button
                     android:id="@+id/plastic_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="190dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_bord"
                     android:backgroundTint="#EDEDED"
@@ -93,8 +95,9 @@
 
                 <Button
                     android:id="@+id/metal_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="190dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_bord"
                     android:backgroundTint="#EDEDED"
@@ -111,8 +114,9 @@
 
                 <Button
                     android:id="@+id/glass_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="190dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_bord"
                     android:backgroundTint="#EDEDED"
@@ -128,8 +132,9 @@
 
                 <Button
                     android:id="@+id/paper_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="190dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_bord"
                     android:backgroundTint="#EDEDED"
@@ -144,9 +149,10 @@
                 <!-- Button 5 -->
 
                 <Button
-                    android:id="@+id/steal_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/steel_btn"
+                    android:layout_width="190dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_bord"
                     android:backgroundTint="#EDEDED"
@@ -161,8 +167,9 @@
                 <!-- Button 6 -->
                 <Button
                     android:id="@+id/wood_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="190dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_bord"
                     android:backgroundTint="#EDEDED"
@@ -182,8 +189,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="vertical"
             android:paddingBottom="160dp"
+            android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -196,3 +203,202 @@
 
 
 </FrameLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".ui.mainActivity.fragment.home.HomeFragment">-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/white"-->
+<!--        android:backgroundTint="@color/white">-->
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progress_bar"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/tool_bar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:background="@drawable/top_bar_rec"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/rekia"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="start"-->
+<!--                android:layout_marginStart="30dp"-->
+<!--                android:fontFamily="@font/nunitobold"-->
+<!--                android:text="@string/rekia"-->
+<!--                android:textColor="@color/my_light_primary"-->
+<!--                android:textSize="30dp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/search_btn"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="35dp"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:layout_marginEnd="25dp"-->
+<!--                android:padding="2dp"-->
+<!--                android:src="@drawable/search_green" />-->
+
+<!--        </androidx.appcompat.widget.Toolbar>-->
+
+<!--        <HorizontalScrollView-->
+<!--            android:id="@+id/scrollView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:scrollbars="none"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tool_bar">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tool_bar">-->
+
+<!--                &lt;!&ndash; Button 1 &ndash;&gt;-->
+<!--                <Button-->
+<!--                    android:id="@+id/plastic_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    android:background="@drawable/rectangle_bord"-->
+<!--                    android:backgroundTint="#EDEDED"-->
+<!--                    android:drawableLeft="@drawable/image_plastic"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:minWidth="150dp"-->
+<!--                    android:minHeight="30dp"-->
+<!--                    android:text="@string/plastic"-->
+<!--                    android:textColor="@color/gray_dark"-->
+<!--                    android:textSize="20dp" />-->
+
+<!--                &lt;!&ndash; Button 2 &ndash;&gt;-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/metal_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    android:background="@drawable/rectangle_bord"-->
+<!--                    android:backgroundTint="#EDEDED"-->
+<!--                    android:drawableLeft="@drawable/metal"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:minWidth="150dp"-->
+<!--                    android:minHeight="30dp"-->
+<!--                    android:text="@string/metal"-->
+<!--                    android:textColor="@color/gray_dark"-->
+<!--                    android:textSize="20dp" />-->
+
+
+<!--                &lt;!&ndash; Button 3 &ndash;&gt;-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/glass_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    android:background="@drawable/rectangle_bord"-->
+<!--                    android:backgroundTint="#EDEDED"-->
+<!--                    android:drawableLeft="@drawable/glass"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:minWidth="150dp"-->
+<!--                    android:minHeight="30dp"-->
+<!--                    android:text="@string/glass"-->
+<!--                    android:textColor="@color/gray_dark"-->
+<!--                    android:textSize="20dp" />-->
+
+<!--                &lt;!&ndash; Button 4 &ndash;&gt;-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/paper_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    android:background="@drawable/rectangle_bord"-->
+<!--                    android:backgroundTint="#EDEDED"-->
+<!--                    android:drawableLeft="@drawable/paper"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:minWidth="150dp"-->
+<!--                    android:minHeight="30dp"-->
+<!--                    android:text="@string/paper"-->
+<!--                    android:textColor="@color/gray_dark"-->
+<!--                    android:textSize="20dp" />-->
+
+<!--                &lt;!&ndash; Button 5 &ndash;&gt;-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/steal_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    android:background="@drawable/rectangle_bord"-->
+<!--                    android:backgroundTint="#EDEDED"-->
+<!--                    android:drawableLeft="@drawable/steal"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:minWidth="150dp"-->
+<!--                    android:minHeight="30dp"-->
+<!--                    android:text="@string/steel"-->
+<!--                    android:textColor="@color/gray_dark"-->
+<!--                    android:textSize="20dp" />-->
+
+<!--                &lt;!&ndash; Button 6 &ndash;&gt;-->
+<!--                <Button-->
+<!--                    android:id="@+id/wood_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    android:background="@drawable/rectangle_bord"-->
+<!--                    android:backgroundTint="#EDEDED"-->
+<!--                    android:drawableLeft="@drawable/wood"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:minWidth="150dp"-->
+<!--                    android:minHeight="30dp"-->
+<!--                    android:text="@string/wood"-->
+<!--                    android:textColor="@color/gray_dark"-->
+<!--                    android:textSize="20dp" />-->
+
+<!--            </LinearLayout>-->
+<!--        </HorizontalScrollView>-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/RV_post"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:orientation="vertical"-->
+<!--            android:paddingBottom="160dp"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/scrollView"-->
+<!--            tools:listitem="@layout/item_post" />-->
+
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+<!--</FrameLayout>-->

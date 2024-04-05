@@ -11,6 +11,14 @@ class TokenManager(val context: Context) {
         sharedPreferences.edit().putString("access_token", token).apply()
     }
 
+    fun savePostId(id: Int) {
+        sharedPreferences.edit().putInt("post_id", id).apply()
+    }
+
+    fun getPostId(): Int {
+        return sharedPreferences.getInt("post_id", 0)
+    }
+
     fun saveUserType(userType: String) {
         sharedPreferences.edit().putString("user_type", userType).apply()
     }

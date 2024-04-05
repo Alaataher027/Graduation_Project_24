@@ -35,7 +35,9 @@ class CreatePostViewModel(private val tokenManager: TokenManager) : ViewModel() 
                         val message: String? = response.body()?.message
                         if (status == 200) {
                             val userId: Int? = postResponse?.data?.userId
+                            val postId: Int? = postResponse?.data?.id
                             tokenManager.saveUserPostId(userId?:0)
+//                            tokenManager.savePostId(postId?:0)
                             onResponse(true, message)
                             Log.d("CreatePostViewModel", "200, $userId")
                         } else {

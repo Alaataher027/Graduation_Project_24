@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="300dp"
-    android:layout_height="170dp"
+    android:layout_height="180dp"
     android:orientation="vertical"
     android:padding="10dp"
     app:layout_constraintCircleRadius="40dp">
@@ -11,12 +11,12 @@
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/save_post"
         android:layout_gravity="center"
         android:textColor="@color/gray_dark"
-        android:textSize="15dp" />
+        android:textSize="18dp" />
 
     <View
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="@string/copy_link"
         android:textColor="@color/gray_dark"
-        android:textSize="15dp" />
+        android:textSize="18dp" />
 
     <View
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="@string/edit_post"
         android:textColor="@color/gray_dark"
-        android:textSize="15dp" />
+        android:textSize="18dp" />
 
     <View
         android:layout_width="match_parent"
@@ -67,7 +67,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="@string/delete_post"
         android:textColor="@color/gray_dark"
-        android:textSize="15dp" />
+        android:textSize="18dp" />
 
 
 </LinearLayout>
