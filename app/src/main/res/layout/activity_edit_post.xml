@@ -81,8 +81,8 @@
                 android:id="@+id/add_image"
                 android:layout_width="290dp"
                 android:layout_height="240dp"
-                android:src="@drawable/add_img"
                 android:layout_gravity="center"
+                android:src="@drawable/add_img"
                 app:layout_constraintBottom_toTopOf="@id/description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +92,7 @@
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/description"
@@ -108,6 +108,7 @@
                 android:layout_height="63dp"
                 android:layout_gravity="center"
                 android:background="@drawable/content_bg"
+                android:paddingStart="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/description" />
@@ -116,7 +117,7 @@
                 android:id="@+id/quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/quantity"
@@ -132,6 +133,7 @@
                 android:layout_height="63dp"
                 android:layout_gravity="center"
                 android:background="@drawable/content_bg"
+                android:paddingStart="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/description" />
@@ -141,7 +143,7 @@
                 android:id="@+id/material"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/material"
@@ -152,13 +154,14 @@
                 app:layout_constraintTop_toBottomOf="@id/description_content" />
 
 
-
             <EditText
                 android:id="@+id/material_content"
                 android:layout_width="290dp"
                 android:layout_height="63dp"
                 android:layout_gravity="center"
                 android:background="@drawable/content_bg"
+                android:paddingStart="12dp"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/description" />
@@ -167,7 +170,7 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/price"
@@ -178,17 +181,17 @@
                 app:layout_constraintTop_toBottomOf="@id/description_content" />
 
 
-
             <EditText
                 android:id="@+id/price_content"
                 android:layout_width="290dp"
                 android:layout_height="63dp"
                 android:layout_gravity="center"
+
                 android:background="@drawable/content_bg"
+                android:paddingStart="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/description" />
-
 
 
             <Button
@@ -200,6 +203,8 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="50dp"
                 android:fontFamily="@font/poppins_medium"
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"
                 android:text="@string/save_changes"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"

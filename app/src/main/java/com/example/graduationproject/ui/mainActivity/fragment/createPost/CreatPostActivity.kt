@@ -43,6 +43,28 @@ class CreatPostActivity : AppCompatActivity() {
         viewUserData()
     }
 
+//    private fun viewUserData() {
+//        val accessToken = tokenManager.getToken() ?: ""
+//        val userId = tokenManager.getUserId()
+//
+//        viewModelProfile.getData(accessToken, userId, { userData ->
+//            // Populate user name
+//            viewBinding.userName.text = userData?.name ?: ""
+//
+//            // Load user image using Glide
+//            userData?.let { user ->
+//                Glide.with(this@CreatPostActivity)
+//                    .load(user.image)
+//                    .placeholder(R.drawable.placeholder) // Placeholder image while loading
+//                    .error(R.drawable.error) // Image to show in case of error
+//                    .into(viewBinding.userImage)
+//            }
+//        }, { errorMessage ->
+//            // Handle error if any
+//            Log.e("UserDataError", errorMessage)
+//        })
+//    }
+
     private fun viewUserData() {
         val accessToken = tokenManager.getToken() ?: ""
         val userId = tokenManager.getUserId()
@@ -51,19 +73,22 @@ class CreatPostActivity : AppCompatActivity() {
             // Populate user name
             viewBinding.userName.text = userData?.name ?: ""
 
-            // Load user image using Glide
-            userData?.let { user ->
-                Glide.with(this@CreatPostActivity)
-                    .load(user.image)
-                    .placeholder(R.drawable.placeholder) // Placeholder image while loading
-                    .error(R.drawable.error) // Image to show in case of error
-                    .into(viewBinding.userImage)
+            // Load user image using Glide only if the activity is not destroyed
+            if (!isDestroyed) {
+                userData?.let { user ->
+                    Glide.with(this@CreatPostActivity)
+                        .load(user.image)
+                        .placeholder(R.drawable.placeholder) // Placeholder image while loading
+                        .error(R.drawable.error) // Image to show in case of error
+                        .into(viewBinding.userImage)
+                }
             }
         }, { errorMessage ->
             // Handle error if any
             Log.e("UserDataError", errorMessage)
         })
     }
+
 
 
     private val requestImageLauncher =

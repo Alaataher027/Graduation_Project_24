@@ -44,6 +44,14 @@ class EditPostActivity : AppCompatActivity() {
 
         // Call setupViews to initiate the editing process
         setupViews(null) // Pass null initially, since there's no image chosen yet
+        onClickBack()
+    }
+
+    private fun onClickBack() {
+        viewBinding.buttonBack.setOnClickListener {
+            // Handle the click event, for example, navigate back one step
+            onBackPressed()
+        }
     }
 
     private val requestImageLauncher =
