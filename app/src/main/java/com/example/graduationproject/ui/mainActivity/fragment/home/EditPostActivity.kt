@@ -169,9 +169,11 @@ class EditPostActivity : AppCompatActivity() {
     private fun populateViews(postData: DataItem?) {
         postData?.let { post ->
             // Populate views with post data
-            Glide.with(this)
-                .load(post.image)
-                .into(viewBinding.addImage)
+            if (!isDestroyed) { // Check if activity is not destroyed
+                Glide.with(this)
+                    .load(post.image)
+                    .into(viewBinding.addImage)
+            }
             viewBinding.descriptionContent.setText(post.description)
             viewBinding.quantityContent.setText(post.quantity)
             viewBinding.materialContent.setText(post.material)
@@ -185,10 +187,12 @@ class EditPostActivity : AppCompatActivity() {
                     { userData ->
                         // Populate user data views
                         userData?.let {
-                            viewBinding.userName.text = it.name
-                            Glide.with(this)
-                                .load(it.image)
-                                .into(viewBinding.userImage)
+                            if (!isDestroyed) { // Check if activity is not destroyed
+                                viewBinding.userName.text = it.name
+                                Glide.with(this)
+                                    .load(it.image)
+                                    .into(viewBinding.userImage)
+                            }
                         }
                     },
                     { error ->
@@ -200,4 +204,5 @@ class EditPostActivity : AppCompatActivity() {
             }
         }
     }
+
 }

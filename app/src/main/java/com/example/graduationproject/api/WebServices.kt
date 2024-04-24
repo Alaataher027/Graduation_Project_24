@@ -16,6 +16,7 @@ import com.example.graduationproject.api.model.post.editPost.EditPostResponse
 import com.example.graduationproject.api.model.post.postHome.HomePostResponse
 import com.example.graduationproject.api.model.post.savePost.SavePostResponse
 import com.example.graduationproject.api.model.post.savePost.SavePostsListResponse
+import com.example.graduationproject.api.model.search.SearchAddressResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -148,7 +149,7 @@ interface WebServices {
     @PUT("auth/user/edit")
     fun editSellerQuarter(
         @Header("Authorization") accessToken: String,
-        @Query("residential_quarter") residentialQuarter: String
+        @Query("address") address: String
     ): Call<EditProfileResponse>
 
     @PUT("auth/user/edit")
@@ -262,4 +263,10 @@ interface WebServices {
         @Part image: MultipartBody.Part
     ): Call<EditPostResponse>
 
+    //https://alshaerawy.aait-sa.com/api/posts/search/{query}
+    @GET("posts/search/{query}")
+    fun searchByAddress(
+        @Header("Authorization") accessToken: String,
+        @Path("query") query: String
+    ): Call<SearchAddressResponse>
 }

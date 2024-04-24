@@ -1,6 +1,5 @@
 package com.example.graduationproject.ui.mainActivity.fragment.home
 
-import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.Log
@@ -14,8 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.graduationproject.api.model.post.postHome.DataItem
-import com.example.graduationproject.ui.mainActivity.SearchFragment
-import com.example.graduationproject.ui.mainActivity.fragment.createPost.CreatPostActivity
+import com.example.graduationproject.ui.mainActivity.search.SearchFragment
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 

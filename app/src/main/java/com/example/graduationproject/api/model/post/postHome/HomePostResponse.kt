@@ -53,3 +53,6 @@ data class DataItem(
 	@field:SerializedName("status")
 	val status: String? = null
 ) : Parcelable
+
+
+

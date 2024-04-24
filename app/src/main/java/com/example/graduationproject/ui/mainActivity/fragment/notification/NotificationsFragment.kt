@@ -1,4 +1,4 @@
-package com.example.graduationproject.ui.mainActivity.fragment
+package com.example.graduationproject.ui.mainActivity.fragment.notification
 
 import androidx.fragment.app.Fragment
 import com.example.graduationproject.R

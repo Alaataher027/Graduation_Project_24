@@ -195,13 +195,13 @@ class EditProfileSellerViewModel : ViewModel() {
 
     fun updateResidentialQuarter(
         accessToken: String,
-        residentialQuarter: String,
+        address: String,
         onSuccess: (String) -> Unit,
         onError: (String) -> Unit
     ) {
-        Log.d("EditSellerViewModel", "Updating residentialQuarter...")
+        Log.d("EditSellerViewModel", "Updating address...")
 
-        ApiManager.getApisToken(accessToken).editSellerQuarter(accessToken, residentialQuarter)
+        ApiManager.getApisToken(accessToken).editSellerQuarter(accessToken, address)
             .enqueue(object : Callback<EditProfileResponse> {
                 override fun onResponse(
                     call: Call<EditProfileResponse>,
