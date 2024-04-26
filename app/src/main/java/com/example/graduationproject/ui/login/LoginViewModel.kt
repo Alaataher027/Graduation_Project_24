@@ -3,6 +3,7 @@ package com.example.graduationproject.ui.login
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
+import com.example.graduationproject.api.model.StoreFCMTokenResponse
 import com.example.graduationproject.api.model.login.Data
 import com.example.graduationproject.api.model.login.ErrorResponse
 import com.example.graduationproject.api.model.login.LoginResponse
@@ -39,29 +40,17 @@ class LoginViewModel(private val tokenManager: TokenManager) : ViewModel() {
                                 val accessToken: String? = data?.accessToken
                                 val id: Int? = loginResponse.data?.user?.id
                                 val userType: String? = data?.user?.userType
-                                // Inside the performLogin method
                                 if (!accessToken.isNullOrBlank()) {
-                                    // Save the access token
                                     tokenManager.saveToken(accessToken)
-                                    tokenManager.saveUserId(id?:0)
+                                    tokenManager.saveUserId(id ?: 0)
+                                    tokenManager.saveUserType(userType ?: "")
+                                    // Send FCM token to server
+                                    sendFCMTokenToServer()
 
-                                    Log.d("LoginViewModel", "User Type saved: $userType")
-
-                                    // Log the saved token
-                                    Log.d("TokenManager", "Access token saved: $accessToken")
-
-                                    // Save user type
-                                    val userType: String? = data?.user?.userType
-                                    if (!userType.isNullOrBlank()) {
-                                        tokenManager.saveUserType(userType)
-                                    }
-
-                                    // Invoke the callback with success
                                     onLoginResult(true, message ?: "")
                                 } else {
                                     onLoginResult(false, "Invalid access token")
                                 }
-
                             } else {
                                 onLoginResult(false, message ?: "Login failed")
                             }
@@ -69,7 +58,6 @@ class LoginViewModel(private val tokenManager: TokenManager) : ViewModel() {
                             onLoginResult(false, "Unexpected error occurred")
                         }
                     } else {
-//                        onLoginResult(false, "Server error: ${response.code()}")
                         val json = response.errorBody()?.charStream()
                         Log.e("Tag", "$json")
                         val type = object : TypeToken<ErrorResponse>() {}.type
@@ -85,7 +73,46 @@ class LoginViewModel(private val tokenManager: TokenManager) : ViewModel() {
                 }
             })
     }
+
+    private fun sendFCMTokenToServer() {
+        val fcmToken = tokenManager.getFCMToken()
+        val accessToken = tokenManager.getToken()
+        if (!fcmToken.isNullOrBlank() && !accessToken.isNullOrBlank()) {
+            ApiManager.getApisToken(accessToken).sendFCMTokenToServer(accessToken, fcmToken)
+                .enqueue(object : Callback<StoreFCMTokenResponse> {
+                    override fun onResponse(
+                        call: Call<StoreFCMTokenResponse>,
+                        response: Response<StoreFCMTokenResponse>
+                    ) {
+                        val fcmResponse = response.body()
+                        val FCM: String? = fcmResponse?.data?.fcmToken
+
+                        if (response.isSuccessful) {
+                            // Check if status is 200
+                            if (fcmResponse?.status == 200) {
+                                Log.d("LoginViewModel", "FCM token sent successfully : ${fcmToken}")
+                                Log.d("LoginViewModel", "FCM token sent successfully : ${FCM}")
+                            } else {
+                                Log.e("LoginViewModel", "Failed to send FCM token: ${fcmResponse?.message}")
+                            }
+                        } else {
+                            Log.e("LoginViewModel", "Failed to send FCM token: ${response.code()}")
+                        }
+                    }
+                    override fun onFailure(call: Call<StoreFCMTokenResponse>, t: Throwable) {
+                        Log.e(
+                            "LoginViewModel",
+                            "Network error while sending FCM token: ${t.message}"
+                        )
+                    }
+                })
+        } else {
+            Log.e("LoginViewModel", "FCM token or access token is null or blank")
+        }
+    }
+
 }
+
 // coroutiens:
 
 //{

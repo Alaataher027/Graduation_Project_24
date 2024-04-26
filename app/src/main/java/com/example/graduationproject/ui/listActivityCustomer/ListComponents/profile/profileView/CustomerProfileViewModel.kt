@@ -32,8 +32,10 @@ class CustomerProfileViewModel : ViewModel() {
                         val message: String? = response.body()?.message
                         val profileResponse = response.body()
                         val data: Data? = profileResponse?.data
+                        val fcm: String? = profileResponse?.data?.fcmToken
                         if (status == 200) {
                             Log.d("CustomerProfileViewMode", "Email1: ${data?.tIN},  200: ${response.message()}")
+                            Log.d("CustomerProfileViewMode", "fcm: ${fcm}")
 
                             onDataLoaded(data)
                         } else {

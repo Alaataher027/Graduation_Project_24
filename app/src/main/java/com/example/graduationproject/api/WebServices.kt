@@ -4,12 +4,14 @@ import com.example.graduationproject.api.model.CheckCodeResponse
 import com.example.graduationproject.api.model.ForgetPasswordResponse
 import com.example.graduationproject.api.model.logout.LogOutResponse
 import com.example.graduationproject.api.model.ResetPasswordResponse
+import com.example.graduationproject.api.model.StoreFCMTokenResponse
 import com.example.graduationproject.api.model.login.LoginResponse2
 import com.example.graduationproject.api.model.profile.ProfileResponse
 import com.example.graduationproject.api.model.register.RegisterResponse2
 import com.example.graduationproject.api.model.editProfile.EditProfileResponse
 import com.example.graduationproject.api.model.imageProfile.ImageProfileResponse
 import com.example.graduationproject.api.model.login.loginGoogle.LoginGoogleResponse
+import com.example.graduationproject.api.model.post.createPost.ClassificationResponse
 import com.example.graduationproject.api.model.post.createPost.PostResponse
 import com.example.graduationproject.api.model.post.deletePost.DeletePostResponse
 import com.example.graduationproject.api.model.post.editPost.EditPostResponse
@@ -269,4 +271,20 @@ interface WebServices {
         @Header("Authorization") accessToken: String,
         @Path("query") query: String
     ): Call<SearchAddressResponse>
+
+    //https://alshaerawy.aait-sa.com/api/auth/user/store-fcm-token
+    @POST("auth/user/store-fcm-token")
+    @FormUrlEncoded
+    fun sendFCMTokenToServer(
+        @Header("Authorization") accessToken: String,
+        @Field("token") token: String
+    ): Call<StoreFCMTokenResponse>
+
+    @POST("https://rekiatestapi.pythonanywhere.com")
+    @Multipart
+    fun classifyImage(
+        @Part file: MultipartBody.Part
+    ): Call<ClassificationResponse>
+
+
 }

@@ -43,27 +43,6 @@ class CreatPostActivity : AppCompatActivity() {
         viewUserData()
     }
 
-//    private fun viewUserData() {
-//        val accessToken = tokenManager.getToken() ?: ""
-//        val userId = tokenManager.getUserId()
-//
-//        viewModelProfile.getData(accessToken, userId, { userData ->
-//            // Populate user name
-//            viewBinding.userName.text = userData?.name ?: ""
-//
-//            // Load user image using Glide
-//            userData?.let { user ->
-//                Glide.with(this@CreatPostActivity)
-//                    .load(user.image)
-//                    .placeholder(R.drawable.placeholder) // Placeholder image while loading
-//                    .error(R.drawable.error) // Image to show in case of error
-//                    .into(viewBinding.userImage)
-//            }
-//        }, { errorMessage ->
-//            // Handle error if any
-//            Log.e("UserDataError", errorMessage)
-//        })
-//    }
 
     private fun viewUserData() {
         val accessToken = tokenManager.getToken() ?: ""
@@ -90,7 +69,6 @@ class CreatPostActivity : AppCompatActivity() {
     }
 
 
-
     private val requestImageLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             uri?.let {
@@ -101,6 +79,7 @@ class CreatPostActivity : AppCompatActivity() {
     private fun openGalleryForImage() {
         requestImageLauncher.launch("image/*")
     }
+
     private fun setupViews(imageUri: Uri?) {
         val accessToken = tokenManager.getToken() ?: ""
 
@@ -108,43 +87,57 @@ class CreatPostActivity : AppCompatActivity() {
         imageUri?.let {
             viewBinding.addImage.setImageURI(it)
             val inputStream = contentResolver.openInputStream(imageUri)
-            val requestFile =
-                RequestBody.create(MediaType.parse("image/*"), inputStream!!.readBytes())
-            val body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
 
-            viewBinding.shareBtn.setOnClickListener {
-                val description = RequestBody.create(MediaType.parse("text/plain"), viewBinding.descriptionContent.text.toString())
-                val quantity = RequestBody.create(MediaType.parse("text/plain"), viewBinding.quantityContent.text.toString())
-                val material = RequestBody.create(MediaType.parse("text/plain"), viewBinding.materialContent.text.toString())
-                val price = RequestBody.create(MediaType.parse("text/plain"), viewBinding.priceContent.text.toString())
+            // Check if inputStream is null before proceeding
+            if (inputStream != null) {
+                val requestFile = RequestBody.create(MediaType.parse("image/*"), inputStream.readBytes())
+                val body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
 
-                viewModel.createPost(
-                    accessToken,
-                    description,
-                    quantity,
-                    material,
-                    price,
-                    body
-                ) { isSuccess, message ->
-                    if (isSuccess) {
-                        Log.d("CreatePost", "successful, ${imageUri}")
-                        Log.d("CreatePost", "body:, ${body}")
-                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-                        finish()
-                    } else {
-                        Log.d("CreatePost", "imageUri:, ${imageUri}")
-                        Log.d("CreatePost", "body:, ${body}")
-                        Log.d("CreatePost", ", ${description}")
-                        Log.d("CreatePost", ", ${quantity}")
-                        Log.d("CreatePost", ", ${material}")
-                        Log.d("CreatePost", ", ${price}")
-                        Log.d("CreatePost", ", ${message}")
-                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                viewBinding.shareBtn.setOnClickListener {
+                    val description = RequestBody.create(
+                        MediaType.parse("text/plain"),
+                        viewBinding.descriptionContent.text.toString()
+                    )
+                    val quantity = RequestBody.create(
+                        MediaType.parse("text/plain"),
+                        viewBinding.quantityContent.text.toString()
+                    )
+
+                    val price = RequestBody.create(
+                        MediaType.parse("text/plain"),
+                        viewBinding.priceContent.text.toString()
+                    )
+
+                    viewModel.createPost(
+                        accessToken,
+                        description,
+                        quantity,
+                        price,
+                        body
+                    ) { isSuccess, message ->
+                        if (isSuccess) {
+                            Log.d("CreatePost", "successful, ${imageUri}")
+                            Log.d("CreatePost", "body:, ${body}")
+                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                            finish()
+                        } else {
+                            Log.d("CreatePostAc", "imageUri:, ${imageUri}")
+                            Log.d("CreatePostAc", "body:, ${body}")
+                            Log.d("CreatePostAc", ", ${description}")
+                            Log.d("CreatePostAc", ", ${quantity}")
+                            Log.d("CreatePostAc", ", ${price}")
+                            Log.d("CreatePostAc", ", ${message}")
+                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
+            } else {
+                // Handle case where inputStream is null
+                Toast.makeText(this, "Failed to read image file", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
 
 
     private fun onClickBack() {

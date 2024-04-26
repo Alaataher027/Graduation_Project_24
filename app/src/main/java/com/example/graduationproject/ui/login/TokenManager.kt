@@ -58,4 +58,13 @@ class TokenManager(val context: Context) {
     fun clearUserPostId() {
         sharedPreferences.edit().remove("user_id_post").apply()
     }
+
+    fun saveFCMToken(token: String) {
+        sharedPreferences.edit().putString("fcm_token", token).apply()
+    }
+
+    fun getFCMToken(): String? {
+        return sharedPreferences.getString("fcm_token", null)
+    }
+
 }
