@@ -27,12 +27,25 @@ class SearchViewModel : ViewModel() {
                     response: Response<SearchAddressResponse>
                 ) {
                     if (response.isSuccessful) {
-                        val data = response.body()?.data?.get(0)
-
+                        val searchData = response.body()
+                        _searchResults.value = searchData?.data ?: emptyList()
+                        val status: Int? = searchData?.status
+                        val message: String? = searchData?.message
+                        if (status == 200) {
+                            // Handle successful response with status 200
+                            Log.d("SearchViewModel", "200, $message")
+                        } else {
+                            // Handle response with status other than 200
+                            Log.d("SearchViewModel", "else 200, $message")
+                        }
+                    } else {
+                        // Handle unsuccessful response
+                        Log.e("SearchViewModel", "Failed to fetch search posts: ${response.message()}")
                     }
                 }
 
                 override fun onFailure(call: Call<SearchAddressResponse>, t: Throwable) {
+                    // Handle failure
                     Log.e("SearchViewModel", "Failed to fetch search posts", t)
                 }
             })

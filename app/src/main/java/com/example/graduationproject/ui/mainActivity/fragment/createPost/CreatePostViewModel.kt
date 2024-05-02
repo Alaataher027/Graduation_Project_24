@@ -24,7 +24,7 @@ class CreatePostViewModel(private val tokenManager: TokenManager) : ViewModel() 
         image: MultipartBody.Part,
         onResponse: (Boolean, String?) -> Unit
     ) {
-        classifyImage(image) { isSuccess, message, material ->
+        classifyImage(accessToken, image) { isSuccess, message, material ->
             if (isSuccess) {
                 val materialBody = RequestBody.create(MediaType.parse("text/plain"), material)
                 ApiManager.getApisToken(accessToken)
@@ -56,6 +56,7 @@ class CreatePostViewModel(private val tokenManager: TokenManager) : ViewModel() 
 
                         override fun onFailure(call: Call<PostResponse>, t: Throwable) {
                             onResponse(false, "Network error: ${t.message}")
+                            Log.d("CreatePost","${t.message}")
                         }
                     })
             } else {
@@ -67,10 +68,11 @@ class CreatePostViewModel(private val tokenManager: TokenManager) : ViewModel() 
 
 
     fun classifyImage(
+        accessToken: String,
         image: MultipartBody.Part,
         onResponse: (Boolean, String?, String?) -> Unit
     ) {
-        ApiManager.getApiWithoutBase().classifyImage(image)
+        ApiManager.getApisToken(accessToken).classifyImage(accessToken, image)
             .enqueue(object : Callback<ClassificationResponse> {
                 override fun onResponse(
                     call: Call<ClassificationResponse>,
@@ -96,7 +98,10 @@ class CreatePostViewModel(private val tokenManager: TokenManager) : ViewModel() 
                         // Unsuccessful response
                         onResponse(false, "Failed to classify image", null)
                         Log.d("CreatePostClassify", "Status code: ${response.code()}")
-                        Log.d("CreatePostClassify", "Error message: ${response.errorBody()?.string()}")
+                        Log.d(
+                            "CreatePostClassify",
+                            "Error message: ${response.errorBody()?.string()}"
+                        )
                     }
                 }
 

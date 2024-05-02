@@ -12,6 +12,7 @@ import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivitySellerProfileBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.listActivitySeller.ListComponents.profile.editProfile.EditProfileSeller
+import com.example.graduationproject.ui.postProfile.PostsProfileActivity
 
 
 class SellerProfileActivity : AppCompatActivity() {
@@ -32,6 +33,15 @@ class SellerProfileActivity : AppCompatActivity() {
         navigateToEditProfile()
         loadData()
         onClickRefresh()
+        navigateToUserPosts()
+    }
+
+    private fun navigateToUserPosts() {
+        // Use Intent to navigate to EditProfileActivity
+        viewBinding.postsBtn.setOnClickListener() {
+            val intent = Intent(this, PostsProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun onClickRefresh() {

@@ -12,6 +12,7 @@ import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityCustomerProfileBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.listActivityCustomer.ListComponents.profile.editProfile.EditProfileCustomer
+import com.example.graduationproject.ui.postProfile.PostsProfileActivity
 
 class CustomerProfileActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityCustomerProfileBinding
@@ -33,7 +34,15 @@ class CustomerProfileActivity : AppCompatActivity() {
         onClickBackBtn()
         loadData()
         onClickRefresh()
+        navigateToUserPosts()
+    }
 
+    private fun navigateToUserPosts() {
+        // Use Intent to navigate to EditProfileActivity
+        viewBinding.postsBtn.setOnClickListener() {
+            val intent = Intent(this, PostsProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun onClickRefresh() {
@@ -56,7 +65,7 @@ class CustomerProfileActivity : AppCompatActivity() {
         val userId = tokenManager.getUserId()
 
         if (accessToken != null) {
-            viewModel.viewData(accessToken,userId,
+            viewModel.viewData(accessToken, userId,
                 onDataLoaded = { data ->
                     data?.let {
                         viewBinding.emailCustomer.text = it.email

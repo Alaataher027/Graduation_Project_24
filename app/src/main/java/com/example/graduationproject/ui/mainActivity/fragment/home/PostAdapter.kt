@@ -77,6 +77,8 @@ class PostAdapter(
 
             // Bind user data
             userData?.let {
+                binding.gov.text = it.governorate
+                binding.city.text = it.city
                 binding.name.text = it.name
                 it.image?.let { imageUrl ->
                     Glide.with(binding.root.context)
@@ -108,11 +110,11 @@ class PostAdapter(
                 }
             }
 
-            binding.orderBtn.setBackgroundResource(R.drawable.rectangle_btn_post)
-            binding.orderBtn.backgroundTintList = null
+            binding.orderBtn.setBackgroundResource(R.drawable.order_post_btn)
+//            binding.orderBtn.backgroundTintList = null
 
-            binding.chatBtn.setBackgroundResource(R.drawable.rectangle_btn_post)
-            binding.chatBtn.backgroundTintList = null
+//            binding.chatBtn.setBackgroundResource(R.drawable.rectangle_btn_post)
+//            binding.chatBtn.backgroundTintList = null
 
         }
 

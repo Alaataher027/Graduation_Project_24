@@ -27,6 +27,12 @@
         android:theme="@style/Theme.GraduationProject"
         tools:targetApi="31">
         <activity
+            android:name=".ui.PrivecyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.postProfile.PostsProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.mainActivity.fragment.home.EditPostActivity"
             android:exported="false" />
         <activity

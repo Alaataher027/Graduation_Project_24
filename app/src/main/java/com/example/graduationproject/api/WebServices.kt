@@ -139,7 +139,7 @@ interface WebServices {
     @PUT("auth/user/edit")
     fun editCity(
         @Header("Authorization") accessToken: String,
-        @Query("city") city: String
+        @Query("address") address: String
     ): Call<EditProfileResponse>
 
     @PUT("auth/user/edit")
@@ -280,10 +280,11 @@ interface WebServices {
         @Field("token") token: String
     ): Call<StoreFCMTokenResponse>
 
-    @POST("https://rekiatestapi.pythonanywhere.com")
+    @POST("posts/classify")
     @Multipart
     fun classifyImage(
-        @Part file: MultipartBody.Part
+        @Header("Authorization") accessToken: String,
+        @Part image: MultipartBody.Part
     ): Call<ClassificationResponse>
 
 

@@ -3,6 +3,7 @@ package com.example.graduationproject.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityLoginOrRegisterBinding
 import com.example.graduationproject.ui.login.LoginActivity
 import com.example.graduationproject.ui.mainActivity.MainActivity
@@ -32,6 +33,10 @@ class LoginOrRegister : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        val profileBtn = viewBinding.registerBtn
+        profileBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        profileBtn.backgroundTintList = null
     }
 
 

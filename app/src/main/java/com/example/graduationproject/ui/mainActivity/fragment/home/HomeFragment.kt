@@ -112,7 +112,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     R.color.white
                 )
             )
-            filterPosts(listOf("زجاج", "glass"))
+            filterPosts(listOf("زجاج", "glass", "white-glass"))
+        }
+
+        // (7) brown Glass button
+        viewBinding.brownGlassBtn.setOnClickListener {
+            resetButtonsState() // Reset other buttons' states
+            viewBinding.brownGlassBtn.setBackgroundResource(R.drawable.rec_press)
+            viewBinding.brownGlassBtn.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
+                )
+            )
+            filterPosts(listOf("brown-glass"))
         }
 
         // (4) Paper button
@@ -154,6 +167,33 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             filterPosts(listOf("خشب", "wood"))
         }
 
+        // (8) cardboard button
+        viewBinding.cardboard.setOnClickListener {
+            resetButtonsState() // Reset other buttons' states
+            viewBinding.cardboard.setBackgroundResource(R.drawable.rec_press)
+            viewBinding.cardboard.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
+                )
+            )
+            filterPosts(listOf("كرتون", "cardboard", "ورق مقوى", "ورق مقوي", "كرتونة"))
+        }
+
+
+        // (8) cardboard button
+        viewBinding.battery.setOnClickListener {
+            resetButtonsState() // Reset other buttons' states
+            viewBinding.battery.setBackgroundResource(R.drawable.rec_press)
+            viewBinding.battery.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
+                )
+            )
+            filterPosts(listOf("بطارية", "battery", "بطاريات"))
+        }
+
 //        viewBinding.searchBtn.setOnClickListener {
 //            val intent = Intent(requireContext(), SearchFragment::class.java)
 //            startActivity(intent)
@@ -188,6 +228,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewBinding.steelBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
         viewBinding.woodBtn.setBackgroundResource(R.drawable.rectangle_bord)
         viewBinding.woodBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+        viewBinding.brownGlassBtn.setBackgroundResource(R.drawable.rectangle_bord)
+        viewBinding.brownGlassBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+        viewBinding.battery.setBackgroundResource(R.drawable.rectangle_bord)
+        viewBinding.battery.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+        viewBinding.cardboard.setBackgroundResource(R.drawable.rectangle_bord)
+        viewBinding.cardboard.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
     }
 
     // Function to filter posts

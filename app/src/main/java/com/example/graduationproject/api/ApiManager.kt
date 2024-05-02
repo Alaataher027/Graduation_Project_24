@@ -20,21 +20,21 @@ class ApiManager {
             return retrofit!!
         }
 
-        fun getInstanceWithoutBase(): Retrofit {
-            if (retrofit == null) {
-                retrofit = Retrofit.Builder()
-                    .baseUrl("https://example.com/")// placeholder
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-            }
-            return retrofit!!
-        }
-
-
-
-        fun getApiWithoutBase(): WebServices {
-            return getInstanceWithoutBase().create(WebServices::class.java)
-        }
+//        fun getInstanceWithoutBase(): Retrofit {
+//            if (retrofit == null) {
+//                retrofit = Retrofit.Builder()
+//                    .baseUrl("https://rekiatestapi.pythonanywhere.com/")// placeholder
+//                    .addConverterFactory(GsonConverterFactory.create())
+//                    .build()
+//            }
+//            return retrofit!!
+//        }
+//
+//
+//
+//        fun getApiWithoutBase(): WebServices {
+//            return getInstanceWithoutBase().create(WebServices::class.java)
+//        }
 
         // Method for API calls that require a token
         fun getApisToken(accessToken: String): WebServices {

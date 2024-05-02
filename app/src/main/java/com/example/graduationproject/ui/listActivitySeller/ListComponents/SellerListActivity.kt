@@ -13,6 +13,7 @@ import com.example.graduationproject.R
 import com.example.graduationproject.SavedPostsActivity
 import com.example.graduationproject.databinding.ActivityListSellerBinding
 import com.example.graduationproject.databinding.DialogLogoutBinding
+import com.example.graduationproject.ui.PrivecyActivity
 import com.example.graduationproject.ui.login.LoginActivity
 import com.example.graduationproject.ui.logOut.LogOutViewModel
 import com.example.graduationproject.ui.login.TokenManager
@@ -44,6 +45,14 @@ class SellerListActivity : AppCompatActivity() {
         onClickSavedPosts()
 
 //        loadData()
+        onClickPrivecyBtn()
+    }
+
+    private fun onClickPrivecyBtn() {
+        binding.privacyBtn.setOnClickListener {
+            intent = Intent(this, PrivecyActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

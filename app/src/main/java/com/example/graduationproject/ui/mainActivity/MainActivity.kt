@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         val homeFragment = HomeFragment()
         val notificationsFragment = NotificationsFragment()
-        val chatFragment = ChatFragment()
+//        val chatFragment = ChatFragment()
 //        val listFragment = ListFragment()
 
         setCurrentFragment(homeFragment)
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home -> setCurrentFragment(homeFragment)
                 R.id.navigation_notification -> setCurrentFragment(notificationsFragment)
                 R.id.navigation_add_post -> startCreatePostActivity()
-                R.id.navigation_chat -> setCurrentFragment(chatFragment)
+//                R.id.navigation_chat -> setCurrentFragment(chatFragment)
                 R.id.navigation_list -> navigateToList()
             }
             true
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             when (val fragment = supportFragmentManager.findFragmentById(R.id.fragment_container)) {
                 is HomeFragment -> R.id.navigation_home
                 is NotificationsFragment -> R.id.navigation_notification
-                is ChatFragment -> R.id.navigation_chat
+//                is ChatFragment -> R.id.navigation_chat
                 else -> R.id.navigation_home // Set a default fragment
             }
         // Set the selected item in the bottom navigation view

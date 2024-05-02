@@ -70,6 +70,7 @@ class LoginViewModel(private val tokenManager: TokenManager) : ViewModel() {
 
                 override fun onFailure(call: Call<LoginResponse2>, t: Throwable) {
                     onLoginResult(false, "Network error: ${t.message}")
+                    Log.d("Login","msg: ${t.message}" )
                 }
             })
     }
