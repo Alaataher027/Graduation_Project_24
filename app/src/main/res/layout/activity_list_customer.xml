@@ -99,6 +99,7 @@
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -213,21 +214,21 @@
                 android:textColor="#898A89"
                 android:textSize="20dp" />
 
-            <Button
-                android:id="@+id/material_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:backgroundTint="#F5F6F5"
-                android:backgroundTintMode="src_atop"
-                android:drawableLeft="@drawable/materials_ic"
-                android:fontFamily="@font/poppins_medium"
-                android:paddingTop="15dp"
+<!--            <Button-->
+<!--                android:id="@+id/material_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:backgroundTint="#F5F6F5"-->
+<!--                android:backgroundTintMode="src_atop"-->
+<!--                android:drawableLeft="@drawable/materials_ic"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+<!--                android:paddingTop="15dp"-->
 
-                android:paddingBottom="15dp"
-                android:text="@string/material"
-                android:textColor="#898A89"
-                android:textSize="20dp" />
+<!--                android:paddingBottom="15dp"-->
+<!--                android:text="@string/material"-->
+<!--                android:textColor="#898A89"-->
+<!--                android:textSize="20dp" />-->
 
             <Button
                 android:id="@+id/tech_btn"

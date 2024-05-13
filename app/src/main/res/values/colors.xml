@@ -13,4 +13,5 @@
     <color name="text_gray">#8E8C8C</color>
     <color name="gray_back">#F6F6F6</color>
     <color name="gray_dark">#646363</color>
+    <color name="option_text_color">#707070</color>
 </resources>

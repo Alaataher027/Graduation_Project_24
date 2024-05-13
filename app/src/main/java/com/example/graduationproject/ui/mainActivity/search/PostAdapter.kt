@@ -8,18 +8,25 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.graduationproject.R
+import com.example.graduationproject.api.model.profile.Data
 import com.example.graduationproject.api.model.search.DataItem
+import com.example.graduationproject.databinding.ItemPostBinding
 
-class PostAdapter(private var posts: List<DataItem?>?) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class PostAdapter(private var posts: List<DataItem?>?) :
+    RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+
+    private val userDataMap = mutableMapOf<Int, Data>()
+    fun addUserData(userId: Int, userData: Data) {
+        userDataMap[userId] = userData
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_post, parent, false)
-        return PostViewHolder(view)
+        val binding = ItemPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return PostViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        val post = posts?.get(position)
-        post?.let { holder.bind(it) }
+        posts?.get(position)?.let { holder.bind(it, userDataMap[posts!![position]?.userId]) }
     }
 
     override fun getItemCount(): Int {
@@ -31,29 +38,63 @@ class PostAdapter(private var posts: List<DataItem?>?) : RecyclerView.Adapter<Po
         notifyDataSetChanged()
     }
 
-    inner class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // Bind views here and update them with data
-        fun bind(post: DataItem) {
-            // Update views with post data
-            itemView.apply {
-                // Find views by their IDs
-                val imageView = findViewById<ImageView>(R.id.image_post)
-                val quantityTextView = findViewById<TextView>(R.id.quantity_num)
-                val priceTextView = findViewById<TextView>(R.id.price_num)
-                val descriptionTextView = findViewById<TextView>(R.id.content)
+    inner class PostViewHolder(private val binding: ItemPostBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        private var isExpanded = false
+        private var content: String? = null
 
+
+        fun bind(post: DataItem, userData: Data?) {
+            // Update views with post data
+            binding.apply {
                 // Set data to views
                 post.image?.let { imageUrl ->
-                    // Load image using any image loading library like Picasso, Glide, Coil, etc.
-                    // Example with Glide:
-                    Glide.with(context)
+                    // Load image using Glide
+                    Glide.with(root.context)
                         .load(imageUrl)
-                        .into(imageView)
+                        .into(imagePost)
                 }
-                quantityTextView.text = post.quantity ?: ""
-                priceTextView.text = post.price ?: ""
-                descriptionTextView.text = post.description ?: ""
+                quantityNum.text = post.quantity ?: ""
+                priceNum.text = post.price ?: ""
+                content.text = post.description ?: ""
+
+                userData?.let {
+                    gov.text = it.governorate
+                    city.text = it.city
+                    name.text = it.name
+                    it.image?.let { imageUrl ->
+                        Glide.with(root.context)
+                            .load(imageUrl)
+                            .into(PersonalImage)
+                    }
+                }
+
+                binding.content.setOnClickListener {
+                    // Toggle between expanded and collapsed states
+                    isExpanded = !isExpanded
+                    updateContent()
+                }
+            }
+
+            binding.orderBtn.setBackgroundResource(R.drawable.order_post_btn)
+
+        }
+
+        private fun updateContent() {
+            content?.let { desc ->
+                val maxLength = if (isExpanded) Int.MAX_VALUE else MAX_CONTENT_LENGTH
+                val truncatedContent = if (desc.length > maxLength) {
+                    desc.substring(0, maxLength) + if (isExpanded) "" else " .. See More"
+                } else {
+                    desc
+                }
+                binding.content.text = truncatedContent
             }
         }
+
+    }
+
+    companion object {
+        private const val MAX_CONTENT_LENGTH = 50 // Define your maximum length here
     }
 }

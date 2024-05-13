@@ -164,7 +164,7 @@ class EditProfileSeller : AppCompatActivity() {
                         viewBinding.governorateSeller.setText(userData.governorate ?: "")
                         viewBinding.citySeller.setText(userData.city ?: "")
                         viewBinding.streetSeller.setText(userData.street ?: "")
-                        viewBinding.quarterSeller.setText(userData.address ?: "")
+                        viewBinding.quarterSeller.setText(userData.residentialQuarter ?: "")
 
                         val requestOptions = RequestOptions().transform(CircleCrop())
 
@@ -203,7 +203,7 @@ class EditProfileSeller : AppCompatActivity() {
             val governorate = viewBinding.governorateSeller.text.toString().trim()
             val city = viewBinding.citySeller.text.toString().trim()
             val street = viewBinding.streetSeller.text.toString().trim()
-            val address = viewBinding.quarterSeller.text.toString().trim()
+            val residentialQuarter = viewBinding.quarterSeller.text.toString().trim()
 
             // Call the ViewModel functions to update each field individually
             viewModel.updateEmail(
@@ -249,7 +249,7 @@ class EditProfileSeller : AppCompatActivity() {
 
             viewModel.updateResidentialQuarter(
                 accessToken,
-                address,
+                residentialQuarter,
                 onSuccess = { message ->
                     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 

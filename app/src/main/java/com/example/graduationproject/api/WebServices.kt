@@ -151,7 +151,7 @@ interface WebServices {
     @PUT("auth/user/edit")
     fun editSellerQuarter(
         @Header("Authorization") accessToken: String,
-        @Query("address") address: String
+        @Query("residentialQuarter") residentialQuarter: String
     ): Call<EditProfileResponse>
 
     @PUT("auth/user/edit")

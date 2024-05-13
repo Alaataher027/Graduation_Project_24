@@ -38,8 +38,6 @@ class SellerListActivity : AppCompatActivity() {
         onClickBack()
         showDialogOnClickLogout()
         onClickProfile()
-        navToMaterial()
-
         buttonBG()
 
         onClickSavedPosts()
@@ -88,9 +86,9 @@ class SellerListActivity : AppCompatActivity() {
         guidanceBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
         guidanceBtn.backgroundTintList = null
 
-        val materialBtn = binding.materialBtn
-        materialBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
-        materialBtn.backgroundTintList = null
+//        val materialBtn = binding.materialBtn
+//        materialBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+//        materialBtn.backgroundTintList = null
 
         val TecBtn = binding.techBtn
         TecBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
@@ -183,12 +181,12 @@ class SellerListActivity : AppCompatActivity() {
         startActivity(Intent(this@SellerListActivity, LoginActivity::class.java))
     }
 
-    private fun navToMaterial() {
-        binding.materialBtn.setOnClickListener {
-            val intent = Intent(this, MaterialsActivity::class.java)
-            startActivity(intent)
-        }
-    }
+//    private fun navToMaterial() {
+//        binding.materialBtn.setOnClickListener {
+//            val intent = Intent(this, MaterialsActivity::class.java)
+//            startActivity(intent)
+//        }
+//    }
 
 
     private fun performLogout() {

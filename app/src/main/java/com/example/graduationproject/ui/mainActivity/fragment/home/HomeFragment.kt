@@ -12,11 +12,13 @@ import com.example.graduationproject.ui.login.TokenManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.graduationproject.api.model.post.postHome.DataItem
 import com.example.graduationproject.ui.mainActivity.search.SearchFragment
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var viewModel: HomePostViewModel
     private lateinit var adapter: PostAdapter
     private lateinit var tokenManager: TokenManager
@@ -32,6 +34,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         // Initialize ViewModel
         viewModel = HomePostViewModel(tokenManager)
         viewModelUserData = ViewModelProvider(this).get(UserDataHomeViewModel::class.java)
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout)
+
 
         val progressBar = viewBinding.progressBar
         val progressDrawable = progressBar.indeterminateDrawable.mutate()
@@ -201,6 +205,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         onClickSearchBtn()
 
+        swipeRefreshLayout.setOnRefreshListener {
+            // Perform the data refresh operation here
+            // For example, you can call viewModel.fetchHomePosts(accessToken) again
+            // to fetch fresh data and update the UI
+            fetchData()
+        }
+
+    }
+
+    private fun fetchData() {
+        // Fetch data here, for example:
+        val accessToken = tokenManager.getToken() ?: ""
+        viewModel.fetchHomePosts(accessToken)
+
+        // Stop refreshing animation when data is fetched
+        swipeRefreshLayout.isRefreshing = false
     }
 
     fun onClickSearchBtn(){
