@@ -28,6 +28,7 @@ class CreatPostActivity : AppCompatActivity() {
     private lateinit var viewModel: CreatePostViewModel
     private lateinit var tokenManager: TokenManager
     private lateinit var viewModelProfile: UserDataHomeViewModel
+    private lateinit var materialPrice: MaterialPrice
     private var quantityValue = 1 // Initial value of quantity_content
     private lateinit var spinner: Spinner // Declare Spinner as class-level variable
 
@@ -40,6 +41,8 @@ class CreatPostActivity : AppCompatActivity() {
         tokenManager = TokenManager(this)
         viewModel = CreatePostViewModel(tokenManager)
         viewModelProfile = UserDataHomeViewModel()
+
+        materialPrice = MaterialPrice()
 
         onClickBack()
 
@@ -114,7 +117,6 @@ class CreatPostActivity : AppCompatActivity() {
     private fun viewUserData() {
         val accessToken = tokenManager.getToken() ?: ""
         val userId = tokenManager.getUserId()
-
         viewModelProfile.getData(accessToken, userId, { userData ->
             // Populate user name
             viewBinding.userName.text = userData?.name ?: ""

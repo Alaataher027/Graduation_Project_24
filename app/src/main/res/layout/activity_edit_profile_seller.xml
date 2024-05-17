@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.listActivitySeller.ListComponents.profile.editProfile.EditProfileSeller">
 
 
@@ -174,6 +175,7 @@
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+
 
             <EditText
                 android:id="@+id/governorate_seller"

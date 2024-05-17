@@ -20,6 +20,16 @@ class ApiManager {
             return retrofit!!
         }
 
+        fun getLocationInstance(): Retrofit {
+            if (retrofit == null) {
+                retrofit = Retrofit.Builder()
+                    .baseUrl("https://atfawry.fawrystaging.com/ECommerceWeb/api/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+            }
+            return retrofit!!
+        }
+
 //        fun getInstanceWithoutBase(): Retrofit {
 //            if (retrofit == null) {
 //                retrofit = Retrofit.Builder()
@@ -62,6 +72,10 @@ class ApiManager {
         // Method to get API service for calls without token
         fun getApis(): WebServices {
             return getInstance().create(WebServices::class.java)
+        }
+
+        fun getLocationApis(): WebServices {
+            return getLocationInstance().create(WebServices::class.java)
         }
     }
 }

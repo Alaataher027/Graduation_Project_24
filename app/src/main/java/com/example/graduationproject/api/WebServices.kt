@@ -2,6 +2,7 @@ package com.example.graduationproject.api
 
 import com.example.graduationproject.api.model.CheckCodeResponse
 import com.example.graduationproject.api.model.ForgetPasswordResponse
+import com.example.graduationproject.api.model.LocationResponse
 import com.example.graduationproject.api.model.logout.LogOutResponse
 import com.example.graduationproject.api.model.ResetPasswordResponse
 import com.example.graduationproject.api.model.StoreFCMTokenResponse
@@ -286,6 +287,9 @@ interface WebServices {
         @Header("Authorization") accessToken: String,
         @Part image: MultipartBody.Part
     ): Call<ClassificationResponse>
+
+    @GET("lookups/govs")
+    fun getLocationData(): Call<LocationResponse>
 
 
 }
