@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.graduationproject.databinding.ActivitySavedBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivity.fragment.home.UserDataHomeViewModel
+
 class SavedPostsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySavedBinding
@@ -25,7 +26,9 @@ class SavedPostsActivity : AppCompatActivity() {
         tokenManager = TokenManager(this)
 
         // Initialize ViewModel
-        viewModel = ViewModelProvider(this, SavedPostsViewModelFactory(tokenManager)).get(SavedPostsViewModel::class.java)
+        viewModel = ViewModelProvider(this, SavedPostsViewModelFactory(tokenManager)).get(
+            SavedPostsViewModel::class.java
+        )
 
         // Initialize UserDataHomeViewModel
         viewModelUserData = ViewModelProvider(this).get(UserDataHomeViewModel::class.java)
@@ -49,6 +52,11 @@ class SavedPostsActivity : AppCompatActivity() {
             adapter.savedPosts = savedPosts
             // Now that saved posts are fetched, fetch user data for each post
         })
+
+        binding.buttonBack.setOnClickListener {
+            // Handle the click event, for example, navigate back one step
+            onBackPressed()
+        }
 
     }
 

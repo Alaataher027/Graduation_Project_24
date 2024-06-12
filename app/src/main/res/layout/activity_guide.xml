@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PrivecyActivity">
+    tools:context=".GuideActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/poppins_"
-            android:text="@string/privacy"
+            android:text="@string/guidance"
             android:textColor="@color/my_light_primary"
             android:textSize="22dp"
             android:textStyle="bold" />
@@ -49,135 +49,110 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Featured Tips Section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Overview"
+                android:text="Featured Tips:"
+                android:textStyle="bold"
+                android:textSize="18sp"
                 android:textColor="#707070"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="We respect your privacy and are committed to protecting your personal data. If you have any questions, reach out to us at privacy@rekia.com."
-                android:textColor="#707070" />
+                android:text="Rinse Food Containers:\n\ Remember to rinse food containers before recycling to prevent contamination."
+            android:textColor="#707070"
+            android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Information We Collect"
+                android:text="Remove Caps and Lids:\n\ Remove caps and lids from plastic bottles before recycling to ensure they can be properly processed."
+            android:textColor="#707070"
+            android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Break Down Cardboard Boxes:\n\ Break down cardboard boxes before recycling to save space and make them easier to process."
+            android:textColor="#707070"
+            android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check Local Guidelines:\n\ Check local recycling guidelines to ensure you're recycling correctly for your area."
                 android:textColor="#707070"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="Personal details you provide (e.g., name, contact info, and account credentials).\nAdditional information you choose to share while using our app."
-                android:textColor="#707070" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Use of Your Information"
+                android:text="Avoid Tanglers:\n\ Avoid putting tanglers like hoses or wires in your recycling bin, as they can cause issues at recycling facilities."
                 android:textColor="#707070"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="16dp"/>
 
+            <!-- Materials Section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="We use your information to:\n\nManage your account and support you.\nSend you updates and offers, if you agree.\nEnsure our app functions properly and safely.\nComply with legal requirements."
-                android:textColor="#707070" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Sharing Your Information"
+                android:text="Materials:"
+                android:textStyle="bold"
+                android:textSize="18sp"
                 android:textColor="#707070"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="We share your information only when necessary:\n\nTo comply with laws.\nFor security and legal processes.\nWith your consent."
-                android:textColor="#707070" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Cookies"
+                android:text="Plastic:\nEnsure plastic containers are clean and dry before recycling.\nCheck the recycling number on plastic items to determine if they're accepted in your area."
                 android:textColor="#707070"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="We use cookies to enhance app functionality. More details are available in our Cookie Policy."
-                android:textColor="#707070" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Security"
+                android:text="Metal:\nRecycle metal cans, such as aluminum and steel cans, after rinsing them.\nConsider scrapping larger metal items like appliances or car parts at a metal recycling facility."
                 android:textColor="#707070"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="We strive to protect your information but remind you that no internet-based service is entirely secure."
-                android:textColor="#707070" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Updates to This Policy"
+                android:text="White Glass:\nRecycle clear or white glass bottles and jars, removing any lids or caps.\nAvoid mixing white glass with other colored glass to maintain purity for recycling."
                 android:textColor="#707070"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="We may update this policy; please review it periodically."
-                android:textColor="#707070" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Contact Us"
+                android:text="Brown Glass:\nRecycle brown or amber glass bottles and jars separately from other glass colors.\nRinse containers and remove any labels before recycling."
                 android:textColor="#707070"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="For questions or feedback:\n\nEmail: privacy@rekia.com.\n\nMail: Rekia Recycling App, [Address], [City, State, Zip], [Country]"
-                android:textColor="#707070" />
+                android:text="Cardboard:\nFlatten cardboard boxes to save space and make them easier to recycle.\nRemove any plastic tape or packaging from cardboard before recycling."
+                android:textColor="#707070"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paper:\nRecycle paper products such as newspapers, magazines, office paper, and cardboard.\nShred sensitive documents before recycling to protect your personal information."
+                android:textColor="#707070"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Battery:\nRecycle household batteries at designated collection points or retailers that accept them.\nConsider using rechargeable batteries to reduce waste and environmental impact."
+                android:textColor="#707070"
+                android:layout_marginBottom="16dp"/>
 
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

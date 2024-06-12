@@ -58,9 +58,9 @@
     <string name="menu">menu</string>
     <string name="add_post">Add post</string>
     <string name="saved_posts">Saved Posts</string>
-    <string name="about_us">about us</string>
+    <string name="about_us">About us</string>
     <string name="settings">settings</string>
-    <string name="guidance">guidance</string>
+    <string name="guidance">Guidance</string>
     <string name="privacy">privacy</string>
     <string name="log_out">log out</string>
     <string name="material">Material</string>
@@ -107,6 +107,10 @@
     <string name="location">Location</string>
     <string name="accounts">Accounts</string>
     <string name="search_by_address">Search by address..</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="are_you_sure_you_want_to_order_this">Are You Sure You Want To Order This ?</string>
+    <string name="le_for_1_kilo">LE For 1 Kilo</string>
 
     <string-array name="quantity_options">
         <item>Quantity (pieces)</item>

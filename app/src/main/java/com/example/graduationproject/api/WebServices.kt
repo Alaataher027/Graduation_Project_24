@@ -12,6 +12,8 @@ import com.example.graduationproject.api.model.register.RegisterResponse2
 import com.example.graduationproject.api.model.editProfile.EditProfileResponse
 import com.example.graduationproject.api.model.imageProfile.ImageProfileResponse
 import com.example.graduationproject.api.model.login.loginGoogle.LoginGoogleResponse
+import com.example.graduationproject.api.model.order.accORrej.AcceptOrRejectOrderResponse
+import com.example.graduationproject.api.model.order.sendOrder.OrderResponse
 import com.example.graduationproject.api.model.post.createPost.ClassificationResponse
 import com.example.graduationproject.api.model.post.createPost.PostResponse
 import com.example.graduationproject.api.model.post.deletePost.DeletePostResponse
@@ -20,10 +22,10 @@ import com.example.graduationproject.api.model.post.postHome.HomePostResponse
 import com.example.graduationproject.api.model.post.savePost.SavePostResponse
 import com.example.graduationproject.api.model.post.savePost.SavePostsListResponse
 import com.example.graduationproject.api.model.search.SearchAddressResponse
+import com.example.graduationproject.api.notifications.SellerNotificationResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -287,6 +289,32 @@ interface WebServices {
         @Header("Authorization") accessToken: String,
         @Part image: MultipartBody.Part
     ): Call<ClassificationResponse>
+
+
+    //  add_to_chart => https://alshaerawy.aait-sa.com/api/posts/order/add/ 135 {post_id } / 1 {buyer_id} — POST
+    @POST("posts/order/add/{post_id}/{buyer_id}")
+    fun orderAndAddToCart(
+        @Header("Authorization") accessToken: String,
+        @Path("post_id") post_id: String,
+        @Path("buyer_id") buyer_id: String
+//        @Field("order_expire") order_expire: String
+    ): Call<OrderResponse>
+
+    // https://alshaerawy.aait-sa.com/api/auth/user/show/seller/notifications
+    @GET("auth/user/show/seller/notifications")
+    fun getSellerNotification(
+        @Header("Authorization") accessToken: String
+
+    ): Call<SellerNotificationResponse>
+
+    // https://alshaerawy.aait-sa.com/api/posts/order/30 // {order_id}
+    @POST("posts/order/{order_id}")
+    @FormUrlEncoded
+    fun acceptOrRejectOrder(
+        @Header("Authorization") accessToken: String,
+        @Path("order_id") order_id: String,
+        @Field("condition") condition: String
+    ): Call<AcceptOrRejectOrderResponse>
 
     @GET("lookups/govs")
     fun getLocationData(): Call<LocationResponse>

@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
+import com.example.graduationproject.AboutAsActivity
+import com.example.graduationproject.GuideActivity
 import com.example.graduationproject.R
 import com.example.graduationproject.SavedPostsActivity
 import com.example.graduationproject.databinding.ActivityListSellerBinding
@@ -43,7 +45,23 @@ class SellerListActivity : AppCompatActivity() {
         onClickSavedPosts()
 
 //        loadData()
+        onClickGuide()
         onClickPrivecyBtn()
+        onClickAboutUS()
+    }
+
+    private fun onClickAboutUS() {
+        binding.aboutusBtn.setOnClickListener {
+            val intent = Intent(this, AboutAsActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun onClickGuide() {
+        binding.guidBtn.setOnClickListener {
+            intent = Intent(this, GuideActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun onClickPrivecyBtn() {

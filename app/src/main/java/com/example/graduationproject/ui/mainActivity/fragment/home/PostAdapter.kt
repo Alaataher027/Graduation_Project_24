@@ -12,8 +12,10 @@ import com.example.graduationproject.api.model.profile.Data
 import com.example.graduationproject.databinding.DialogPostBinding
 import android.text.format.DateUtils
 import android.util.Log
+import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import com.example.graduationproject.R
+import com.example.graduationproject.databinding.DialogConfirmOrderBinding
 import com.example.graduationproject.databinding.DialogPostGeneralBinding
 import com.example.graduationproject.ui.login.TokenManager
 import java.text.SimpleDateFormat
@@ -42,9 +44,7 @@ class PostAdapter(
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         holder.bind(posts[position], userDataMap[posts[position]?.userId])
-
     }
-
 
     override fun getItemCount(): Int = posts.size
 
@@ -53,7 +53,6 @@ class PostAdapter(
 
         private var isExpanded = false
         private var content: String? = null
-
 
         fun bind(post: DataItem?, userData: Data?) {
 
@@ -73,13 +72,11 @@ class PostAdapter(
             content = post?.description
             updateContent()
 
-//            val quantityType = tokenManager.getQuantityType()
             // Bind user data
             userData?.let {
                 binding.gov.text = it.governorate
                 binding.city.text = it.city
                 binding.name.text = it.name
-//                binding.quantityType.text = quantityType
                 it.image?.let { imageUrl ->
                     Glide.with(binding.root.context)
                         .load(imageUrl)
@@ -110,14 +107,45 @@ class PostAdapter(
                 }
             }
 
+            // Set the background of order button
             binding.orderBtn.setBackgroundResource(R.drawable.order_post_btn)
-//            binding.orderBtn.backgroundTintList = null
 
-//            binding.chatBtn.setBackgroundResource(R.drawable.rectangle_btn_post)
-//            binding.chatBtn.backgroundTintList = null
-
+            // Add a click listener to handle "Order" button
+            binding.orderBtn.setOnClickListener {
+                showConfirmOrderDialog(post)
+            }
         }
 
+        private fun showConfirmOrderDialog(post: DataItem?) {
+            val dialogBinding =
+                DialogConfirmOrderBinding.inflate(LayoutInflater.from(binding.root.context))
+            val alertDialogBuilder = AlertDialog.Builder(binding.root.context)
+                .setView(dialogBinding.root)
+
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
+
+            dialogBinding.noBtn.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            dialogBinding.yesBtn.setOnClickListener {
+                binding.orderBtn.setBackgroundResource(R.drawable.rec_trans)
+                // Handle the order confirmation
+
+                val postId = post?.id ?: return@setOnClickListener
+                val accessToken = tokenManager.getToken() ?: return@setOnClickListener
+                val buyerId = tokenManager.getUserId()
+                homePostViewModel.orderPost(
+                    accessToken,
+                    postId.toString(),
+                    buyerId.toString()
+                ) { message ->
+                    Toast.makeText(binding.root.context, message, Toast.LENGTH_SHORT).show()
+                }
+                alertDialog.dismiss()
+            }
+        }
 
         private fun navigateToDialogPost(post: DataItem?) {
             val dialogBinding =
@@ -154,7 +182,6 @@ class PostAdapter(
                 homePostViewModel.deletePost(accessToken, id)
                 alertDialog.dismiss()
             }
-
         }
 
         private fun navigateToDialogPostGeneral(post: DataItem?) {
@@ -205,7 +232,6 @@ class PostAdapter(
                 DateUtils.MINUTE_IN_MILLIS
             )
         }
-
     }
 
     companion object {

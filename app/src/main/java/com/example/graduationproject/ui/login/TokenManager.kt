@@ -7,6 +7,23 @@ class TokenManager(val context: Context) {
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("TokenPrefs", Context.MODE_PRIVATE)
 
+
+    fun saveOrderNotifiId(orderNotifiId: Int){
+        sharedPreferences.edit().putInt("orderNotifiId", orderNotifiId).apply()
+
+    }
+
+    fun getOrderNotifiId(): Int? {
+        return sharedPreferences.getInt("orderNotifiId", 0)
+    }
+    fun saveOrderId(orderID: Int) {
+        sharedPreferences.edit().putInt("orderID", orderID).apply()
+
+    }
+    fun getOrderId(): Int? {
+        return sharedPreferences.getInt("orderID", 0)
+    }
+
     fun saveToken(token: String) {
         sharedPreferences.edit().putString("access_token", token).apply()
     }

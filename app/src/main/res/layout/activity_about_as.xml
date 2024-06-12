@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PrivecyActivity">
+    tools:context=".AboutAsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/poppins_"
-            android:text="@string/privacy"
+            android:text="@string/about_us"
             android:textColor="@color/my_light_primary"
             android:textSize="22dp"
             android:textStyle="bold" />
@@ -36,8 +36,10 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:paddingEnd="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,14 +48,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Overview"
+                android:layout_marginBottom="4dp"
+                android:text="Welcome:"
                 android:textColor="#707070"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -61,15 +62,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginBottom="16dp"
-                android:text="We respect your privacy and are committed to protecting your personal data. If you have any questions, reach out to us at privacy@rekia.com."
+                android:text="Welcome to [REKIA]! We're here to make recycling easy and accessible for everyone."
                 android:textColor="#707070" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Information We Collect"
+                android:layout_marginBottom="4dp"
+                android:text="Our Team:"
                 android:textColor="#707070"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -77,15 +79,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginBottom="16dp"
-                android:text="Personal details you provide (e.g., name, contact info, and account credentials).\nAdditional information you choose to share while using our app."
+
+                android:text="[Alaa maher]: Lead Developer\n[Eman Fayed]: UI/UX Designer\n[Alaa Taher]: Android Developer\n[Nada Ahmed]: Android Developer\n[Wesam Ahmed]: Back-end Developer\n[Yasmeen saad]: Back-end Developer"
                 android:textColor="#707070" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Use of Your Information"
+                android:layout_marginBottom="4dp"
+                android:text="Our Story:"
                 android:textColor="#707070"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -93,15 +97,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginBottom="16dp"
-                android:text="We use your information to:\n\nManage your account and support you.\nSend you updates and offers, if you agree.\nEnsure our app functions properly and safely.\nComply with legal requirements."
+
+                android:text="[REKIA] started with a simple idea: to create an app that makes recycling info available to all. Today, we're proud to help individuals and communities embrace recycling."
                 android:textColor="#707070" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Sharing Your Information"
+                android:layout_marginBottom="4dp"
+                android:text="Mission:"
                 android:textColor="#707070"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -109,15 +115,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginBottom="16dp"
-                android:text="We share your information only when necessary:\n\nTo comply with laws.\nFor security and legal processes.\nWith your consent."
+                android:text="Our mission is clear: to promote recycling globally and make it a part of everyday life."
                 android:textColor="#707070" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Cookies"
+                android:layout_marginBottom="4dp"
+                android:text="Get in Touch:"
                 android:textColor="#707070"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -125,15 +132,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginBottom="16dp"
-                android:text="We use cookies to enhance app functionality. More details are available in our Cookie Policy."
+                android:text="Have questions or feedback? We'd love to hear from you!\n\nEmail: [contact@email.com]\nSocial Media: @[Username]\nWebsite: [Website URL]"
                 android:textColor="#707070" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Security"
+                android:layout_marginBottom="4dp"
+                android:text="Thanks:"
                 android:textColor="#707070"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -141,15 +149,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginBottom="16dp"
-                android:text="We strive to protect your information but remind you that no internet-based service is entirely secure."
+                android:text="Thanks to our partners and users who've helped shape [REKIA]."
                 android:textColor="#707070" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Updates to This Policy"
+                android:layout_marginBottom="4dp"
+                android:text="Legal:"
                 android:textColor="#707070"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -157,27 +166,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginBottom="16dp"
-                android:text="We may update this policy; please review it periodically."
-                android:textColor="#707070" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Contact Us"
-                android:textColor="#707070"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="For questions or feedback:\n\nEmail: privacy@rekia.com.\n\nMail: Rekia Recycling App, [Address], [City, State, Zip], [Country]"
+                android:text="[Include any necessary legal info here.]"
                 android:textColor="#707070" />
 
         </LinearLayout>
+
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

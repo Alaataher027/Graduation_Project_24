@@ -7,7 +7,6 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.graduationproject.R
 import com.example.graduationproject.databinding.FragmentSearchBinding
@@ -21,16 +20,17 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private lateinit var searchViewModel: SearchViewModel
     private lateinit var viewModelUserData: UserDataHomeViewModel
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding = FragmentSearchBinding.bind(view)
         tokenManager = TokenManager(requireContext())
         viewModelUserData = ViewModelProvider(this).get(UserDataHomeViewModel::class.java)
-        searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
+
+        val factory = SearchViewModelFactory(tokenManager)
+        searchViewModel = ViewModelProvider(this, factory).get(SearchViewModel::class.java)
 
         // Initialize RecyclerView and adapter
-        postAdapter = PostAdapter(emptyList())
+        postAdapter = PostAdapter(emptyList(), tokenManager, searchViewModel)
         viewBinding.RVPost.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = postAdapter
@@ -191,8 +191,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             )
         }
 
-
-        // (8) cardboard button
+        // (8) battery button
         viewBinding.battery.setOnClickListener {
             resetButtonsState() // Reset other buttons' states
             viewBinding.battery.setBackgroundResource(R.drawable.rec_press)
@@ -232,38 +231,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         viewBinding.cardboard.setBackgroundResource(R.drawable.rectangle_bord)
         viewBinding.cardboard.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
     }
-
-
-//    private fun showFilterOptionsDialog() {
-//        // Creating a PopupMenu
-//        val popupMenu = PopupMenu(requireContext(), viewBinding.filterIcon)
-//
-//        // Inflating the menu from XML resource
-//        popupMenu.menuInflater.inflate(R.menu.filter_options_menu, popupMenu.menu)
-//
-//        // Setting a listener for menu item clicks
-//        popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
-//            when (menuItem.itemId) {
-//                R.id.location -> {
-//                    // Handle option 1 selection
-//                    true
-//                }
-//                R.id.accounts -> {
-//                    // Handle option 2 selection
-//                    true
-//                }
-//                R.id.material -> {
-//                    // Handle option 3 selection
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
-//
-//        // Showing the popup menu at the top of the fragment
-//        popupMenu.show()
-//    }
-
 
     private fun onClickBack() {
         viewBinding.backBtn.setOnClickListener {

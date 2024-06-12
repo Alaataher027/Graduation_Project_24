@@ -138,7 +138,7 @@
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_bord"
                     android:backgroundTint="#EDEDED"
-                    android:drawableLeft="@drawable/glass"
+                    android:drawableLeft="@drawable/brown_glass"
                     android:fontFamily="@font/poppins_medium"
                     android:minWidth="150dp"
                     android:minHeight="30dp"
@@ -154,7 +154,7 @@
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_bord"
                     android:backgroundTint="#EDEDED"
-                    android:drawableLeft="@drawable/glass"
+                    android:drawableLeft="@drawable/cardboard_box"
                     android:fontFamily="@font/poppins_medium"
                     android:minWidth="150dp"
                     android:minHeight="30dp"
@@ -224,7 +224,7 @@
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_bord"
                     android:backgroundTint="#EDEDED"
-                    android:drawableLeft="@drawable/wood"
+                    android:drawableLeft="@drawable/battary"
                     android:fontFamily="@font/poppins_medium"
                     android:minWidth="150dp"
                     android:minHeight="30dp"
@@ -235,18 +235,55 @@
             </LinearLayout>
         </HorizontalScrollView>
 
+        <RelativeLayout
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/post_data_bg"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scrollView">
+
+            <TextView
+                android:id="@+id/price_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_"
+                android:textSize="15dp"
+                tools:text="20" />
+
+            <TextView
+                android:id="@+id/le"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/price_num"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/le_for_1_kilo"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RV_post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:orientation="vertical"
-            android:paddingBottom="160dp"
+            android:paddingBottom="200dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scrollView"
+            app:layout_constraintTop_toBottomOf="@id/price"
             tools:listitem="@layout/item_post" />
 
 

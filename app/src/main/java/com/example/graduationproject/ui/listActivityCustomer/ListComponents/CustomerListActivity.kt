@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.graduationproject.AboutAsActivity
+import com.example.graduationproject.GuideActivity
 import com.example.graduationproject.R
 import com.example.graduationproject.SavedPostsActivity
 import com.example.graduationproject.databinding.ActivityListCustomerBinding
@@ -37,10 +39,19 @@ class CustomerListActivity : AppCompatActivity() {
 //        loadData()
         onClickSavedPosts()
         onClickBack()
+        onClickAboutUS()
+        onClickGuide()
         showDialogOnClickLogout()
         onClickProfile()
 //        navToMaterial()
         onClickPrivecyBtn()
+    }
+
+    private fun onClickGuide() {
+        binding.guidBtn.setOnClickListener {
+            intent = Intent(this, GuideActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun onClickPrivecyBtn() {
@@ -179,6 +190,13 @@ class CustomerListActivity : AppCompatActivity() {
     private fun onClickProfile() {
         binding.profileBtn.setOnClickListener {
             val intent = Intent(this, CustomerProfileActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun onClickAboutUS() {
+        binding.aboutusBtn.setOnClickListener {
+            val intent = Intent(this, AboutAsActivity::class.java)
             startActivity(intent)
         }
     }

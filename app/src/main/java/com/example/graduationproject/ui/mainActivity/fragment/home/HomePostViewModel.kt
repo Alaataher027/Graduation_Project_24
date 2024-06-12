@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
-import com.example.graduationproject.api.model.post.createPost.PostResponse
+import com.example.graduationproject.api.model.order.sendOrder.OrderResponse
 import com.example.graduationproject.api.model.post.deletePost.DeletePostResponse
 import com.example.graduationproject.api.model.post.editPost.EditPostResponse
 import com.example.graduationproject.api.model.post.postHome.DataItem
@@ -154,5 +154,54 @@ class HomePostViewModel(private val tokenManager: TokenManager) : ViewModel() {
             })
 
     }
+
+
+    fun orderPost(
+        accessToken: String,
+        postId: String,
+        buyerId: String,
+        callback: (String) -> Unit
+    ) {
+        ApiManager.getApisToken(accessToken).orderAndAddToCart(accessToken, postId, buyerId)
+            .enqueue(object : Callback<OrderResponse> {
+                override fun onResponse(
+                    call: Call<OrderResponse>,
+                    response: Response<OrderResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        // Log the response body
+                        Log.d("HomePostViewModel", "Response body: ${response.body()}")
+
+                        val status: Int? = response.body()?.status
+                        val message: String? = response.body()?.message
+                        val orderID: Int? = response.body()?.data?.id
+                        if (status == 200) {
+                            if (orderID != null) {
+                                tokenManager.saveOrderId(orderID)
+                            }
+                            Log.d("HomePostViewModel", "200, $message")
+                            callback("$message")
+                        } else {
+                            Log.d("HomePostViewModel", "else 200, $message")
+                            callback("$message")
+                        }
+                    } else {
+                        // Handle different status codes including 409
+                        val status: Int = response.code()
+                        val message: String? = response.body()?.message ?: response.message()
+                        Log.d("HomePostViewModel", "$status, $message")
+                        callback(message ?: "Failed to place order")
+                    }
+                }
+
+
+                override fun onFailure(call: Call<OrderResponse>, t: Throwable) {
+                    Log.e("HomePostViewModel", "Failed to order", t)
+                    callback("Failed to place order: ${t.message}")
+                }
+            })
+    }
+
+
 
 }

@@ -5,13 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
+import com.example.graduationproject.api.model.order.sendOrder.OrderResponse
 import com.example.graduationproject.api.model.search.DataItem
 import com.example.graduationproject.api.model.search.SearchAddressResponse
+import com.example.graduationproject.ui.login.TokenManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SearchViewModel : ViewModel() {
+class SearchViewModel(private val tokenManager: TokenManager) : ViewModel() {
     private val _originalSearchResults = mutableListOf<DataItem?>() // Hold the original unfiltered list
     private val _searchResults = MutableLiveData<List<DataItem?>>()
     val searchResults: LiveData<List<DataItem?>>
@@ -69,5 +71,43 @@ class SearchViewModel : ViewModel() {
             materials.any { it.equals(material, ignoreCase = true) }
         }
     }
-}
 
+    fun orderPost(
+        accessToken: String,
+        postId: String,
+        buyerId: String,
+        callback: (String) -> Unit
+    ) {
+        ApiManager.getApisToken(accessToken).orderAndAddToCart(accessToken, postId, buyerId)
+            .enqueue(object : Callback<OrderResponse> {
+                override fun onResponse(
+                    call: Call<OrderResponse>,
+                    response: Response<OrderResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val status: Int? = response.body()?.status
+                        val message: String? = response.body()?.message
+                        val orderID: Int? = response.body()?.data?.id
+                        if (status == 200) {
+                            if (orderID != null) {
+                                tokenManager.saveOrderId(orderID)
+                            }
+                            Log.d("SearchViewModel", "200, $message")
+                            callback("$message")
+                        } else {
+                            Log.d("SearchViewModel", "else 200, $message")
+                            callback("$message")
+                        }
+                    } else {
+                        Log.d("SearchViewModel", "else")
+                        callback("Failed to place order")
+                    }
+                }
+
+                override fun onFailure(call: Call<OrderResponse>, t: Throwable) {
+                    Log.e("SearchViewModel", "Failed to order", t)
+                    callback("Failed to place order: ${t.message}")
+                }
+            })
+    }
+}
