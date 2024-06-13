@@ -176,24 +176,29 @@ class HomePostViewModel(private val tokenManager: TokenManager) : ViewModel() {
                         val message: String? = response.body()?.message
                         val orderID: Int? = response.body()?.data?.id
                         if (status == 200) {
-                            if (orderID != null) {
-                                tokenManager.saveOrderId(orderID)
-                            }
+//                            if (orderID != null) {
+//                                tokenManager.saveOrderId(orderID)
+//                            }
                             Log.d("HomePostViewModel", "200, $message")
                             callback("$message")
-                        } else {
+                        }
+                        else if (response.code() == 409){
+                            Log.d("HomePostViewModel", "409, $message")
+                            callback("The product is not available.")
+                        }
+                        else {
                             Log.d("HomePostViewModel", "else 200, $message")
                             callback("$message")
                         }
-                    } else {
+                    }
+                    else {
                         // Handle different status codes including 409
                         val status: Int = response.code()
                         val message: String? = response.body()?.message ?: response.message()
-                        Log.d("HomePostViewModel", "$status, $message")
+                        Log.d("HomePostViewModel", "****$status, $message")
                         callback(message ?: "Failed to place order")
                     }
                 }
-
 
                 override fun onFailure(call: Call<OrderResponse>, t: Throwable) {
                     Log.e("HomePostViewModel", "Failed to order", t)

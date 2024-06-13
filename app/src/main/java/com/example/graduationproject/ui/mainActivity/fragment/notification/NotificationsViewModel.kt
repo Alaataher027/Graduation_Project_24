@@ -32,7 +32,7 @@ class NotificationsViewModel(private val tokenManager: TokenManager) : ViewModel
                         _notifications.value = response.body()?.data ?: emptyList()
 
                         val orderNotifiId = response.body()?.data?.firstOrNull()?.id ?: 0
-                        tokenManager.saveOrderNotifiId(orderNotifiId)
+//                        tokenManager.saveOrderNotifiId(orderNotifiId)
 
                     } else {
                         _errorMessage.value = "Failed to load notifications"
@@ -45,10 +45,10 @@ class NotificationsViewModel(private val tokenManager: TokenManager) : ViewModel
             })
     }
 
-    fun acceptOrRejectOrder(orderId: Int, condition: String, callback: NotificationActionCallback) {
+    fun acceptOrRejectOrder(orderId: String, condition: String, callback: NotificationActionCallback) {
         val accessToken = tokenManager.getToken() ?: return
         ApiManager.getApisToken(accessToken)
-            .acceptOrRejectOrder(accessToken, orderId.toString(), condition)
+            .acceptOrRejectOrder(accessToken, orderId, condition)
             .enqueue(object : Callback<AcceptOrRejectOrderResponse> {
                 override fun onResponse(
                     call: Call<AcceptOrRejectOrderResponse>,
@@ -56,7 +56,13 @@ class NotificationsViewModel(private val tokenManager: TokenManager) : ViewModel
                 ) {
                     when (response.code()) {
                         200 -> callback.onActionSuccess("${response.body()?.message}")
-                        409 -> callback.onActionSuccess("Order rejected successfully")
+                        409 -> {
+                            if (condition == "Accept") {
+                                callback.onActionSuccess("${response.body()?.message} You have already ordered this product.")
+                            } else if (condition == "Reject") {
+                                callback.onActionSuccess("${response.body()?.message} Thank you for responding")
+                            }
+                        }
                         else -> callback.onActionFailure("Failed to $condition order")
                     }
                     Log.d("Notification", "${response.body()?.status}")

@@ -111,6 +111,7 @@
     <string name="yes">Yes</string>
     <string name="are_you_sure_you_want_to_order_this">Are You Sure You Want To Order This ?</string>
     <string name="le_for_1_kilo">LE For 1 Kilo</string>
+    <string name="send_you_a_request">Send you a request.</string>
 
     <string-array name="quantity_options">
         <item>Quantity (pieces)</item>

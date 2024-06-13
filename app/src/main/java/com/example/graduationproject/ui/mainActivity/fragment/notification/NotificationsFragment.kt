@@ -9,12 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.graduationproject.R
 import com.example.graduationproject.databinding.FragmentNotificationsBinding
 import com.example.graduationproject.ui.login.TokenManager
+import com.example.graduationproject.ui.mainActivity.fragment.home.UserDataHomeViewModel
 
 class NotificationsFragment : Fragment(R.layout.fragment_notifications), NotificationActionCallback {
 
     private lateinit var binding: FragmentNotificationsBinding
     private lateinit var notificationsViewModel: NotificationsViewModel
     private lateinit var notificationAdapter: NotificationAdapter
+    private lateinit var userDataHomeViewModel: UserDataHomeViewModel
     private lateinit var tokenManager: TokenManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -24,13 +26,15 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications), Notific
         tokenManager = TokenManager(requireContext())  // Initialize TokenManager
         val factory = NotificationsViewModelFactory(tokenManager)
         notificationsViewModel = ViewModelProvider(this, factory).get(NotificationsViewModel::class.java)
-        notificationAdapter = NotificationAdapter(notificationsViewModel, this)
+        userDataHomeViewModel = ViewModelProvider(this).get(UserDataHomeViewModel::class.java)
+
+        val accessToken = tokenManager.getToken() ?: return  // Get access token, or return if null
+
+        notificationAdapter = NotificationAdapter(notificationsViewModel, userDataHomeViewModel, accessToken, this)
 
         binding.reView.layoutManager = LinearLayoutManager(requireContext())
         binding.reView.adapter = notificationAdapter
 
-        val typeUser = tokenManager.getUserType()
-//        if (typeUser == "Seller") {
         fetchNotifications()
     }
 

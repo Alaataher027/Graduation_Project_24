@@ -2,6 +2,8 @@ package com.example.graduationproject.ui.mainActivity.fragment.home
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +14,9 @@ import com.example.graduationproject.api.model.profile.Data
 import com.example.graduationproject.databinding.DialogPostBinding
 import android.text.format.DateUtils
 import android.util.Log
+import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import com.example.graduationproject.R
 import com.example.graduationproject.databinding.DialogConfirmOrderBinding
@@ -130,9 +134,13 @@ class PostAdapter(
             }
 
             dialogBinding.yesBtn.setOnClickListener {
-                binding.orderBtn.setBackgroundResource(R.drawable.rec_trans)
-                // Handle the order confirmation
+                binding.orderBtn.setBackgroundResource(R.drawable.rec_gray_pending)
+                binding.orderBtn.text = "waiting for a reply"
+                binding.iconOrder.visibility = View.INVISIBLE
+                val drawable = ContextCompat.getDrawable(binding.root.context, R.drawable.wait_ic)
+                binding.orderBtn.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
 
+                // Handle the order confirmation
                 val postId = post?.id ?: return@setOnClickListener
                 val accessToken = tokenManager.getToken() ?: return@setOnClickListener
                 val buyerId = tokenManager.getUserId()
@@ -141,10 +149,14 @@ class PostAdapter(
                     postId.toString(),
                     buyerId.toString()
                 ) { message ->
-                    Toast.makeText(binding.root.context, message, Toast.LENGTH_SHORT).show()
+                    // Ensure the toast is shown on the main thread
+                    Handler(Looper.getMainLooper()).post {
+                        Toast.makeText(binding.root.context, message, Toast.LENGTH_SHORT).show()
+                    }
                 }
                 alertDialog.dismiss()
             }
+
         }
 
         private fun navigateToDialogPost(post: DataItem?) {

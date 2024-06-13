@@ -5,12 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject.databinding.ItemNotificationWaitingBinding
 import android.text.format.DateUtils
+import android.util.Log
 import com.example.graduationproject.api.notifications.DataItem
+import com.example.graduationproject.ui.mainActivity.fragment.home.UserDataHomeViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NotificationAdapter(private val viewModel: NotificationsViewModel, private val callback: NotificationActionCallback) :
-    RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
+class NotificationAdapter(
+    private val viewModel: NotificationsViewModel,
+    private val userDataHomeViewModel: UserDataHomeViewModel,  // Add the UserDataHomeViewModel
+    private val accessToken: String,  // Pass the access token
+    private val callback: NotificationActionCallback
+) : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
 
     var notifications: List<DataItem?> = emptyList()
         set(value) {
@@ -37,17 +43,29 @@ class NotificationAdapter(private val viewModel: NotificationsViewModel, private
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(notification: DataItem?) {
-            binding.reqCustomer.text = notification?.content
             binding.timeNotification.text = getTimeAgo(notification?.createdAt)
 
+            // Fetch user data and set the name
+            notification?.fromWho?.let { userId ->
+                userDataHomeViewModel.getData(accessToken, userId.toInt(),
+                    onDataLoaded = { data ->
+                        binding.name.text = data?.name ?: "Unknown"
+                    },
+                    onError = { errorMessage ->
+                        Log.e("NotificationAdapter", "Error fetching user data: $errorMessage")
+                        binding.name.text = "Unknown"
+                    }
+                )
+            }
+
             binding.acceptBtn.setOnClickListener {
-                notification?.id?.let {
+                notification?.linkedId?.let {
                     viewModel.acceptOrRejectOrder(it, "Accept", callback)
                 }
             }
 
             binding.cancelBtn.setOnClickListener {
-                notification?.id?.let {
+                notification?.linkedId?.let {
                     viewModel.acceptOrRejectOrder(it, "Reject", callback)
                 }
             }
