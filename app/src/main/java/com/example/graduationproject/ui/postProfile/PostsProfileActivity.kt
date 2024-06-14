@@ -1,11 +1,12 @@
 package com.example.graduationproject.ui.postProfile
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityPostsProfileBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivity.fragment.home.HomePostViewModel
@@ -41,8 +42,6 @@ class PostsProfileActivity : AppCompatActivity() {
         viewModel.fetchHomePosts(accessToken)
 
         viewModel.homePosts.observe(this, Observer { posts ->
-
-
             adapter.clearData()
             val userId = tokenManager.getUserId()
             val userPosts = posts.filter { it?.userId == userId }
@@ -65,8 +64,13 @@ class PostsProfileActivity : AppCompatActivity() {
         })
 
         onClickBackBtn()
+        onClickHistoryIcon()
+    }
 
+    private fun onClickHistoryIcon() {
+        viewBinding.historyBtn.setOnClickListener {
 
+        }
     }
 
     private fun onClickBackBtn() {

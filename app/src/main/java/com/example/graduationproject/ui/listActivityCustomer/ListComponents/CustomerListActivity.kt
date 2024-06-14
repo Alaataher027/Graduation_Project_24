@@ -16,8 +16,8 @@ import com.example.graduationproject.ui.PrivecyActivity
 import com.example.graduationproject.ui.login.LoginActivity
 import com.example.graduationproject.ui.logOut.LogOutViewModel
 import com.example.graduationproject.ui.login.TokenManager
-import com.example.graduationproject.ui.listActivityCustomer.ListComponents.material.MaterialsActivity
 import com.example.graduationproject.ui.listActivityCustomer.ListComponents.profile.profileView.CustomerProfileActivity
+import com.example.graduationproject.ui.listActivityCustomer.ListComponents.ordersPending.OrdersActivity
 
 class CustomerListActivity : AppCompatActivity() {
 
@@ -45,6 +45,14 @@ class CustomerListActivity : AppCompatActivity() {
         onClickProfile()
 //        navToMaterial()
         onClickPrivecyBtn()
+        onClickOrders()
+    }
+
+    private fun onClickOrders() {
+        binding.orderBtn.setOnClickListener {
+            intent = Intent(this, OrdersActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun onClickGuide() {

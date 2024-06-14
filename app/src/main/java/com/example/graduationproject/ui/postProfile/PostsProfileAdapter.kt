@@ -12,6 +12,7 @@ import com.example.graduationproject.api.model.post.postHome.DataItem
 import com.example.graduationproject.api.model.profile.Data
 import android.text.format.DateUtils
 import android.util.Log
+import android.view.View
 import com.example.graduationproject.R
 import com.example.graduationproject.databinding.DialogPostBinding
 import com.example.graduationproject.databinding.DialogPostGeneralBinding
@@ -66,6 +67,9 @@ class PostsProfileAdapter(
 
         fun bind(post: DataItem?, userData: Data?) {
             // ...
+
+            binding.orderBtn.visibility = View.INVISIBLE
+//            binding.cardPost.height
 
             val currentUserId = tokenManager.getUserId()
             val postUserId =

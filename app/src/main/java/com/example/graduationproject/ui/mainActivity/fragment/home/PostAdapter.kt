@@ -29,7 +29,6 @@ class PostAdapter(
     private val tokenManager: TokenManager,
     private val homePostViewModel: HomePostViewModel
 ) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
-
     var posts: List<DataItem?> = emptyList()
         set(value) {
             field = value
@@ -86,6 +85,17 @@ class PostAdapter(
                         .load(imageUrl)
                         .into(binding.PersonalImage)
                 }
+
+                var userLoginedType = tokenManager.getUserType()
+                // Check if userType is "Seller"
+                if (userLoginedType == "Seller") {
+                    binding.orderBtn.isEnabled = false
+                } else {
+                    binding.orderBtn.isEnabled = true
+                }
+
+
+
             }
 
             // Add a click listener to handle "See More" button
@@ -96,6 +106,12 @@ class PostAdapter(
             }
 
             val id: Int = tokenManager.getUserId()
+
+            if(post?.userId == id){
+                binding.orderBtn.isEnabled = false
+
+            }
+
             binding.listPostBtn.setOnClickListener {
                 // Check if the user id from HomePostResponse is equals user id from ProfileResponse
                 val postId = post?.id ?: return@setOnClickListener

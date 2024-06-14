@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject.databinding.ItemNotificationWaitingBinding
 import android.text.format.DateUtils
 import android.util.Log
-import com.example.graduationproject.api.notifications.DataItem
+import com.example.graduationproject.api.model.notifications.DataItem
 import com.example.graduationproject.ui.mainActivity.fragment.home.UserDataHomeViewModel
 import java.text.SimpleDateFormat
 import java.util.*

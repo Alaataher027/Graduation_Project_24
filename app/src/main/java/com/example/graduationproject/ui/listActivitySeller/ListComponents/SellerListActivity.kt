@@ -19,7 +19,6 @@ import com.example.graduationproject.ui.PrivecyActivity
 import com.example.graduationproject.ui.login.LoginActivity
 import com.example.graduationproject.ui.logOut.LogOutViewModel
 import com.example.graduationproject.ui.login.TokenManager
-import com.example.graduationproject.ui.listActivityCustomer.ListComponents.material.MaterialsActivity
 import com.example.graduationproject.ui.listActivitySeller.ListComponents.profile.profileView.SellerProfileActivity
 
 class SellerListActivity : AppCompatActivity() {
@@ -48,8 +47,15 @@ class SellerListActivity : AppCompatActivity() {
         onClickGuide()
         onClickPrivecyBtn()
         onClickAboutUS()
+//        onClickOrders()
     }
 
+//    private fun onClickOrders() {
+//        binding.orderBtn.setOnClickListener {
+//            intent = Intent(this, OrdersActivity::class.java)
+//            startActivity(intent)
+//        }
+//    }
     private fun onClickAboutUS() {
         binding.aboutusBtn.setOnClickListener {
             val intent = Intent(this, AboutAsActivity::class.java)
@@ -112,9 +118,9 @@ class SellerListActivity : AppCompatActivity() {
         TecBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
         TecBtn.backgroundTintList = null
 
-        val ordersBtn = binding.orderBtn
-        ordersBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
-        ordersBtn.backgroundTintList = null
+//        val ordersBtn = binding.orderBtn
+//        ordersBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+//        ordersBtn.backgroundTintList = null
 
         val logOutBtn = binding.logoutBtn
         logOutBtn.setBackgroundResource(R.drawable.rectangle_btn_list)

@@ -3,6 +3,7 @@ package com.example.graduationproject.api
 import com.example.graduationproject.api.model.CheckCodeResponse
 import com.example.graduationproject.api.model.ForgetPasswordResponse
 import com.example.graduationproject.api.model.LocationResponse
+import com.example.graduationproject.api.model.Order2Response
 import com.example.graduationproject.api.model.logout.LogOutResponse
 import com.example.graduationproject.api.model.ResetPasswordResponse
 import com.example.graduationproject.api.model.StoreFCMTokenResponse
@@ -22,7 +23,8 @@ import com.example.graduationproject.api.model.post.postHome.HomePostResponse
 import com.example.graduationproject.api.model.post.savePost.SavePostResponse
 import com.example.graduationproject.api.model.post.savePost.SavePostsListResponse
 import com.example.graduationproject.api.model.search.SearchAddressResponse
-import com.example.graduationproject.api.notifications.SellerNotificationResponse
+import com.example.graduationproject.api.model.notifications.SellerNotificationResponse
+import com.example.graduationproject.api.model.post.GetPostByIdResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -315,6 +317,19 @@ interface WebServices {
         @Path("order_id") order_id: String,
         @Field("condition") condition: String
     ): Call<AcceptOrRejectOrderResponse>
+
+    @GET("posts/order/chart/{buyer_id}")
+    fun getOrdersForUser(
+        @Header("Authorization") accessToken: String,
+        @Path("buyer_id") buyerId: Int
+    ): Call<Order2Response>
+
+    @GET("posts/{post_id}")
+    fun getPostById(
+        @Header("Authorization") accessToken: String,
+        @Path("post_id") post_id: Int
+    ): Call<GetPostByIdResponse>
+
 
     @GET("lookups/govs")
     fun getLocationData(): Call<LocationResponse>

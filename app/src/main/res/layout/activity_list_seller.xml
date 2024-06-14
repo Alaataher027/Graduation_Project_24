@@ -248,20 +248,20 @@
                 android:textColor="#898A89"
                 android:textSize="20dp" />
 
-            <Button
-                android:id="@+id/order_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:backgroundTint="#F5F6F5"
-                android:backgroundTintMode="src_atop"
-                android:fontFamily="@font/poppins_medium"
-                android:drawableLeft="@drawable/order_ic"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="@string/orders"
-                android:textColor="#898A89"
-                android:textSize="20dp" />
+<!--            <Button-->
+<!--                android:id="@+id/order_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:backgroundTint="#F5F6F5"-->
+<!--                android:backgroundTintMode="src_atop"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+<!--                android:drawableLeft="@drawable/order_ic"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:paddingBottom="15dp"-->
+<!--                android:text="@string/orders"-->
+<!--                android:textColor="#898A89"-->
+<!--                android:textSize="20dp" />-->
             <!-- Button 7 -->
             <Button
                 android:id="@+id/logout_btn"

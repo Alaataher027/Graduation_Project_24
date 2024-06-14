@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
 import com.example.graduationproject.api.model.order.accORrej.AcceptOrRejectOrderResponse
-import com.example.graduationproject.api.notifications.DataItem
-import com.example.graduationproject.api.notifications.SellerNotificationResponse
+import com.example.graduationproject.api.model.notifications.DataItem
+import com.example.graduationproject.api.model.notifications.SellerNotificationResponse
 import com.example.graduationproject.ui.login.TokenManager
 import retrofit2.Call
 import retrofit2.Callback
