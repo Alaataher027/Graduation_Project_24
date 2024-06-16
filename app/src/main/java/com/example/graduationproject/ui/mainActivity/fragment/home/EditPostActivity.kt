@@ -1,10 +1,13 @@
 package com.example.graduationproject.ui.mainActivity.fragment.home
 
+import android.app.AlertDialog
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,6 +19,7 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
+import android.os.Handler
 
 class EditPostActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityEditPostBinding
@@ -24,6 +28,7 @@ class EditPostActivity : AppCompatActivity() {
     private lateinit var tokenManager: TokenManager
     private var postData: DataItem? = null
 
+    private var quantity: Int = 1 // Default quantity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +50,9 @@ class EditPostActivity : AppCompatActivity() {
         // Call setupViews to initiate the editing process
         setupViews(null) // Pass null initially, since there's no image chosen yet
         onClickBack()
+        setupQuantityButtons()
+        observeMaterialClassification()
+        setupMaterialSelection()
     }
 
     private fun onClickBack() {
@@ -58,6 +66,7 @@ class EditPostActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             uri?.let {
                 setupViews(it)
+                classifyImage(it)
             }
         }
 
@@ -71,7 +80,6 @@ class EditPostActivity : AppCompatActivity() {
 
         // If imageUri is not null, load the image
         imageUri?.let {
-            Log.d("EditPost", "**")
             viewBinding.addImage.setImageURI(it)
         }
 
@@ -85,17 +93,13 @@ class EditPostActivity : AppCompatActivity() {
                 MediaType.parse("text/plain"),
                 viewBinding.descriptionContent.text.toString()
             )
-            val quantity = RequestBody.create(
-                MediaType.parse("text/plain"),
-                viewBinding.quantityContent.text.toString()
-            )
             val material = RequestBody.create(
                 MediaType.parse("text/plain"),
                 viewBinding.materialContent.text.toString()
             )
             val price = RequestBody.create(
                 MediaType.parse("text/plain"),
-                viewBinding.priceContent.text.toString()
+                calculatePrice().toString() // Calculate price based on quantity and material
             )
 
             if (imageUri == null) {
@@ -117,7 +121,7 @@ class EditPostActivity : AppCompatActivity() {
                         accessToken,
                         postId,
                         description,
-                        quantity,
+                        RequestBody.create(MediaType.parse("text/plain"), quantity.toString()),
                         material,
                         price,
                         body,
@@ -147,7 +151,7 @@ class EditPostActivity : AppCompatActivity() {
                 accessToken,
                 postId,
                 description,
-                quantity,
+                RequestBody.create(MediaType.parse("text/plain"), quantity.toString()),
                 material,
                 price,
                 body,
@@ -162,22 +166,21 @@ class EditPostActivity : AppCompatActivity() {
                 }
             )
         }
-
     }
-
 
     private fun populateViews(postData: DataItem?) {
         postData?.let { post ->
-            // Populate views with post data
-            if (!isDestroyed) { // Check if activity is not destroyed
-                Glide.with(this)
-                    .load(post.image)
-                    .into(viewBinding.addImage)
-            }
+            // Load post data into views
+            Glide.with(this)
+                .load(post.image)
+                .into(viewBinding.addImage)
             viewBinding.descriptionContent.setText(post.description)
-            viewBinding.quantityContent.setText(post.quantity)
             viewBinding.materialContent.setText(post.material)
-            viewBinding.priceContent.setText(post.price)
+
+            // تحديث كمية السلعة والسعر بناءً على البيانات المحملة
+            quantity = post.quantity?.toIntOrNull() ?: 1
+            updateQuantityAndPrice()
+
 
             // Fetch user data
             post.userId?.let { userId ->
@@ -187,22 +190,144 @@ class EditPostActivity : AppCompatActivity() {
                     { userData ->
                         // Populate user data views
                         userData?.let {
-                            if (!isDestroyed) { // Check if activity is not destroyed
-                                viewBinding.userName.text = it.name
-                                Glide.with(this)
-                                    .load(it.image)
-                                    .into(viewBinding.userImage)
-                            }
+                            viewBinding.userName.text = it.name
+                            Glide.with(this)
+                                .load(it.image)
+                                .into(viewBinding.userImage)
                         }
                     },
                     { error ->
                         // Handle error
-                        // For example, show error message or log error
-                        // Log.e("EditPostActivity", "Failed to fetch user data: $error")
+                        Log.e("EditPostActivity", "Failed to fetch user data: $error")
                     }
                 )
             }
         }
     }
 
+    private var isUpdatingText = false // تعريف متغير للتحقق من حدوث تحديث نصي مستمر
+
+    private fun setupQuantityButtons() {
+        viewBinding.incBtn.setOnClickListener {
+            quantity++
+            updateQuantityAndPrice()
+        }
+
+        viewBinding.decBtn.setOnClickListener {
+            if (quantity > 1) {
+                quantity--
+                updateQuantityAndPrice()
+            }
+        }
+
+        viewBinding.quantityContent.setText(quantity.toString())
+
+        // Listen for manual input changes
+        viewBinding.quantityContent.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Not needed
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Not needed
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (!isUpdatingText) {
+                    s?.toString()?.let {
+                        val inputQuantity = it.toIntOrNull()
+                        if (inputQuantity != null && inputQuantity >= 1) {
+                            quantity = inputQuantity
+                            updateQuantityAndPriceDelayed() // تحديث بعد فترة زمنية معينة
+                        } else {
+                            // Handle invalid input (optional)
+                            Toast.makeText(this@EditPostActivity, "Please enter a valid quantity", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    // تحديث الكمية والسعر بعد فترة زمنية معينة
+    private fun updateQuantityAndPriceDelayed() {
+        if (!isUpdatingText) {
+            isUpdatingText = true
+            Handler().postDelayed({
+                updateQuantityAndPrice()
+                isUpdatingText = false
+            }, 500) // تأخير التحديث لمدة 500 مللي ثانية
+        }
+    }
+
+    private fun updateQuantityAndPrice() {
+        viewBinding.quantityContent.setText(quantity.toString())
+        viewBinding.priceContent.setText(calculatePrice().toString())
+    }
+
+
+
+    private fun calculatePrice(): Double {
+        val basePricePerKilo = when (viewBinding.materialContent.text.toString()) {
+            "steel" -> 10.0
+            "wood" -> 12.0
+            "metal" -> 8.0
+            "plastic" -> 12.0
+            "cardboard" -> 6.0
+            "white-glass" -> 14.0
+            "brown-glass" -> 14.0
+            "paper" -> 12.0
+            "battery" -> 40.0
+            else -> 10.0 // السعر الافتراضي لكل كيلو
+        }
+
+        val quantity = viewBinding.quantityContent.text.toString().toDoubleOrNull() ?: 1.0
+
+        return basePricePerKilo * quantity
+    }
+
+    private fun classifyImage(imageUri: Uri) {
+        val accessToken = tokenManager.getToken() ?: ""
+        val inputStream = contentResolver.openInputStream(imageUri)
+        val requestFile = RequestBody.create(MediaType.parse("image/*"), inputStream!!.readBytes())
+        val body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
+
+        viewModel.classifyImage(accessToken, body) { isSuccess, message, data ->
+            if (isSuccess) {
+                // Update material EditText with classification result
+                viewBinding.materialContent.setText(data ?: "")
+            } else {
+                // Handle classification failure
+                Toast.makeText(this, "Failed to classify image: $message", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun observeMaterialClassification() {
+        // Optionally observe any LiveData related to material classification if required
+    }
+
+    private fun setupMaterialSelection() {
+        val materials = arrayOf(
+            "steel",
+            "wood",
+            "metal",
+            "plastic",
+            "cardboard",
+            "white-glass",
+            "brown-glass",
+            "paper",
+            "battery")
+
+        viewBinding.materialContent.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("اختر نوع المادة")
+                .setItems(materials) { dialog, which ->
+                    viewBinding.materialContent.setText(materials[which])
+                    updateQuantityAndPrice() // تحديث السعر بناءً على الماتريال الجديد
+                    dialog.dismiss()
+                }
+                .show()
+        }
+    }
 }

@@ -23,7 +23,11 @@ import com.example.graduationproject.api.model.post.postHome.HomePostResponse
 import com.example.graduationproject.api.model.post.savePost.SavePostResponse
 import com.example.graduationproject.api.model.post.savePost.SavePostsListResponse
 import com.example.graduationproject.api.model.search.SearchAddressResponse
-import com.example.graduationproject.api.model.notifications.SellerNotificationResponse
+import com.example.graduationproject.api.model.notifications.accANDrej.SellerNotificationResponse
+import com.example.graduationproject.api.model.notifications.normal.NormalNotificationResponse
+import com.example.graduationproject.api.model.notifications.yesAndNo.ConfirmNotificationCustomerResponse
+import com.example.graduationproject.api.model.notifications.yesAndNo.ConfirmNotificationSellerResponse
+import com.example.graduationproject.api.model.order.yesORno.ConfirmNotificationResponse
 import com.example.graduationproject.api.model.post.GetPostByIdResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -302,21 +306,52 @@ interface WebServices {
 //        @Field("order_expire") order_expire: String
     ): Call<OrderResponse>
 
+    //seller/co
+
     // https://alshaerawy.aait-sa.com/api/auth/user/show/seller/notifications
     @GET("auth/user/show/seller/notifications")
-    fun getSellerNotification(
+    fun getWaitingNotification(        // accept & reject
         @Header("Authorization") accessToken: String
-
     ): Call<SellerNotificationResponse>
+
+    // https://alshaerawy.aait-sa.com/api/auth/user/show/buyer/confirm-notifications
+    @GET("auth/user/show/buyer/confirm-notifications")
+    fun getConfirmNotificationCustomer(   // yes / no (customer)
+        @Header("Authorization") accessToken: String
+    ): Call<ConfirmNotificationCustomerResponse>
+
+    //https://alshaerawy.aait-sa.com/api/auth/user/show/seller/confirm-notifications
+    @GET("auth/user/show/seller/confirm-notifications")
+    fun getConfirmNotificationSeller(      // yes / no (seller)
+        @Header("Authorization") accessToken: String
+    ): Call<ConfirmNotificationSellerResponse>
+
+    //https://alshaerawy.aait-sa.com/api/auth/user/show/buyer/notifications
+    @GET("auth/user/show/buyer/notifications")
+    fun getNormalNotification(                // تم الرفض / تم الموافقة
+        @Header("Authorization") accessToken: String
+    ): Call<NormalNotificationResponse>
 
     // https://alshaerawy.aait-sa.com/api/posts/order/30 // {order_id}
     @POST("posts/order/{order_id}")
     @FormUrlEncoded
-    fun acceptOrRejectOrder(
+    fun acceptOrRejectOrder(               // onclick accept / reject
         @Header("Authorization") accessToken: String,
         @Path("order_id") order_id: String,
         @Field("condition") condition: String
     ): Call<AcceptOrRejectOrderResponse>
+
+
+    //https://alshaerawy.aait-sa.com/api/posts/order/confirm/54{order id}
+    @POST("posts/order/confirm/{order_id}")
+    @FormUrlEncoded
+    fun yesOrNoConfirm(                            // on click yes/no
+        @Header("Authorization") accessToken: String,
+        @Path("order_id") order_id: String,
+        @Field("condition") condition: String
+    ): Call<ConfirmNotificationResponse>
+
+
 
     @GET("posts/order/chart/{buyer_id}")
     fun getOrdersForUser(

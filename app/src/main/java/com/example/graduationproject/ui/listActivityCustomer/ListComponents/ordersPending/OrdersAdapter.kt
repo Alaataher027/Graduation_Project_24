@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.graduationproject.R
 import com.example.graduationproject.api.model.profile.Data
 import com.example.graduationproject.api.model.post.Data as PostData
-import com.example.graduationproject.databinding.ItemPostBinding
+import com.example.graduationproject.databinding.ItemOrderBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
@@ -21,7 +21,7 @@ class OrdersAdapter(
 ) : RecyclerView.Adapter<OrdersAdapter.OrderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
-        val binding = ItemPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemOrderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return OrderViewHolder(binding)
     }
 
@@ -43,12 +43,13 @@ class OrdersAdapter(
         notifyDataSetChanged()
     }
 
-    inner class OrderViewHolder(private val binding: ItemPostBinding) :
+    inner class OrderViewHolder(private val binding: ItemOrderBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         private val nameTextView = binding.name
         private val personalImageView = binding.PersonalImage
-        private val quantityTextView = binding.quantityNum // Assuming this is the TextView for quantity
+        private val quantityTextView =
+            binding.quantityNum // Assuming this is the TextView for quantity
 
         fun bind(profile: Data, post: PostData?) {
             binding.city.text = profile.city
@@ -61,9 +62,7 @@ class OrdersAdapter(
             // Bind post data if available
             post?.let {
                 quantityTextView.text = it.quantity
-                binding.priceNum.text  = it.price
-                binding.content.text = it.description
-                binding.time.text = getTimeAgo(post?.createdAt)
+                binding.priceNum.text = it.price
 
                 Glide.with(binding.imagePost.context)
                     .load(it.image)
@@ -72,26 +71,7 @@ class OrdersAdapter(
                 // You can bind other post data similarly
             }
 
-            binding.orderBtn.setBackgroundResource(R.drawable.rec_gray_pending)
-            binding.orderBtn.text = "waiting for a reply"
-            binding.iconOrder.visibility = View.INVISIBLE
-            val drawable = ContextCompat.getDrawable(binding.root.context, R.drawable.wait_ic)
-            binding.orderBtn.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
         }
 
-        private fun getTimeAgo(timestamp: String?): CharSequence {
-            if (timestamp.isNullOrEmpty()) return ""
-
-            val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-            sdf.timeZone = TimeZone.getTimeZone("UTC")
-
-            val time = sdf.parse(timestamp)?.time ?: return ""
-
-            return DateUtils.getRelativeTimeSpanString(
-                time,
-                System.currentTimeMillis(),
-                DateUtils.MINUTE_IN_MILLIS
-            )
-        }
     }
 }

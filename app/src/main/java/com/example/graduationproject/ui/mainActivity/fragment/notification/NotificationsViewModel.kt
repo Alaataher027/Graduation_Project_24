@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
+import com.example.graduationproject.api.model.notifications.accANDrej.DataItem
 import com.example.graduationproject.api.model.order.accORrej.AcceptOrRejectOrderResponse
-import com.example.graduationproject.api.model.notifications.DataItem
-import com.example.graduationproject.api.model.notifications.SellerNotificationResponse
+import com.example.graduationproject.api.model.notifications.accANDrej.SellerNotificationResponse
 import com.example.graduationproject.ui.login.TokenManager
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +22,7 @@ class NotificationsViewModel(private val tokenManager: TokenManager) : ViewModel
     val errorMessage: LiveData<String> = _errorMessage
 
     fun fetchNotifications(accessToken: String) {
-        ApiManager.getApisToken(accessToken).getSellerNotification(accessToken)
+        ApiManager.getApisToken(accessToken).getWaitingNotification(accessToken)
             .enqueue(object : Callback<SellerNotificationResponse> {
                 override fun onResponse(
                     call: Call<SellerNotificationResponse>,

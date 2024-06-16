@@ -1,4 +1,4 @@
-package com.example.graduationproject.api.model.notifications
+package com.example.graduationproject.api.model.notifications.accANDrej
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable

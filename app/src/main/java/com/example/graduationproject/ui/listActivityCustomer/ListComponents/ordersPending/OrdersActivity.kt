@@ -42,5 +42,14 @@ class OrdersActivity : AppCompatActivity() {
         })
 
         ordersViewModel.getOrders(accessToken, buyerId)
+
+        onClickBackBtn()
+    }
+
+    private fun onClickBackBtn() {
+        viewBinding.buttonBack.setOnClickListener {
+            // Handle the click event, for example, navigate back one step
+            onBackPressed()
+        }
     }
 }

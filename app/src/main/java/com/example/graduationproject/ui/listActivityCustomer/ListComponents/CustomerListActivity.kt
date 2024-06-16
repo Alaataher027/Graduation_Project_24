@@ -36,16 +36,19 @@ class CustomerListActivity : AppCompatActivity() {
 
 
         buttonBG()
-//        loadData()
         onClickSavedPosts()
         onClickBack()
         onClickAboutUS()
         onClickGuide()
         showDialogOnClickLogout()
         onClickProfile()
-//        navToMaterial()
         onClickPrivecyBtn()
         onClickOrders()
+        onClickSearch()
+    }
+
+    private fun onClickSearch() {
+
     }
 
     private fun onClickOrders() {
@@ -102,10 +105,6 @@ class CustomerListActivity : AppCompatActivity() {
         guidanceBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
         guidanceBtn.backgroundTintList = null
 
-//        val materialBtn = binding.materialBtn
-//        materialBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
-//        materialBtn.backgroundTintList = null
-
         val TecBtn = binding.techBtn
         TecBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
         TecBtn.backgroundTintList = null
@@ -142,35 +141,6 @@ class CustomerListActivity : AppCompatActivity() {
 
         }
     }
-
-//    private fun loadData() {
-//        val accessToken = tokenManager.getToken()
-//        val userId = tokenManager.getUserId()
-//        if (accessToken != null) {
-//            viewModel.viewData(accessToken,userId,
-//                onDataLoaded = { data ->
-//                    data?.let {
-//                        binding.nameUser.text = it.name
-//                        val requestOptions = RequestOptions().transform(CircleCrop())
-//
-//                        if (!isDestroyed) { // Check if the activity is destroyed
-//                            Glide.with(this)
-//                                .load(data.image)
-//                                .apply(requestOptions)
-//                                .placeholder(R.drawable.placeholder)
-//                                .error(R.drawable.error)
-//                                .into(binding.imageProfile)
-//                        }
-//                    }
-//                },
-//                onError = { errorMessage ->
-//                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-//                }
-//            )
-//        } else {
-//            Toast.makeText(this, "Access token is null", Toast.LENGTH_SHORT).show()
-//        }
-//    }
 
 
     private fun performLogout() {
@@ -222,10 +192,4 @@ class CustomerListActivity : AppCompatActivity() {
         finish() // Optional: Close the current activity to prevent user from going back to it after logout
     }
 
-//    private fun navToMaterial() {
-//        binding.materialBtn.setOnClickListener {
-//            val intent = Intent(this, MaterialsActivity::class.java)
-//            startActivity(intent)
-//        }
-//    }
 }

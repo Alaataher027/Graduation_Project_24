@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.mainActivity.fragment.home.EditPostActivity">
 
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/edit_post_cap"
+            android:text="@string/edit_post"
             android:textColor="@color/my_light_primary"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -35,7 +36,7 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_image"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -49,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="13dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Name"
         android:textColor="@color/gray_dark"
@@ -82,62 +84,7 @@
                 android:layout_width="290dp"
                 android:layout_height="240dp"
                 android:layout_gravity="center"
-                android:src="@drawable/add_img"
-                app:layout_constraintBottom_toTopOf="@id/description"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/user_image" />
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="@string/description"
-                android:textColor="@color/gray_dark"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toTopOf="@id/description_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_image" />
-
-            <EditText
-                android:id="@+id/description_content"
-                android:layout_width="290dp"
-                android:layout_height="63dp"
-                android:layout_gravity="center"
-                android:background="@drawable/content_bg"
-                android:paddingStart="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description" />
-
-            <TextView
-                android:id="@+id/quantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="@string/quantity"
-                android:textColor="@color/gray_dark"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toTopOf="@id/share_btn"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description_content" />
-
-            <EditText
-                android:id="@+id/quantity_content"
-                android:layout_width="290dp"
-                android:layout_height="63dp"
-                android:layout_gravity="center"
-                android:background="@drawable/content_bg"
-                android:paddingStart="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description" />
-
+                android:src="@drawable/add_img" />
 
             <TextView
                 android:id="@+id/material"
@@ -148,23 +95,94 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/material"
                 android:textColor="@color/gray_dark"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toTopOf="@id/share_btn"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description_content" />
-
+                android:textSize="20dp" />
 
             <EditText
                 android:id="@+id/material_content"
                 android:layout_width="290dp"
                 android:layout_height="63dp"
                 android:layout_gravity="center"
-                android:background="@drawable/content_bg"
-                android:paddingStart="12dp"
+                android:background="@drawable/content_bg" />
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description" />
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/description"
+                android:textColor="@color/gray_dark"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/description_content"
+                android:layout_width="290dp"
+                android:layout_height="63dp"
+                android:layout_gravity="center"
+                android:background="@drawable/content_bg" />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/quantity"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="20dp"-->
+            <!--                android:layout_marginTop="15dp"-->
+            <!--                android:fontFamily="@font/poppins_medium"-->
+            <!--                android:text="@string/quantity"-->
+            <!--                android:textColor="@color/gray_dark"-->
+            <!--                android:textSize="20dp"-->
+            <!--                app:layout_constraintBottom_toTopOf="@id/share_btn"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/description_content" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/quantity_content"-->
+            <!--                android:layout_width="290dp"-->
+            <!--                android:layout_height="63dp"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:background="@drawable/content_bg"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/description" />-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--                <Spinner-->
+                <!--                    android:id="@+id/quantity_spinner"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="18dp"-->
+                <!--                    android:layout_marginTop="20dp"-->
+                <!--                    android:fontFamily="@font/poppins_" />-->
+
+                <ImageView
+                    android:id="@+id/dec_btn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/decrease_q" />
+
+                <EditText
+                    android:id="@+id/quantity_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20dp" />
+
+                <ImageView
+                    android:id="@+id/inc_btn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/increase_q" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/price"
@@ -186,9 +204,9 @@
                 android:layout_width="290dp"
                 android:layout_height="63dp"
                 android:layout_gravity="center"
-
                 android:background="@drawable/content_bg"
-                android:paddingStart="12dp"
+                android:enabled="false"
+                android:inputType="none"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/description" />
@@ -200,16 +218,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="15dp"
                 android:layout_marginBottom="50dp"
                 android:fontFamily="@font/poppins_medium"
-                android:paddingStart="40dp"
-                android:paddingEnd="40dp"
-                android:text="@string/save_changes"
-                android:textSize="18dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/quantity" />
+                android:text="@string/save"
+                android:textSize="18dp" />
 
         </LinearLayout>
 

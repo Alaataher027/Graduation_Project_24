@@ -84,12 +84,4 @@ class TokenManager(val context: Context) {
         return sharedPreferences.getString("fcm_token", null)
     }
 
-//    fun saveQuantityType(quantityType: String) {
-//        sharedPreferences.edit().putString("quantity_type", quantityType).apply()
-//    }
-//
-//    fun getQuantityType(): String? {
-//        return sharedPreferences.getString("quantity_type", null)
-//    }
-
 }

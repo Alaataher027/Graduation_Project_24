@@ -1,4 +1,4 @@
-package com.example.graduationproject.api.model.notifications
+package com.example.graduationproject.api.model.notifications.accANDrej
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
@@ -8,11 +8,11 @@ import com.google.gson.annotations.SerializedName
 data class SellerNotificationResponse(
 
     @field:SerializedName("data")
-	val data: List<DataItem?>? = null,
+    val data: List<DataItem?>? = null,
 
     @field:SerializedName("message")
-	val message: String? = null,
+    val message: String? = null,
 
     @field:SerializedName("status")
-	val status: Int? = null
+    val status: Int? = null
 ) : Parcelable

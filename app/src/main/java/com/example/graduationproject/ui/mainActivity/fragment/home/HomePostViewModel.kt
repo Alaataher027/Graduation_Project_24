@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.graduationproject.api.ApiManager
 import com.example.graduationproject.api.model.order.sendOrder.OrderResponse
+import com.example.graduationproject.api.model.post.createPost.ClassificationResponse
 import com.example.graduationproject.api.model.post.deletePost.DeletePostResponse
 import com.example.graduationproject.api.model.post.editPost.EditPostResponse
 import com.example.graduationproject.api.model.post.postHome.DataItem
@@ -47,6 +48,45 @@ class HomePostViewModel(private val tokenManager: TokenManager) : ViewModel() {
                 override fun onFailure(call: Call<HomePostResponse>, t: Throwable) {
                     Log.e("HomePostViewModel", "Failed to fetch home posts", t)
 
+                }
+            })
+    }
+
+    fun classifyImage(
+        accessToken: String,
+        image: MultipartBody.Part,
+        onResponse: (Boolean, String?, String?) -> Unit
+    ) {
+        ApiManager.getApisToken(accessToken).classifyImage(accessToken, image)
+            .enqueue(object : Callback<ClassificationResponse> {
+                override fun onResponse(
+                    call: Call<ClassificationResponse>,
+                    response: Response<ClassificationResponse>
+                ) {
+                    val classificationResponse: ClassificationResponse? = response.body()
+
+                    if (response.isSuccessful) {
+                        val status: Int? = classificationResponse?.status
+                        val message: String? = classificationResponse?.message
+                        val data: String? = classificationResponse?.data
+
+                        if (status == 200) {
+                            onResponse(true, message, data)
+                        } else {
+                            onResponse(false, message, null)
+                        }
+                    } else {
+                        onResponse(false, "Failed to classify image", null)
+                        Log.d(
+                            "CreatePostViewModel",
+                            "Failed to classify image: ${response.message()}"
+                        )
+                    }
+                }
+
+                override fun onFailure(call: Call<ClassificationResponse>, t: Throwable) {
+                    onResponse(false, "Network error: ${t.message}", null)
+                    Log.e("CreatePostViewModel", "Failed to classify image", t)
                 }
             })
     }
@@ -142,7 +182,7 @@ class HomePostViewModel(private val tokenManager: TokenManager) : ViewModel() {
                             Log.d("HomePostViewModel", "Failed to edit post: $message")
                         }
                     } else {
-                        Log.d("HomePostViewModel", "Failed to edit post:***${id}")
+                        Log.d("HomePostViewModel", "Failed to edit post:*${id}")
 
                         onError.invoke("Error ${response.code()}: ${response.message()}")
                     }
@@ -181,17 +221,14 @@ class HomePostViewModel(private val tokenManager: TokenManager) : ViewModel() {
 //                            }
                             Log.d("HomePostViewModel", "200, $message")
                             callback("$message")
-                        }
-                        else if (response.code() == 409){
+                        } else if (response.code() == 409) {
                             Log.d("HomePostViewModel", "409, $message")
                             callback("The product is not available.")
-                        }
-                        else {
+                        } else {
                             Log.d("HomePostViewModel", "else 200, $message")
                             callback("$message")
                         }
-                    }
-                    else {
+                    } else {
                         // Handle different status codes including 409
                         val status: Int = response.code()
                         val message: String? = response.body()?.message ?: response.message()
@@ -206,7 +243,6 @@ class HomePostViewModel(private val tokenManager: TokenManager) : ViewModel() {
                 }
             })
     }
-
 
 
 }

@@ -33,6 +33,9 @@
             android:name=".ui.AnotherSellerProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.AnotherCustomerProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".GuideActivity"
             android:exported="false" />
         <activity

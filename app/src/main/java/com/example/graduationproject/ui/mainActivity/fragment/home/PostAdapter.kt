@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.graduationproject.R
 import com.example.graduationproject.databinding.DialogConfirmOrderBinding
 import com.example.graduationproject.databinding.DialogPostGeneralBinding
+import com.example.graduationproject.ui.AnotherCustomerProfileActivity
 import com.example.graduationproject.ui.login.TokenManager
 import java.text.SimpleDateFormat
 import java.util.*
@@ -59,6 +60,15 @@ class PostAdapter(
 
         fun bind(post: DataItem?, userData: Data?) {
 
+            binding.name.setOnClickListener {
+                userData?.let { user ->
+                    val intent =
+                        Intent(binding.root.context, AnotherCustomerProfileActivity::class.java)
+                    intent.putExtra("USER_DATA", user)
+                    binding.root.context.startActivity(intent)
+                }
+            }
+
             // Bind post data to UI elements
             binding.quantityNum.text = post?.quantity
             binding.priceNum.text = post?.price
@@ -95,7 +105,6 @@ class PostAdapter(
                 }
 
 
-
             }
 
             // Add a click listener to handle "See More" button
@@ -107,7 +116,7 @@ class PostAdapter(
 
             val id: Int = tokenManager.getUserId()
 
-            if(post?.userId == id){
+            if (post?.userId == id) {
                 binding.orderBtn.isEnabled = false
 
             }
