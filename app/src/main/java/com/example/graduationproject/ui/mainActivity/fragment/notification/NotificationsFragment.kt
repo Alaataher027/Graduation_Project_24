@@ -11,8 +11,7 @@ import com.example.graduationproject.databinding.FragmentNotificationsBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivity.fragment.home.UserDataHomeViewModel
 
-class NotificationsFragment : Fragment(R.layout.fragment_notifications),
-    NotificationActionCallback {
+class NotificationsFragment : Fragment(R.layout.fragment_notifications), NotificationActionCallback {
 
     private lateinit var binding: FragmentNotificationsBinding
     private lateinit var notificationsViewModel: NotificationsViewModel
@@ -38,14 +37,14 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications),
         binding.reView.layoutManager = LinearLayoutManager(requireContext())
         binding.reView.adapter = notificationAdapter
 
-
         fetchNotifications()
     }
 
     private fun fetchNotifications() {
         binding.notificationImage.visibility = View.INVISIBLE
-        val accessToken = tokenManager.getToken()
-        notificationsViewModel.fetchNotifications(accessToken!!)
+        val accessToken = tokenManager.getToken() ?: return
+
+        notificationsViewModel.fetchNotifications(accessToken)
 
         notificationsViewModel.notifications.observe(viewLifecycleOwner, { notifications ->
             notificationAdapter.notifications = notifications

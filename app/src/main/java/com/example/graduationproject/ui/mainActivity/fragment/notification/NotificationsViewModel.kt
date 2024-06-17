@@ -8,6 +8,9 @@ import com.example.graduationproject.api.ApiManager
 import com.example.graduationproject.api.model.notifications.accANDrej.DataItem
 import com.example.graduationproject.api.model.order.accORrej.AcceptOrRejectOrderResponse
 import com.example.graduationproject.api.model.notifications.accANDrej.SellerNotificationResponse
+import com.example.graduationproject.api.model.notifications.yesAndNo.ConfirmNotificationSellerResponse
+import com.example.graduationproject.api.model.notifications.yesAndNo.DataItemS
+import com.example.graduationproject.api.model.order.yesORno.ConfirmNotificationResponse
 import com.example.graduationproject.ui.login.TokenManager
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,13 +18,21 @@ import retrofit2.Response
 
 class NotificationsViewModel(private val tokenManager: TokenManager) : ViewModel() {
 
-    private val _notifications = MutableLiveData<List<DataItem?>>()
-    val notifications: LiveData<List<DataItem?>> = _notifications
+    private val _notifications = MutableLiveData<List<Any?>>()
+    val notifications: LiveData<List<Any?>> = _notifications
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
+    private val waitingNotifications = mutableListOf<DataItem>()
+    private val confirmNotifications = mutableListOf<DataItemS>()
+
     fun fetchNotifications(accessToken: String) {
+        fetchAcceptOrRejectNotifications(accessToken)
+        fetchYesOrNoNotifications(accessToken)
+    }
+
+    private fun fetchAcceptOrRejectNotifications(accessToken: String) {
         ApiManager.getApisToken(accessToken).getWaitingNotification(accessToken)
             .enqueue(object : Callback<SellerNotificationResponse> {
                 override fun onResponse(
@@ -29,11 +40,11 @@ class NotificationsViewModel(private val tokenManager: TokenManager) : ViewModel
                     response: Response<SellerNotificationResponse>
                 ) {
                     if (response.isSuccessful) {
-                        _notifications.value = response.body()?.data ?: emptyList()
-
-                        val orderNotifiId = response.body()?.data?.firstOrNull()?.id ?: 0
-//                        tokenManager.saveOrderNotifiId(orderNotifiId)
-
+                        waitingNotifications.clear()
+                        response.body()?.data?.let {
+                            waitingNotifications.addAll(it.filterNotNull())
+                        }
+                        mergeAndSortNotifications()
                     } else {
                         _errorMessage.value = "Failed to load notifications"
                     }
@@ -45,7 +56,54 @@ class NotificationsViewModel(private val tokenManager: TokenManager) : ViewModel
             })
     }
 
-    fun acceptOrRejectOrder(orderId: String, condition: String, callback: NotificationActionCallback) {
+    private fun fetchYesOrNoNotifications(accessToken: String) {
+        ApiManager.getApisToken(accessToken).getConfirmNotificationSeller(accessToken)
+            .enqueue(object : Callback<ConfirmNotificationSellerResponse> {
+                override fun onResponse(
+                    call: Call<ConfirmNotificationSellerResponse>,
+                    response: Response<ConfirmNotificationSellerResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        confirmNotifications.clear()
+                        response.body()?.data?.let {
+                            confirmNotifications.addAll(it.filterNotNull())
+                        }
+                        mergeAndSortNotifications()
+                    } else {
+                        _errorMessage.value = "Failed to load notifications"
+                    }
+                }
+
+                override fun onFailure(
+                    call: Call<ConfirmNotificationSellerResponse>,
+                    t: Throwable
+                ) {
+                    _errorMessage.value = "Failed to load notifications: ${t.message}"
+                }
+            })
+    }
+
+    private fun mergeAndSortNotifications() {
+        val allNotifications = mutableListOf<Any?>()
+        allNotifications.addAll(waitingNotifications)
+        allNotifications.addAll(confirmNotifications)
+
+        allNotifications.sortByDescending { notification ->
+            when (notification) {
+                is DataItem -> notification.createdAt
+                is DataItemS -> notification.createdAt
+                else -> null
+            }
+        }
+
+        _notifications.value = allNotifications
+    }
+
+    fun acceptOrRejectOrder(
+        orderId: String,
+        condition: String,
+        callback: NotificationActionCallback
+    ) {
         val accessToken = tokenManager.getToken() ?: return
         ApiManager.getApisToken(accessToken)
             .acceptOrRejectOrder(accessToken, orderId, condition)
@@ -63,11 +121,11 @@ class NotificationsViewModel(private val tokenManager: TokenManager) : ViewModel
                                 callback.onActionSuccess("${response.body()?.message} Thank you for responding")
                             }
                         }
+
                         else -> callback.onActionFailure("Failed to $condition order")
                     }
                     Log.d("Notification", "${response.body()?.status}")
                     Log.d("Notification", "${response.code()}")
-
 
                     fetchNotifications(accessToken) // Refresh notifications
                 }
@@ -77,4 +135,28 @@ class NotificationsViewModel(private val tokenManager: TokenManager) : ViewModel
                 }
             })
     }
+
+    fun yesOrNoOrder(orderId: String, condition: String, callback: NotificationActionCallback) {
+        val accessToken = tokenManager.getToken() ?: return
+        ApiManager.getApisToken(accessToken)
+            .yesOrNoConfirm(accessToken, orderId, condition)
+            .enqueue(object : Callback<ConfirmNotificationResponse> {
+                override fun onResponse(
+                    call: Call<ConfirmNotificationResponse>,
+                    response: Response<ConfirmNotificationResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        callback.onActionSuccess("${response.body()?.message}")
+                    } else {
+                        callback.onActionFailure("Failed to $condition order")
+                    }
+                }
+
+                override fun onFailure(call: Call<ConfirmNotificationResponse>, t: Throwable) {
+                    callback.onActionFailure("Failed to $condition order: ${t.message}")
+                }
+            })
+    }
+
+
 }
