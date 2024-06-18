@@ -5,7 +5,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 @Parcelize
-data class DataItem(
+data class DataItemm(
 
 	@field:SerializedName("to_who")
 	val toWho: String? = null,

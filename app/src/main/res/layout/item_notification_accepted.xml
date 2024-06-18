@@ -2,16 +2,16 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="15dp"
-    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginStart="20dp"
+    android:layout_marginTop="5dp"
     android:layout_marginEnd="20dp"
     android:layout_marginBottom="15dp"
-    android:layout_width="match_parent"
-    app:cardElevation="10dp"
-    app:cardBackgroundColor="#F6F6F6"
     android:backgroundTint="#F6F6F6"
-    android:layout_height="wrap_content">
+    app:cardBackgroundColor="#F6F6F6"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="10dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,11 +24,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
             android:foregroundGravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/name"
             tools:src="@drawable/check_green" />
 
 
@@ -41,18 +42,33 @@
             android:fontFamily="@font/nunitobold"
             android:textColor="#8E8C8C"
             android:textSize="15dp"
+            app:layout_constraintEnd_toStartOf="@id/accept"
             app:layout_constraintStart_toEndOf="@id/check_mark"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Eman fayed accepted your request" />
+            tools:text="Eman fayed" />
+
+
+        <TextView
+            android:id="@+id/accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/nunitobold"
+            android:textColor="#8E8C8C"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@id/name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="accepted your request" />
 
         <TextView
             android:id="@+id/time_notification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
             android:fontFamily="@font/nunitobold"
             android:textColor="#B5B5B5"
             android:textSize="12dp"
-            android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/name"
             tools:text="Since 3 minutes" />

@@ -11,17 +11,22 @@ import com.example.graduationproject.R
 import com.example.graduationproject.databinding.FragmentNotificationsBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivity.fragment.home.UserDataHomeViewModel
+import com.example.graduationproject.ui.mainActivity.fragment.notification.customerNotification.NotificationCustomerAdapter
+import com.example.graduationproject.ui.mainActivity.fragment.notification.customerNotification.NotificationsCustomerViewModelFactory
+import com.example.graduationproject.ui.mainActivity.fragment.notification.customerNotification.NotificationsCustomerViewModel
 import com.example.graduationproject.ui.mainActivity.fragment.notification.sellerNotification.NotificationSellerAdapter
 import com.example.graduationproject.ui.mainActivity.fragment.notification.sellerNotification.NotificationsSellerViewModel
-import com.example.graduationproject.ui.mainActivity.fragment.notification.sellerNotification.NotificationsViewModelFactory
+import com.example.graduationproject.ui.mainActivity.fragment.notification.sellerNotification.NotificationsSellerViewModelFactory
 
 class NotificationsFragment : Fragment(R.layout.fragment_notifications),
     NotificationActionCallback {
 
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var binding: FragmentNotificationsBinding
+    private lateinit var notificationsCustomerViewModel: NotificationsCustomerViewModel
     private lateinit var notificationsSellerViewModel: NotificationsSellerViewModel
     private lateinit var notificationSellerAdapter: NotificationSellerAdapter
+    private lateinit var notificationCustomerAdapter: NotificationCustomerAdapter
     private lateinit var userDataHomeViewModel: UserDataHomeViewModel
     private lateinit var tokenManager: TokenManager
 
@@ -32,26 +37,72 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications),
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout)
 
         tokenManager = TokenManager(requireContext())  // Initialize TokenManager
-        val factory = NotificationsViewModelFactory(tokenManager)
+
+        if (tokenManager.getUserType() == "Seller") {
+            binding.reViewSeller.visibility = View.VISIBLE
+            binding.reViewCustomer.visibility = View.INVISIBLE
+
+        } else if (tokenManager.getUserType() == "Customer") {
+            binding.reViewSeller.visibility = View.INVISIBLE
+            binding.reViewCustomer.visibility = View.VISIBLE
+        }
+
+        val factorySeller = NotificationsSellerViewModelFactory(tokenManager)
+        val factoryCustomer = NotificationsCustomerViewModelFactory(tokenManager)
+
         notificationsSellerViewModel =
-            ViewModelProvider(this, factory).get(NotificationsSellerViewModel::class.java)
+            ViewModelProvider(this, factorySeller).get(NotificationsSellerViewModel::class.java)
+        notificationsCustomerViewModel =
+            ViewModelProvider(this, factoryCustomer).get(NotificationsCustomerViewModel::class.java)
+
+
         userDataHomeViewModel = ViewModelProvider(this).get(UserDataHomeViewModel::class.java)
 
         val accessToken = tokenManager.getToken() ?: return  // Get access token, or return if null
 
         notificationSellerAdapter =
-            NotificationSellerAdapter(notificationsSellerViewModel, userDataHomeViewModel, accessToken, this)
+            NotificationSellerAdapter(
+                notificationsSellerViewModel,
+                userDataHomeViewModel,
+                accessToken,
+                this
+            )
 
-        binding.reView.layoutManager = LinearLayoutManager(requireContext())
-        binding.reView.adapter = notificationSellerAdapter
+        notificationCustomerAdapter =
+            NotificationCustomerAdapter(
+                notificationsCustomerViewModel,
+                userDataHomeViewModel,
+                accessToken,
+                this
+            )
 
-        fetchNotifications()
-        swipeRefreshLayout.setOnRefreshListener {
-            fetchNotifications()
+        //seller
+        binding.reViewSeller.layoutManager = LinearLayoutManager(requireContext())
+        binding.reViewSeller.adapter = notificationSellerAdapter
+
+        // customer
+        binding.reViewCustomer.layoutManager = LinearLayoutManager(requireContext())
+        binding.reViewCustomer.adapter = notificationCustomerAdapter
+
+        fetchSellerNotifications()
+        fetchCustomerNotifications()
+
+
+
+        if (tokenManager.getUserType() == "Seller") {
+            swipeRefreshLayout.setOnRefreshListener {
+                fetchSellerNotifications()
+            }
+
+        } else if (tokenManager.getUserType() == "Customer") {
+            swipeRefreshLayout.setOnRefreshListener {
+                fetchCustomerNotifications()
+            }
         }
+
     }
 
-    private fun fetchNotifications() {
+    private fun fetchSellerNotifications() {
         binding.notificationImage.visibility = View.INVISIBLE
         val accessToken = tokenManager.getToken() ?: return
 
@@ -62,6 +113,24 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications),
         })
 
         notificationsSellerViewModel.errorMessage.observe(viewLifecycleOwner, { errorMessage ->
+            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+        })
+
+        swipeRefreshLayout.isRefreshing = false
+
+    }
+
+    private fun fetchCustomerNotifications() {
+        binding.notificationImage.visibility = View.INVISIBLE
+        val accessToken = tokenManager.getToken() ?: return
+
+        notificationsCustomerViewModel.fetchNotifications(accessToken)
+
+        notificationsCustomerViewModel.notifications.observe(viewLifecycleOwner, { notifications ->
+            notificationCustomerAdapter.notifications = notifications
+        })
+
+        notificationsCustomerViewModel.errorMessage.observe(viewLifecycleOwner, { errorMessage ->
             Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
         })
 

@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 data class NormalNotificationResponse(
 
 	@field:SerializedName("data")
-	val data: List<DataItem?>? = null,
+	val data: List<DataItemm?>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,

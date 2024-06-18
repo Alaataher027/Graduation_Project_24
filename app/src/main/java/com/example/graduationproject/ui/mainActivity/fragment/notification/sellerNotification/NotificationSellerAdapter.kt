@@ -94,7 +94,7 @@ class NotificationSellerAdapter(
                             userNameCache[userId.toInt()] = name
                         },
                         onError = { errorMessage ->
-                            Log.e("NotificationAdapter", "Error fetching user data: $errorMessage")
+                            Log.e("NotificationAdapterS", "Error fetching user data: $errorMessage")
                             waitingBinding.name.text = "Unknown"
                         }
                     )
@@ -126,11 +126,11 @@ class NotificationSellerAdapter(
                     // confirmBinding.name.text = "Unknown"
                     userDataHomeViewModel.getData(accessToken, userId.toInt(),
                         onDataLoaded = { data ->
-                            Log.e("NotificationAdapter", " fetched user data $data")
+                            Log.e("NotificationAdapterS", " fetched user data $data")
 
                         },
                         onError = { errorMessage ->
-                            Log.e("NotificationAdapter", "Error fetching user data: $errorMessage")
+                            Log.e("NotificationAdapterS", "Error fetching user data: $errorMessage")
                             // confirmBinding.name.text = "Unknown"
                         }
                     )
