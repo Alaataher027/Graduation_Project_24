@@ -117,6 +117,11 @@
     <string name="fromm">From:</string>
     <string name="quantity_kilo">Quantity (Kilo)</string>
     <string name="has_the_order_been_received_from_you">Has the order been received from you?</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+    <string name="alumetal">Alumetal</string>
 
     <string-array name="quantity_options">
         <item>Quantity (pieces)</item>

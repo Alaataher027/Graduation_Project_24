@@ -11,6 +11,8 @@ import com.example.graduationproject.api.model.login.LoginResponse2
 import com.example.graduationproject.api.model.profile.ProfileResponse
 import com.example.graduationproject.api.model.register.RegisterResponse2
 import com.example.graduationproject.api.model.editProfile.EditProfileResponse
+import com.example.graduationproject.api.model.history.HistoryCustomerResponse
+import com.example.graduationproject.api.model.history.HistorySellerResponse
 import com.example.graduationproject.api.model.imageProfile.ImageProfileResponse
 import com.example.graduationproject.api.model.login.loginGoogle.LoginGoogleResponse
 import com.example.graduationproject.api.model.order.accORrej.AcceptOrRejectOrderResponse
@@ -352,7 +354,6 @@ interface WebServices {
     ): Call<ConfirmNotificationResponse>
 
 
-
     @GET("posts/order/chart/{buyer_id}")
     fun getOrdersForUser(
         @Header("Authorization") accessToken: String,
@@ -365,6 +366,20 @@ interface WebServices {
         @Path("post_id") post_id: Int
     ): Call<GetPostByIdResponse>
 
+    //https://alshaerawy.aait-sa.com/api/posts/order/seller/history/33 {user id}
+    @GET("posts/order/seller/history/{user_id}")
+    fun getSellerHistory(
+        @Header("Authorization") accessToken: String,
+        @Path("user_id") user_id: Int
+    ): Call<HistorySellerResponse>
+
+
+    //https://alshaerawy.aait-sa.com/api/posts/order/buyer/history/33 {user id}
+    @GET("posts/order/buyer/history/{user_id}")
+    fun getCustomerHistory(
+        @Header("Authorization") accessToken: String,
+        @Path("user_id") user_id: Int
+    ): Call<HistoryCustomerResponse>
 
     @GET("lookups/govs")
     fun getLocationData(): Call<LocationResponse>

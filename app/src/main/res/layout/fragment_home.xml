@@ -194,7 +194,7 @@
                     android:fontFamily="@font/poppins_medium"
                     android:minWidth="150dp"
                     android:minHeight="30dp"
-                    android:text="@string/steel"
+                    android:text="@string/alumetal"
                     android:textColor="@color/gray_dark"
                     android:textSize="20dp" />
 

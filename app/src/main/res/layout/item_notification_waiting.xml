@@ -72,9 +72,9 @@
             android:drawableLeft="@drawable/baseline_cancel_24"
             android:minWidth="120dp"
             android:minHeight="50dp"
-            android:text="Reject"
+            android:text="@string/reject"
             android:textColor="#BB0000"
-            android:textSize="15dp"
+            android:textSize="13dp"
             app:layout_constraintEnd_toStartOf="@+id/accept_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/time_notification" />
@@ -92,9 +92,9 @@
             android:drawableLeft="@drawable/vector_acc"
             android:minWidth="120dp"
             android:minHeight="50dp"
-            android:text="Accept"
+            android:text="@string/accept"
             android:textColor="@color/white"
-            android:textSize="15dp"
+            android:textSize="13dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cancel_btn"
             app:layout_constraintTop_toBottomOf="@id/time_notification" />

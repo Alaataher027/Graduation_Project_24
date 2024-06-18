@@ -18,6 +18,7 @@ class GetStarted : AppCompatActivity() {
         viewBinding.startBtn.setOnClickListener {
             val intent = Intent(this, LoginOrRegister::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

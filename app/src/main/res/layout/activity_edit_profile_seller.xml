@@ -253,7 +253,7 @@
                 android:paddingVertical="15dp"
                 android:text="@string/save_changes"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
 
         </LinearLayout>
 

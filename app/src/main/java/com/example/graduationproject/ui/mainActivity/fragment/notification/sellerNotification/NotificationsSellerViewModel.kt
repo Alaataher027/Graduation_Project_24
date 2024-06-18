@@ -1,4 +1,4 @@
-package com.example.graduationproject.ui.mainActivity.fragment.notification
+package com.example.graduationproject.ui.mainActivity.fragment.notification.sellerNotification
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -12,11 +12,12 @@ import com.example.graduationproject.api.model.notifications.yesAndNo.ConfirmNot
 import com.example.graduationproject.api.model.notifications.yesAndNo.DataItemS
 import com.example.graduationproject.api.model.order.yesORno.ConfirmNotificationResponse
 import com.example.graduationproject.ui.login.TokenManager
+import com.example.graduationproject.ui.mainActivity.fragment.notification.NotificationActionCallback
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NotificationsViewModel(private val tokenManager: TokenManager) : ViewModel() {
+class NotificationsSellerViewModel(private val tokenManager: TokenManager) : ViewModel() {
 
     private val _notifications = MutableLiveData<List<Any?>>()
     val notifications: LiveData<List<Any?>> = _notifications

@@ -102,7 +102,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     R.color.white
                 )
             )
-            searchViewModel.filterByMaterial(listOf("معدن", "metal"))
+            searchViewModel.filterByMaterial(listOf("حديد", "metal"))
         }
 
         // (3) Glass button
@@ -154,7 +154,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     R.color.white
                 )
             )
-            searchViewModel.filterByMaterial(listOf("حديد", "steel"))
+            searchViewModel.filterByMaterial(listOf("الموتال", "alumetal"))
         }
 
         // (6) Wood button

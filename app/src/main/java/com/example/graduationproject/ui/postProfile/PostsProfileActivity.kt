@@ -1,16 +1,18 @@
 package com.example.graduationproject.ui.postProfile
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityPostsProfileBinding
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivity.fragment.home.HomePostViewModel
 import com.example.graduationproject.ui.mainActivity.fragment.home.UserDataHomeViewModel
+import com.example.graduationproject.ui.postProfile.historySeller.HistorySellerActivity
+import com.example.graduationproject.ui.postProfile.historyCustomer.HistoryCustomerActivity
 
 class PostsProfileActivity : AppCompatActivity() {
 
@@ -69,6 +71,17 @@ class PostsProfileActivity : AppCompatActivity() {
 
     private fun onClickHistoryIcon() {
         viewBinding.historyBtn.setOnClickListener {
+
+            if (tokenManager.getUserType() == "Seller") {
+
+                val intent = Intent(this, HistorySellerActivity::class.java)
+                startActivity(intent)
+
+            } else if (tokenManager.getUserType() == "Customer") {
+                val intent = Intent(this, HistoryCustomerActivity::class.java)
+                startActivity(intent)
+
+            }
 
         }
     }

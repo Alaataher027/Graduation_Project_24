@@ -1,4 +1,4 @@
-package com.example.graduationproject.ui.mainActivity.fragment.notification
+package com.example.graduationproject.ui.mainActivity.fragment.notification.sellerNotification
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,15 +11,16 @@ import com.example.graduationproject.api.model.notifications.accANDrej.DataItem
 import com.example.graduationproject.api.model.notifications.yesAndNo.DataItemS
 import com.example.graduationproject.databinding.ItemNotificationConfirmBinding
 import com.example.graduationproject.ui.mainActivity.fragment.home.UserDataHomeViewModel
+import com.example.graduationproject.ui.mainActivity.fragment.notification.NotificationActionCallback
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NotificationAdapter(
-    private val viewModel: NotificationsViewModel,
+class NotificationSellerAdapter(
+    private val viewModel: NotificationsSellerViewModel,
     private val userDataHomeViewModel: UserDataHomeViewModel,
     private val accessToken: String,
     private val callback: NotificationActionCallback
-) : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
+) : RecyclerView.Adapter<NotificationSellerAdapter.NotificationViewHolder>() {
 
     var notifications: List<Any?> = emptyList()
         set(value) {

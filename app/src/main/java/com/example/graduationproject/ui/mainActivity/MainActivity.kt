@@ -14,7 +14,6 @@ import com.example.graduationproject.ui.listActivitySeller.ListComponents.Seller
 import com.example.graduationproject.ui.login.TokenManager
 import com.example.graduationproject.ui.mainActivity.fragment.home.HomeFragment
 import com.example.graduationproject.ui.mainActivity.fragment.notification.NotificationsFragment
-import com.example.graduationproject.ui.mainActivity.fragment.chatFragment.ChatFragment
 import com.example.graduationproject.ui.mainActivity.fragment.createPost.CreatPostActivity
 import com.example.graduationproject.ui.mainActivity.fragment.home.UserDataHomeViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView

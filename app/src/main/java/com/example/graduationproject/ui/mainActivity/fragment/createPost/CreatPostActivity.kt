@@ -34,7 +34,7 @@ class CreatPostActivity : AppCompatActivity() {
 
     // Material options to display in the dialog
     private val materialOptions = arrayOf(
-        "steel",
+        "alumetal",
         "wood",
         "metal",
         "plastic",
@@ -47,9 +47,9 @@ class CreatPostActivity : AppCompatActivity() {
 
     // Price per unit for each material type
     private val materialPrices = mapOf(
-        "steel" to 16,
+        "alumetal" to 70,
         "wood" to 8,
-        "metal" to 12,
+        "metal" to 18,
         "plastic" to 15,
         "cardboard" to 6,
         "white-glass" to 14,

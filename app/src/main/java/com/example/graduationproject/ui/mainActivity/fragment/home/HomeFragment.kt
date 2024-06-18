@@ -97,7 +97,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         // (2) Metal button
         viewBinding.metalBtn.setOnClickListener {
-            viewBinding.priceNum.text = "60"
+            viewBinding.priceNum.text = "20"
             resetButtonsState() // Reset other buttons' states
             viewBinding.metalBtn.setBackgroundResource(R.drawable.rec_press)
             viewBinding.metalBtn.setTextColor(
@@ -106,12 +106,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     R.color.white
                 )
             )
-            filterPosts(listOf("معدن", "metal"))
+            filterPosts(listOf("حديد", "metal"))
         }
 
         // (3) Glass button
         viewBinding.glassBtn.setOnClickListener {
-            viewBinding.priceNum.text = "20"
+            viewBinding.priceNum.text = "14"
             resetButtonsState() // Reset other buttons' states
             viewBinding.glassBtn.setBackgroundResource(R.drawable.rec_press)
             viewBinding.glassBtn.setTextColor(
@@ -125,7 +125,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         // (7) brown Glass button
         viewBinding.brownGlassBtn.setOnClickListener {
-            viewBinding.priceNum.text = "15"
+            viewBinding.priceNum.text = "14"
             resetButtonsState() // Reset other buttons' states
             viewBinding.brownGlassBtn.setBackgroundResource(R.drawable.rec_press)
             viewBinding.brownGlassBtn.setTextColor(
@@ -139,7 +139,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         // (4) Paper button
         viewBinding.paperBtn.setOnClickListener {
-            viewBinding.priceNum.text = "6"
+            viewBinding.priceNum.text = "15"
             resetButtonsState() // Reset other buttons' states
             viewBinding.paperBtn.setBackgroundResource(R.drawable.rec_press)
             viewBinding.paperBtn.setTextColor(
@@ -153,7 +153,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         // (5) Steel button
         viewBinding.steelBtn.setOnClickListener {
-            viewBinding.priceNum.text = "20"
+            viewBinding.priceNum.text = "70"
             resetButtonsState() // Reset other buttons' states
             viewBinding.steelBtn.setBackgroundResource(R.drawable.rec_press)
             viewBinding.steelBtn.setTextColor(
@@ -162,12 +162,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     R.color.white
                 )
             )
-            filterPosts(listOf("حديد", "steel"))
+            filterPosts(listOf("الوميتال", "alumetal"))
         }
 
         // (6) Wood button
         viewBinding.woodBtn.setOnClickListener {
-            viewBinding.priceNum.text = "15"
+            viewBinding.priceNum.text = "8"
             resetButtonsState() // Reset other buttons' states
             viewBinding.woodBtn.setBackgroundResource(R.drawable.rec_press)
             viewBinding.woodBtn.setTextColor(
@@ -181,7 +181,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         // (8) cardboard button
         viewBinding.cardboard.setOnClickListener {
-            viewBinding.priceNum.text = "7"
+            viewBinding.priceNum.text = "6"
             resetButtonsState() // Reset other buttons' states
             viewBinding.cardboard.setBackgroundResource(R.drawable.rec_press)
             viewBinding.cardboard.setTextColor(

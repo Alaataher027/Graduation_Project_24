@@ -22,16 +22,19 @@ class LoginOrRegister : AppCompatActivity() {
         viewBinding.registerBtn.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         viewBinding.loginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         viewBinding.guest.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         val profileBtn = viewBinding.registerBtn
