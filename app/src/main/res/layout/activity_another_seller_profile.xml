@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AnotherSellerProfileActivity">
+    tools:context=".ui.anotherUserProfile.AnotherSellerProfileActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -61,16 +61,8 @@
                     android:layout_gravity="start"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/button_back2" />
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/setting_btn"-->
-<!--                    android:layout_width="30dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:layout_gravity="end"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:layout_marginEnd="20dp"-->
-<!--                    android:src="@drawable/ic_settings" />-->
+                    android:src="@drawable/button_back2"
+                    android:onClick="onBackPressed"/>
 
                 <TextView
                     android:id="@+id/name"
@@ -98,7 +90,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline1" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_profile"
         android:layout_width="120dp"
         android:layout_height="120dp"
@@ -108,18 +100,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline1" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/name_user"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="23dp"-->
-<!--        android:fontFamily="@font/poppins_medium"-->
-<!--        android:textColor="@color/my_light_primary"-->
-<!--        android:textSize="20dp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/guideline2" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/name_user"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="23dp"-->
+    <!--        android:fontFamily="@font/poppins_medium"-->
+    <!--        android:textColor="@color/my_light_primary"-->
+    <!--        android:textSize="20dp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/guideline2" />-->
 
 
     <TextView
@@ -128,7 +120,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/seller"
-        android:textColor="@color/gray_name_user"
+        android:textColor="@color/option_text_color"
         android:textSize="18dp"
         android:textStyle="bold"
         android:layout_marginTop="8dp"
@@ -136,18 +128,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image_profile" />
-
-    <ImageButton
-        android:id="@+id/refresh_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="345dp"
-        android:background="@color/white"
-        android:src="@drawable/baseline_refresh_24"
-        app:layout_constraintEnd_toStartOf="@id/posts_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <Button
         android:id="@+id/posts_btn"
@@ -215,20 +195,22 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/name"
-                android:textColor="@color/gray_name_user"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textColor="@color/option_text_color"
+                android:layout_marginStart="5dp"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/name_seller"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
+                android:paddingStart="20dp"
+                android:paddingVertical="15dp"
+                android:text="nada ahmed"
                 android:background="@drawable/edit_text_bg"
                 android:fontFamily="@font/poppins_medium"
-
-                android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="19dp" />
 
 
@@ -237,21 +219,22 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Phone number"
-                android:textColor="@color/gray_name_user"
-
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textColor="@color/option_text_color"
+                android:layout_marginStart="5dp"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/phone_sellertextView"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
+                android:paddingStart="20dp"
+                android:paddingVertical="15dp"
+                android:text="01125632518"
+                android:textColor="@color/black"
                 android:background="@drawable/edit_text_bg"
-
                 android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
                 android:textSize="19dp" />
 
 
@@ -260,20 +243,22 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Governorate"
-                android:textColor="@color/gray_name_user"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textColor="@color/option_text_color"
+                android:layout_marginStart="5dp"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/governorate_seller"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
+                android:paddingStart="20dp"
+                android:paddingVertical="15dp"
+                android:text="damietta"
+                android:textColor="@color/black"
                 android:background="@drawable/edit_text_bg"
                 android:fontFamily="@font/poppins_medium"
-
-                android:gravity="center"
                 android:textSize="19dp" />
 
             <TextView
@@ -281,19 +266,22 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/city"
-                android:textColor="@color/gray_name_user"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textColor="@color/option_text_color"
+                android:layout_marginStart="5dp"
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/city_seller"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
+                android:paddingStart="20dp"
+                android:paddingVertical="15dp"
+                android:text="faraskor"
                 android:background="@drawable/edit_text_bg"
+                android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
                 android:textSize="19dp" />
 
 
@@ -302,19 +290,23 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/street"
-                android:textColor="@color/gray_name_user"
+                android:textColor="@color/option_text_color"
+                android:layout_marginStart="5dp"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                />
 
             <TextView
                 android:id="@+id/street_seller"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="25dp"
+                android:layout_marginBottom="15dp"
+                android:paddingStart="20dp"
+                android:paddingVertical="15dp"
+                android:text="helaly street"
                 android:background="@drawable/edit_text_bg"
+                android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
                 android:textSize="19dp" />
 
             <TextView
@@ -322,19 +314,22 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/residential_quarter"
-                android:textColor="@color/gray_name_user"
+                android:textColor="@color/option_text_color"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_marginStart="5dp"/>
 
             <TextView
                 android:id="@+id/quarter_seller"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="25dp"
+                android:layout_marginBottom="35dp"
+                android:paddingStart="20dp"
+                android:paddingVertical="15dp"
+                android:text="nnnnn"
                 android:background="@drawable/edit_text_bg"
+                android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
                 android:textSize="19dp" />
 
 

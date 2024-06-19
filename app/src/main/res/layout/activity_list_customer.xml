@@ -24,14 +24,14 @@
             android:layout_marginTop="15dp"
             android:src="@drawable/button_back2" />
 
-        <ImageView
-            android:id="@+id/search_btn"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_gravity="end"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            android:src="@drawable/search_green" />
+<!--        <ImageView-->
+<!--            android:id="@+id/search_btn"-->
+<!--            android:layout_width="42dp"-->
+<!--            android:layout_height="42dp"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginEnd="15dp"-->
+<!--            android:src="@drawable/search_green" />-->
 
         <TextView
             android:id="@+id/menu_title"

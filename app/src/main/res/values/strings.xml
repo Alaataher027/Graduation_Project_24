@@ -122,6 +122,8 @@
     <string name="reject">Reject</string>
     <string name="accept">Accept</string>
     <string name="alumetal">Alumetal</string>
+    <string name="if_the_classification_was_done_incorrectly">If the classification was done incorrectly</string>
+    <string name="please_enter_the_category_manually">please enter the Category manually :</string>
 
     <string-array name="quantity_options">
         <item>Quantity (pieces)</item>

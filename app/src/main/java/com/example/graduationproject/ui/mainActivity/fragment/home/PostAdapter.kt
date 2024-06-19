@@ -17,11 +17,11 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import com.example.graduationproject.R
 import com.example.graduationproject.databinding.DialogConfirmOrderBinding
 import com.example.graduationproject.databinding.DialogPostGeneralBinding
-import com.example.graduationproject.ui.AnotherCustomerProfileActivity
+import com.example.graduationproject.ui.anotherUserProfile.AnotherCustomerProfileActivity
+import com.example.graduationproject.ui.anotherUserProfile.AnotherSellerProfileActivity
 import com.example.graduationproject.ui.login.TokenManager
 import java.text.SimpleDateFormat
 import java.util.*
@@ -60,12 +60,15 @@ class PostAdapter(
 
         fun bind(post: DataItem?, userData: Data?) {
 
-            binding.name.setOnClickListener {
-                userData?.let { user ->
-                    val intent =
-                        Intent(binding.root.context, AnotherCustomerProfileActivity::class.java)
-                    intent.putExtra("USER_DATA", user)
-                    binding.root.context.startActivity(intent)
+
+            post?.let { postData ->
+
+                binding.name.setOnClickListener {
+                    openUserProfile(userData)
+                }
+
+                binding.PersonalImage.setOnClickListener {
+                    openUserProfile(userData)
                 }
             }
 
@@ -144,6 +147,21 @@ class PostAdapter(
                 showConfirmOrderDialog(post)
             }
         }
+
+
+        //  function to open profile user
+        private fun openUserProfile(userData: Data?) {
+            userData?.let { user ->
+                val intent = if (user.userType == "Seller") {
+                    Intent(binding.root.context, AnotherSellerProfileActivity::class.java)
+                } else {
+                    Intent(binding.root.context, AnotherCustomerProfileActivity::class.java)
+                }
+                intent.putExtra("USER_DATA", user)
+                binding.root.context.startActivity(intent)
+            }
+        }
+
 
         private fun showConfirmOrderDialog(post: DataItem?) {
             val dialogBinding =

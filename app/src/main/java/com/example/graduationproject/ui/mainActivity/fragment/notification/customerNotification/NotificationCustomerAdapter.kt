@@ -161,7 +161,7 @@ class NotificationCustomerAdapter(
                         },
                         onError = { errorMessage ->
                             binding.name.text = "Unknown"
-                            Log.e("NotificationCustomerAdapter", "Error fetching user data: $errorMessage")
+                            Log.e("NotificationAdapterC", "Error fetching user data: $errorMessage")
                         }
                     )
                 }
@@ -249,7 +249,7 @@ class NotificationCustomerAdapter(
                         },
                         onError = { errorMessage ->
                             binding.name.text = "Unknown"
-                            Log.e("NotificationCustomerAdapter", "Error fetching user data: $errorMessage")
+                            Log.e("NotificationAdapterC", "Error fetching user data: $errorMessage")
                         }
                     )
                 }
@@ -287,7 +287,7 @@ class NotificationCustomerAdapter(
                         },
                         onError = { errorMessage ->
                             binding.name.text = "Unknown"
-                            Log.e("NotificationCustomerAdapter", "Error fetching user data: $errorMessage")
+                            Log.e("NotificationAdapterC", "Error fetching user data: $errorMessage")
                         }
                     )
                 }

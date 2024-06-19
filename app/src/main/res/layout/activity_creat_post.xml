@@ -177,7 +177,7 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
-                    android:src="@drawable/decrease_q" />
+                    android:src="@drawable/decrease_btn" />
 
                 <EditText
                     android:id="@+id/quantity_content"
@@ -192,7 +192,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="30dp"
-                    android:src="@drawable/increase_q" />
+                    android:src="@drawable/increase_btn" />
             </LinearLayout>
 
 
