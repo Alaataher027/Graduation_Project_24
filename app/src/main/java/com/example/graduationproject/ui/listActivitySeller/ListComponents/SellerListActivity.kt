@@ -102,9 +102,9 @@ class SellerListActivity : AppCompatActivity() {
         aboutUSBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
         aboutUSBtn.backgroundTintList = null
 
-        val settingsBtn = binding.settingsBtn
-        settingsBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
-        settingsBtn.backgroundTintList = null
+//        val settingsBtn = binding.settingsBtn
+//        settingsBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+//        settingsBtn.backgroundTintList = null
 
         val guidanceBtn = binding.guidBtn
         guidanceBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
@@ -114,9 +114,9 @@ class SellerListActivity : AppCompatActivity() {
 //        materialBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
 //        materialBtn.backgroundTintList = null
 
-        val TecBtn = binding.techBtn
-        TecBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
-        TecBtn.backgroundTintList = null
+//        val TecBtn = binding.techBtn
+//        TecBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+//        TecBtn.backgroundTintList = null
 
 //        val ordersBtn = binding.orderBtn
 //        ordersBtn.setBackgroundResource(R.drawable.rectangle_btn_list)

@@ -180,22 +180,22 @@
                 android:textColor="#898A89"
                 android:textSize="20dp" />
 
-            <!-- Button 5 -->
-            <Button
-                android:id="@+id/settings_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:backgroundTint="#F5F6F5"
-                android:backgroundTintMode="src_atop"
-                android:drawableLeft="@drawable/setting_list_ic"
-                android:fontFamily="@font/poppins_medium"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="@string/settings"
+<!--            &lt;!&ndash; Button 5 &ndash;&gt;-->
+<!--            <Button-->
+<!--                android:id="@+id/settings_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:backgroundTint="#F5F6F5"-->
+<!--                android:backgroundTintMode="src_atop"-->
+<!--                android:drawableLeft="@drawable/setting_list_ic"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:paddingBottom="15dp"-->
+<!--                android:text="@string/settings"-->
 
-                android:textColor="#898A89"
-                android:textSize="20dp" />
+<!--                android:textColor="#898A89"-->
+<!--                android:textSize="20dp" />-->
 
             <!-- Button 6 -->
             <Button
@@ -230,21 +230,21 @@
 <!--                android:textColor="#898A89"-->
 <!--                android:textSize="20dp" />-->
 
-            <Button
-                android:id="@+id/tech_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:backgroundTint="#F5F6F5"
-                android:backgroundTintMode="src_atop"
-                android:drawableLeft="@drawable/tech_ic"
-                android:fontFamily="@font/poppins_medium"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
+<!--            <Button-->
+<!--                android:id="@+id/tech_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:backgroundTint="#F5F6F5"-->
+<!--                android:backgroundTintMode="src_atop"-->
+<!--                android:drawableLeft="@drawable/tech_ic"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:paddingBottom="15dp"-->
 
-                android:text="@string/technical_support"
-                android:textColor="#898A89"
-                android:textSize="20dp" />
+<!--                android:text="@string/technical_support"-->
+<!--                android:textColor="#898A89"-->
+<!--                android:textSize="20dp" />-->
 
             <Button
                 android:id="@+id/order_btn"

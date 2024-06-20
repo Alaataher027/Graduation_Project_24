@@ -13,7 +13,7 @@ import java.util.Locale
 import java.util.TimeZone
 
 
-class SavedPostsAdapter : RecyclerView.Adapter<SavedPostsAdapter.PostViewHolder>() {
+class SavedPostsAdapter(private val onItemClick: (DataItem?) -> Unit) : RecyclerView.Adapter<SavedPostsAdapter.PostViewHolder>() {
 
     var savedPosts: List<DataItem?> = emptyList()
         set(value) {
@@ -33,23 +33,20 @@ class SavedPostsAdapter : RecyclerView.Adapter<SavedPostsAdapter.PostViewHolder>
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         holder.bind(savedPosts[position] , userDataMap[savedPosts[position]?.userId])
+        holder.itemView.setOnClickListener {
+            onItemClick(savedPosts[position])
+        }
     }
 
     override fun getItemCount(): Int = savedPosts.size
 
     inner class PostViewHolder(private val binding: ItemSaveBinding) :
-
-
         RecyclerView.ViewHolder(binding.root) {
-
-
 
         fun bind(post: DataItem? , userData: Data? ) {
             // Bind post data to UI elements
             binding.type.text = post?.material
-
             binding.time.text = getHoursAndMinutesWithAmPm(post?.createdAt)
-
             binding.date.text = getFormattedDate(post?.createdAt)
 
             // Load image using Glide library
@@ -107,8 +104,5 @@ class SavedPostsAdapter : RecyclerView.Adapter<SavedPostsAdapter.PostViewHolder>
 
             return "$dayOfMonth/$month/$year"
         }
-
-
-
     }
 }
