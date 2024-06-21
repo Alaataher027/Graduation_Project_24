@@ -99,7 +99,7 @@ class EditPostActivity : AppCompatActivity() {
             )
             val price = RequestBody.create(
                 MediaType.parse("text/plain"),
-                calculatePrice().toString() // Calculate price based on quantity and material
+                viewBinding.priceContent.text.toString() // Use priceContent value directly
             )
 
             if (imageUri == null) {
@@ -168,6 +168,7 @@ class EditPostActivity : AppCompatActivity() {
             )
         }
     }
+
 
     private fun populateViews(postData: DataItem?) {
         postData?.let { post ->

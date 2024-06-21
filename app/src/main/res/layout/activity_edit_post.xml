@@ -219,7 +219,6 @@
                 android:layout_height="63dp"
                 android:layout_gravity="center"
                 android:background="@drawable/content_bg"
-                android:enabled="false"
                 android:inputType="none"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

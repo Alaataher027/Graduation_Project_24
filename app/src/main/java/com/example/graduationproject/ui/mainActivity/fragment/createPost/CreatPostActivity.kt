@@ -82,7 +82,6 @@ class CreatPostActivity : AppCompatActivity() {
             }
         }
 
-
         // Disable EditText and Spinner initially
         viewBinding.materialContent.isEnabled = false
         // Make EditText non-editable
@@ -224,6 +223,10 @@ class CreatPostActivity : AppCompatActivity() {
                         // Enable EditText and Spinner after classification
                         viewBinding.materialContent.isEnabled = true
                         updatePrice() // Update price when material is classified
+
+                        // Enable priceContent after classification
+                        viewBinding.priceContent.isEnabled = true
+
                     } else {
                         Toast.makeText(
                             this,
@@ -239,8 +242,9 @@ class CreatPostActivity : AppCompatActivity() {
                 viewBinding.shareBtn.setOnClickListener {
                     val descriptionText = viewBinding.descriptionContent.text.toString()
                     val quantityText = viewBinding.quantityContent.text.toString()
+                    val priceText = viewBinding.priceContent.text.toString()
 
-                    // Check if description or quantity is empty
+                    // Check if description, quantity, or price is empty
                     if (descriptionText.isEmpty()) {
                         Toast.makeText(this, "Description cannot be empty", Toast.LENGTH_SHORT)
                             .show()
@@ -251,6 +255,15 @@ class CreatPostActivity : AppCompatActivity() {
                         Toast.makeText(
                             this,
                             "Quantity cannot be empty or invalid",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return@setOnClickListener
+                    }
+
+                    if (priceText.isEmpty() || priceText.toIntOrNull() == null) {
+                        Toast.makeText(
+                            this,
+                            "Price cannot be empty or invalid",
                             Toast.LENGTH_SHORT
                         ).show()
                         return@setOnClickListener
@@ -270,12 +283,8 @@ class CreatPostActivity : AppCompatActivity() {
                         "$quantityValue $selectedQuantityShowed"
                     )
 
-                    val pricePerUnit =
-                        calculatePricePerUnit(viewBinding.materialContent.text.toString())
-                    val totalPrice = calculateTotalPrice(quantityValue, pricePerUnit)
-
-                    // Set the calculated total price in the price_content EditText
-                    viewBinding.priceContent.setText(totalPrice.toString())
+                    // Use the price entered by the user
+                    val totalPrice = priceText.toInt()
 
                     // Get the current material from the EditText and create a RequestBody for it
                     val material = RequestBody.create(
@@ -345,17 +354,23 @@ class CreatPostActivity : AppCompatActivity() {
     private fun shareBtnView() {
         val descriptionText = viewBinding.descriptionContent.text.toString()
         val quantityText = viewBinding.quantityContent.text.toString()
+        val priceText = viewBinding.priceContent.text.toString()
 
-//        // Check if description or quantity is empty
-//        if (descriptionText.isEmpty()) {
-//            Toast.makeText(this, "Description cannot be empty", Toast.LENGTH_SHORT).show()
-//            return@setOnClickListener
-//        }
-//
-//        if (quantityText.isEmpty() || quantityText.toIntOrNull() == null) {
-//            Toast.makeText(this, "Quantity cannot be empty or invalid", Toast.LENGTH_SHORT).show()
-//            return@setOnClickListener
-//        }
+        // Check if description, quantity, or price is empty
+        if (descriptionText.isEmpty()) {
+            Toast.makeText(this, "Description cannot be empty", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (quantityText.isEmpty() || quantityText.toIntOrNull() == null) {
+            Toast.makeText(this, "Quantity cannot be empty or invalid", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (priceText.isEmpty() || priceText.toIntOrNull() == null) {
+            Toast.makeText(this, "Price cannot be empty or invalid", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         val description = RequestBody.create(
             MediaType.parse("text/plain"),
@@ -370,11 +385,8 @@ class CreatPostActivity : AppCompatActivity() {
             "$quantityValue $selectedQuantityShowed"
         )
 
-        val pricePerUnit = calculatePricePerUnit(viewBinding.materialContent.text.toString())
-        val totalPrice = calculateTotalPrice(quantityValue, pricePerUnit)
-
-        // Set the calculated total price in the price_content EditText
-        viewBinding.priceContent.setText(totalPrice.toString())
+        // Use the price entered by the user
+        val totalPrice = priceText.toInt()
 
         // Get the current material from the EditText and create a RequestBody for it
         val material = RequestBody.create(
@@ -403,11 +415,9 @@ class CreatPostActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Failed to read image file", Toast.LENGTH_SHORT).show()
             }
+        } else {
+            Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show()
         }
-//        else {
-//            Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show()
-//        }
-
     }
 
     private fun onClickBack() {
