@@ -127,11 +127,11 @@ class EditProfileSeller : AppCompatActivity() {
             val alertDialog = alertDialogBuilder.create()
             alertDialog.show()
 
-            dialogBinding.option1Button.setOnClickListener {
-                alertDialog.dismiss() // Dismiss the dialog if needed
-                // Handle Option 1 click
-                Toast.makeText(this, "Take photo", Toast.LENGTH_SHORT).show()
-            }
+//            dialogBinding.option1Button.setOnClickListener {
+//                alertDialog.dismiss() // Dismiss the dialog if needed
+//                // Handle Option 1 click
+//                Toast.makeText(this, "Take photo", Toast.LENGTH_SHORT).show()
+//            }
 
             dialogBinding.option2Button.setOnClickListener {
                 alertDialog.dismiss() // Dismiss the dialog if needed
@@ -139,11 +139,11 @@ class EditProfileSeller : AppCompatActivity() {
 
             }
 
-            dialogBinding.option3Button.setOnClickListener {
-                alertDialog.dismiss() // Dismiss the dialog if needed
-                // Handle Option 3 click
-                Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
-            }
+//            dialogBinding.option3Button.setOnClickListener {
+//                alertDialog.dismiss() // Dismiss the dialog if needed
+//                // Handle Option 3 click
+//                Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
+//            }
 
         }
     }

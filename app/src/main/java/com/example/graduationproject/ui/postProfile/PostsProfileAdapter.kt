@@ -155,9 +155,9 @@ class PostsProfileAdapter(
                 alertDialog.dismiss()
             }
 
-            dialogBinding.copy.setOnClickListener {
-                alertDialog.dismiss()
-            }
+//            dialogBinding.copy.setOnClickListener {
+//                alertDialog.dismiss()
+//            }
 
             dialogBinding.edit.setOnClickListener {
                 tokenManager.savePostId(post?.id ?: 0)
@@ -193,9 +193,9 @@ class PostsProfileAdapter(
                 alertDialog.dismiss()
             }
 
-            dialogBinding.copy.setOnClickListener {
-                alertDialog.dismiss()
-            }
+//            dialogBinding.copy.setOnClickListener {
+//                alertDialog.dismiss()
+//            }
         }
 
 

@@ -1,5 +1,6 @@
 package com.example.graduationproject.ui.listActivityCustomer.ListComponents.ordersPending
 
+import android.content.Intent
 import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import com.example.graduationproject.R
 import com.example.graduationproject.api.model.profile.Data
 import com.example.graduationproject.api.model.post.Data as PostData
 import com.example.graduationproject.databinding.ItemOrderBinding
+import com.example.graduationproject.ui.anotherUserProfile.AnotherCustomerProfileActivity
+import com.example.graduationproject.ui.anotherUserProfile.AnotherSellerProfileActivity
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
@@ -52,6 +55,20 @@ class OrdersAdapter(
             binding.quantityNum // Assuming this is the TextView for quantity
 
         fun bind(profile: Data, post: PostData?) {
+
+
+            post?.let { postData ->
+
+                binding.name.setOnClickListener {
+                    openUserProfile(profile)
+                }
+
+                binding.PersonalImage.setOnClickListener {
+                    openUserProfile(profile)
+                }
+            }
+
+
             binding.city.text = profile.city
             binding.gov.text = profile.governorate
             nameTextView.text = profile.name
@@ -71,6 +88,19 @@ class OrdersAdapter(
                 // You can bind other post data similarly
             }
 
+        }
+
+        //  function to open profile user
+        private fun openUserProfile(userData: Data?) {
+            userData?.let { user ->
+                val intent = if (user.userType == "Seller") {
+                    Intent(binding.root.context, AnotherSellerProfileActivity::class.java)
+                } else {
+                    Intent(binding.root.context, AnotherCustomerProfileActivity::class.java)
+                }
+                intent.putExtra("USER_DATA", user)
+                binding.root.context.startActivity(intent)
+            }
         }
 
     }

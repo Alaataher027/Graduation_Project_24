@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="300dp"
+    android:layout_width="250dp"
     android:layout_height="100dp"
     android:orientation="vertical"
     android:padding="10dp"
@@ -11,27 +11,27 @@
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/save_post"
-        android:layout_gravity="center"
         android:textColor="@color/gray_dark"
-        android:textSize="15dp" />
+        android:textSize="18dp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray_dark" />
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="1dp"-->
+    <!--        android:background="@color/gray_dark" />-->
 
 
-    <TextView
-        android:id="@+id/copy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/copy_link"
-        android:textColor="@color/gray_dark"
-        android:textSize="15dp" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/copy"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:fontFamily="@font/poppins_medium"-->
+    <!--        android:text="@string/copy_link"-->
+    <!--        android:textColor="@color/gray_dark"-->
+    <!--        android:textSize="15dp" />-->
 </LinearLayout>

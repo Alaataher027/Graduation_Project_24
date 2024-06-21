@@ -3,15 +3,21 @@ package com.example.graduationproject.ui.anotherUserProfile
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.text.format.DateUtils
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.graduationproject.R
 import com.example.graduationproject.api.model.post.postHome.DataItem
 import com.example.graduationproject.api.model.profile.Data
+import com.example.graduationproject.databinding.DialogConfirmOrderBinding
 import com.example.graduationproject.databinding.DialogPostBinding
 import com.example.graduationproject.databinding.DialogPostGeneralBinding
 import com.example.graduationproject.databinding.ItemPostBinding
@@ -20,15 +26,14 @@ import com.example.graduationproject.ui.mainActivity.fragment.home.EditPostActiv
 import com.example.graduationproject.ui.mainActivity.fragment.home.HomePostViewModel
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
-import java.util.Locale
-import java.util.TimeZone
+import java.util.*
 
 class UserPostsAdapter(
     private val tokenManager: TokenManager,
     private val homePostViewModel: HomePostViewModel,
     private val posts: List<DataItem>,
     private val userData: Data,
-    private val context: Context  // Added context parameter
+    private val context: Context
 ) : RecyclerView.Adapter<UserPostsAdapter.PostViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -60,8 +65,6 @@ class UserPostsAdapter(
 
                 // Set user name
                 name.text = userData.name
-                gov.text = userData.governorate
-                city.text = userData.city
 
                 // Display post image
                 Glide.with(itemView.context)
@@ -84,12 +87,17 @@ class UserPostsAdapter(
                     }
                 }
 
-                var userLoginedType = tokenManager.getUserType()
-                // Check if userType is "Seller"
+                // Handle order button click
+                orderBtn.setOnClickListener {
+                    showConfirmOrderDialog(post)
+                }
+
+                // Disable order button conditionally
+                val userLoginedType = tokenManager.getUserType()
                 if (userLoginedType == "Seller" || post.userId == tokenManager.getUserId()) {
-                    binding.orderBtn.isEnabled = false
+                    orderBtn.isEnabled = false
                 } else {
-                    binding.orderBtn.isEnabled = true
+                    orderBtn.isEnabled = true
                 }
             }
         }
@@ -108,10 +116,6 @@ class UserPostsAdapter(
             val postId = post?.id ?: return@setOnClickListener
             val accessToken = tokenManager.getToken() ?: return@setOnClickListener
             homePostViewModel.savePost(accessToken, postId.toString())
-            alertDialog.dismiss()
-        }
-
-        dialogBinding.copy.setOnClickListener {
             alertDialog.dismiss()
         }
 
@@ -146,8 +150,36 @@ class UserPostsAdapter(
             homePostViewModel.savePost(accessToken, postId.toString())
             alertDialog.dismiss()
         }
+    }
 
-        dialogBinding.copy.setOnClickListener {
+    private fun showConfirmOrderDialog(post: DataItem?) {
+        val dialogBinding =
+            DialogConfirmOrderBinding.inflate(LayoutInflater.from(context))
+        val alertDialogBuilder = AlertDialog.Builder(context)
+            .setView(dialogBinding.root)
+
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+
+        dialogBinding.noBtn.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        dialogBinding.yesBtn.setOnClickListener {
+            // Handle the order confirmation
+            val postId = post?.id ?: return@setOnClickListener
+            val accessToken = tokenManager.getToken() ?: return@setOnClickListener
+            val buyerId = tokenManager.getUserId()
+            homePostViewModel.orderPost(
+                accessToken,
+                postId.toString(),
+                buyerId.toString()
+            ) { message ->
+                // Ensure the toast is shown on the main thread
+                Handler(Looper.getMainLooper()).post {
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                }
+            }
             alertDialog.dismiss()
         }
     }

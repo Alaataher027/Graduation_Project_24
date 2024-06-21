@@ -163,24 +163,24 @@ class EditProfileCustomer : AppCompatActivity() {
             val alertDialog = alertDialogBuilder.create()
             alertDialog.show()
 
-            dialogBinding.option1Button.setOnClickListener {
-                Log.d("EditProfileCustomer", "clicked")
-                alertDialog.dismiss() // Dismiss the dialog
-//                checkCameraPermission()
-//                openCamera()
-
-            }
+//            dialogBinding.option1Button.setOnClickListener {
+//                Log.d("EditProfileCustomer", "clicked")
+//                alertDialog.dismiss() // Dismiss the dialog
+////                checkCameraPermission()
+////                openCamera()
+//
+//            }
 
             dialogBinding.option2Button.setOnClickListener {
                 alertDialog.dismiss() // Dismiss the dialog
                 openGalleryForImage()
             }
 
-            dialogBinding.option3Button.setOnClickListener {
-                alertDialog.dismiss() // Dismiss the dialog if needed
-                // Handle Option 3 click
-                Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
-            }
+//            dialogBinding.option3Button.setOnClickListener {
+//                alertDialog.dismiss() // Dismiss the dialog if needed
+//                // Handle Option 3 click
+//                Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
+//            }
 
 
         }

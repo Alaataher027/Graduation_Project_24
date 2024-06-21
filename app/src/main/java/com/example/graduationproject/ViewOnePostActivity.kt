@@ -80,9 +80,13 @@ class ViewOnePostActivity : AppCompatActivity() {
                 binding.quantityNum.text = it.quantity
                 binding.priceNum.text = it.price
                 binding.content.text = it.description
-                Glide.with(this)
-                    .load(it.image)
-                    .into(binding.imagePost)
+
+                // Check if the activity is still valid before loading the image
+                if (!isDestroyed && !isFinishing) {
+                    Glide.with(this)
+                        .load(it.image)
+                        .into(binding.imagePost)
+                }
 
                 // Fetch user data
                 it.userId?.let { userId ->
@@ -93,9 +97,13 @@ class ViewOnePostActivity : AppCompatActivity() {
                                 binding.name.text = user.name
                                 binding.gov.text = user.governorate
                                 binding.city.text = user.city
-                                Glide.with(this)
-                                    .load(user.image)
-                                    .into(binding.PersonalImage)
+
+                                // Check if the activity is still valid before loading the image
+                                if (!isDestroyed && !isFinishing) {
+                                    Glide.with(this)
+                                        .load(user.image)
+                                        .into(binding.PersonalImage)
+                                }
                             }
                         },
                         onError = { error ->
@@ -115,6 +123,7 @@ class ViewOnePostActivity : AppCompatActivity() {
         swipeRefreshLayout.isRefreshing = false
     }
 
+
     private fun showConfirmOrderDialog(post: Data) {
         val dialogBinding = DialogConfirmOrderBinding.inflate(LayoutInflater.from(this))
         val alertDialogBuilder = AlertDialog.Builder(this)
@@ -129,7 +138,7 @@ class ViewOnePostActivity : AppCompatActivity() {
 
         dialogBinding.yesBtn.setOnClickListener {
             binding.orderBtn.setBackgroundResource(R.drawable.rec_gray_pending)
-            binding.orderBtn.text = "waiting for a reply"
+            binding.orderBtn.text = "waiting for a reply:"
             binding.iconOrder.visibility = View.INVISIBLE
             val drawable = ContextCompat.getDrawable(this, R.drawable.wait_ic)
             binding.orderBtn.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)

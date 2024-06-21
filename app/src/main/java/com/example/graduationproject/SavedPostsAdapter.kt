@@ -1,5 +1,6 @@
 package com.example.graduationproject
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,13 +8,16 @@ import com.bumptech.glide.Glide
 import com.example.graduationproject.api.model.post.savePost.DataItem
 import com.example.graduationproject.api.model.profile.Data
 import com.example.graduationproject.databinding.ItemSaveBinding
+import com.example.graduationproject.ui.anotherUserProfile.AnotherCustomerProfileActivity
+import com.example.graduationproject.ui.anotherUserProfile.AnotherSellerProfileActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import java.util.TimeZone
 
 
-class SavedPostsAdapter(private val onItemClick: (DataItem?) -> Unit) : RecyclerView.Adapter<SavedPostsAdapter.PostViewHolder>() {
+class SavedPostsAdapter(private val onItemClick: (DataItem?) -> Unit) :
+    RecyclerView.Adapter<SavedPostsAdapter.PostViewHolder>() {
 
     var savedPosts: List<DataItem?> = emptyList()
         set(value) {
@@ -32,7 +36,7 @@ class SavedPostsAdapter(private val onItemClick: (DataItem?) -> Unit) : Recycler
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        holder.bind(savedPosts[position] , userDataMap[savedPosts[position]?.userId])
+        holder.bind(savedPosts[position], userDataMap[savedPosts[position]?.userId])
         holder.itemView.setOnClickListener {
             onItemClick(savedPosts[position])
         }
@@ -43,7 +47,21 @@ class SavedPostsAdapter(private val onItemClick: (DataItem?) -> Unit) : Recycler
     inner class PostViewHolder(private val binding: ItemSaveBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(post: DataItem? , userData: Data? ) {
+        fun bind(post: DataItem?, userData: Data?) {
+
+
+            post?.let { postData ->
+
+                binding.nameUser.setOnClickListener {
+                    openUserProfile(userData)
+                }
+
+                binding.imageProfile.setOnClickListener {
+                    openUserProfile(userData)
+                }
+            }
+
+
             // Bind post data to UI elements
             binding.type.text = post?.material
             binding.time.text = getHoursAndMinutesWithAmPm(post?.createdAt)
@@ -66,6 +84,20 @@ class SavedPostsAdapter(private val onItemClick: (DataItem?) -> Unit) : Recycler
                 }
             }
         }
+
+        //  function to open profile user
+        private fun openUserProfile(userData: Data?) {
+            userData?.let { user ->
+                val intent = if (user.userType == "Seller") {
+                    Intent(binding.root.context, AnotherSellerProfileActivity::class.java)
+                } else {
+                    Intent(binding.root.context, AnotherCustomerProfileActivity::class.java)
+                }
+                intent.putExtra("USER_DATA", user)
+                binding.root.context.startActivity(intent)
+            }
+        }
+
 
         private fun getHoursAndMinutesWithAmPm(timestamp: String?): String {
             if (timestamp.isNullOrEmpty()) return ""

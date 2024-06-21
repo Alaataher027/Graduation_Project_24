@@ -1,20 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
-    android:layout_height="200dp"
+    android:layout_height="100dp"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/option1Button"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/gray_back"
-        android:backgroundTintMode="src_atop"
-        android:fontFamily="@font/poppins_"
-        android:text="@string/take_photo"
-        android:textColor="@color/gray_name_user"
-        android:textSize="20dp" />
+<!--    <Button-->
+<!--        android:id="@+id/option1Button"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:backgroundTint="@color/gray_back"-->
+<!--        android:backgroundTintMode="src_atop"-->
+<!--        android:fontFamily="@font/poppins_"-->
+<!--        android:text="@string/take_photo"-->
+<!--        android:textColor="@color/gray_name_user"-->
+<!--        android:textSize="20dp" />-->
 
     <Space
         android:layout_width="wrap_content"
@@ -40,18 +40,18 @@
 
         />
 
-    <Button
-        android:id="@+id/option3Button"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/gray_back"
-        android:backgroundTintMode="src_atop"
-        android:fontFamily="@font/poppins_"
+<!--    <Button-->
+<!--        android:id="@+id/option3Button"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:backgroundTint="@color/gray_back"-->
+<!--        android:backgroundTintMode="src_atop"-->
+<!--        android:fontFamily="@font/poppins_"-->
 
-        android:text="@string/delete"
+<!--        android:text="@string/delete"-->
 
-        android:textColor="@color/gray_name_user"
-        android:textSize="20dp" />
+<!--        android:textColor="@color/gray_name_user"-->
+<!--        android:textSize="20dp" />-->
 
 </LinearLayout>

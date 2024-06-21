@@ -93,7 +93,6 @@
     <string name="wood">Wood</string>
     <string name="glass">Glass</string>
     <string name="steel">Steel</string>
-    <string name="type">Type</string>
     <string name="save_post">save post</string>
     <string name="copy_link">copy link</string>
     <string name="edit_post">edit post</string>
@@ -124,6 +123,11 @@
     <string name="alumetal">Alumetal</string>
     <string name="if_the_classification_was_done_incorrectly">If the classification was done incorrectly</string>
     <string name="please_enter_the_category_manually">please enter the Category manually :</string>
+    <string name="date">Date :</string>
+    <string name="time">Time :</string>
+    <string name="battery">battery</string>
+    <string name="type">Type:</string>
+    <string name="waiting_for_a_reply">waiting for a reply:</string>
 
     <string-array name="quantity_options">
         <item>Quantity (pieces)</item>

@@ -3,6 +3,7 @@ package com.example.graduationproject.api
 import com.example.graduationproject.api.model.CheckCodeResponse
 import com.example.graduationproject.api.model.ForgetPasswordResponse
 import com.example.graduationproject.api.model.LocationResponse
+import com.example.graduationproject.api.model.MaterialResponse
 import com.example.graduationproject.api.model.Order2Response
 import com.example.graduationproject.api.model.logout.LogOutResponse
 import com.example.graduationproject.api.model.ResetPasswordResponse
@@ -150,7 +151,7 @@ interface WebServices {
     @PUT("auth/user/edit")
     fun editCity(
         @Header("Authorization") accessToken: String,
-        @Query("address") address: String
+        @Query("city") city: String
     ): Call<EditProfileResponse>
 
     @PUT("auth/user/edit")
@@ -162,7 +163,7 @@ interface WebServices {
     @PUT("auth/user/edit")
     fun editSellerQuarter(
         @Header("Authorization") accessToken: String,
-        @Query("residentialQuarter") residentialQuarter: String
+        @Query("residential_quarter") residential_quarter: String
     ): Call<EditProfileResponse>
 
     @PUT("auth/user/edit")
@@ -380,6 +381,13 @@ interface WebServices {
         @Header("Authorization") accessToken: String,
         @Path("user_id") user_id: Int
     ): Call<HistoryCustomerResponse>
+
+    // https://alshaerawy.aait-sa.com/api/posts/show/categories
+    @GET("posts/show/categories")
+    fun getMaterials(
+        @Header("Authorization") accessToken: String
+    ): Call<MaterialResponse>
+
 
     @GET("lookups/govs")
     fun getLocationData(): Call<LocationResponse>

@@ -165,7 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/custumer"
+            android:text="@string/customer"
             android:textSize="14dp" />
     </RadioGroup>
 

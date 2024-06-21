@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/image_product"
             app:layout_constraintTop_toBottomOf="@id/image_profile"
-            android:text="Date :"
+            android:text="@string/date"
             android:layout_marginTop="17dp"
             android:layout_marginStart="20dp"/>
 
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/image_product"
             app:layout_constraintTop_toBottomOf="@id/date1"
-            android:text="Time :"
+            android:text="@string/time"
             android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"/>
 
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/image_product"
             app:layout_constraintTop_toBottomOf="@id/time1"
-            android:text="Type :"
+            android:text="@string/type"
             android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"/>
 

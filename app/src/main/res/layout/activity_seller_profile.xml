@@ -213,7 +213,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Email"
+                android:text="@string/email"
 
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
@@ -236,7 +236,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Phone number"
+                android:text="@string/phone_number"
                 android:textColor="@color/gray_name_user"
 
                 android:textSize="20dp"
@@ -259,7 +259,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Governorate"
+                android:text="@string/governorate"
                 android:textColor="@color/gray_name_user"
 
                 android:textSize="20dp"

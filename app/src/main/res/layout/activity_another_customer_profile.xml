@@ -227,7 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Phone number"
+                android:text="@string/phone_number"
                 android:textColor="@color/option_text_color"
                 android:layout_marginStart="5dp"
                 android:textSize="20dp" />
@@ -251,7 +251,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Governorate"
+                android:text="@string/governorate"
                 android:textColor="@color/option_text_color"
                 android:layout_marginStart="5dp"
                 android:textSize="20dp" />

@@ -31,11 +31,11 @@ class LoginOrRegister : AppCompatActivity() {
             finish()
         }
 
-        viewBinding.guest.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        viewBinding.guest.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         val profileBtn = viewBinding.registerBtn
         profileBtn.setBackgroundResource(R.drawable.rectangle_btn_list)

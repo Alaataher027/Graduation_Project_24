@@ -24,16 +24,16 @@
         android:background="@color/gray_dark" />
 
 
-    <TextView
-        android:id="@+id/copy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/copy_link"
-        android:textColor="@color/gray_dark"
-        android:textSize="18dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/copy"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:fontFamily="@font/poppins_medium"-->
+<!--        android:text="@string/copy_link"-->
+<!--        android:textColor="@color/gray_dark"-->
+<!--        android:textSize="18dp" />-->
 
     <View
         android:layout_width="match_parent"

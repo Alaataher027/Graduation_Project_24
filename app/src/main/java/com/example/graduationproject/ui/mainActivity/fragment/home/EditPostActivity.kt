@@ -106,7 +106,8 @@ class EditPostActivity : AppCompatActivity() {
                 if (viewBinding.addImage.drawable != null) {
                     val drawable = viewBinding.addImage.drawable as BitmapDrawable
                     val bitmap = drawable.bitmap
-                    val imageFile = File.createTempFile("temp_image", ".jpg", applicationContext.cacheDir)
+                    val imageFile =
+                        File.createTempFile("temp_image", ".jpg", applicationContext.cacheDir)
                     imageFile.outputStream().use {
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
                     }
@@ -241,7 +242,11 @@ class EditPostActivity : AppCompatActivity() {
                             updateQuantityAndPriceDelayed() // تحديث بعد فترة زمنية معينة
                         } else {
                             // Handle invalid input (optional)
-                            Toast.makeText(this@EditPostActivity, "Please enter a valid quantity", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@EditPostActivity,
+                                "Please enter a valid quantity",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
@@ -266,17 +271,16 @@ class EditPostActivity : AppCompatActivity() {
     }
 
 
-
     private fun calculatePrice(): Double {
         val basePricePerKilo = when (viewBinding.materialContent.text.toString()) {
-            "steel" -> 10.0
-            "wood" -> 12.0
-            "metal" -> 8.0
-            "plastic" -> 12.0
+            "alumetal" -> 70.0
+            "wood" -> 8.0
+            "metal" -> 18.0
+            "plastic" -> 15.0
             "cardboard" -> 6.0
             "white-glass" -> 14.0
             "brown-glass" -> 14.0
-            "paper" -> 12.0
+            "paper" -> 15.0
             "battery" -> 40.0
             else -> 10.0 // السعر الافتراضي لكل كيلو
         }
@@ -298,7 +302,8 @@ class EditPostActivity : AppCompatActivity() {
                 viewBinding.materialContent.setText(data ?: "")
             } else {
                 // Handle classification failure
-                Toast.makeText(this, "Failed to classify image: $message", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Failed to classify image: $message", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
@@ -307,9 +312,10 @@ class EditPostActivity : AppCompatActivity() {
         // Optionally observe any LiveData related to material classification if required
     }
 
+
     private fun setupMaterialSelection() {
         val materials = arrayOf(
-            "steel",
+            "alumetal",
             "wood",
             "metal",
             "plastic",
@@ -317,7 +323,8 @@ class EditPostActivity : AppCompatActivity() {
             "white-glass",
             "brown-glass",
             "paper",
-            "battery")
+            "battery"
+        )
 
         viewBinding.materialContent.setOnClickListener {
             val builder = AlertDialog.Builder(this)
