@@ -6,16 +6,16 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.example.graduationproject.ui.mainActivityCustomer.MainActivityCustomer
+import com.example.graduationproject.ui.mainActivity.MainActivity
 import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivitySplashScreenBinding
 import com.example.graduationproject.ui.login.TokenManager
-import com.example.graduationproject.ui.mainActivitySeller.MainActivitySeller
 
 class SplashScreen : AppCompatActivity() {
 
-    private val SPLASH_DELAY = 2000 // 2 seconds
+    private val SPLASH_DELAY = 2500 // 2 seconds
     private lateinit var viewBinding: ActivitySplashScreenBinding
     private lateinit var tokenManager: TokenManager
 
@@ -33,6 +33,7 @@ class SplashScreen : AppCompatActivity() {
             .into(imageView)
 
         Handler(Looper.getMainLooper()).postDelayed({
+//            navigateToHome()
             checkAuthentication()
         }, SPLASH_DELAY.toLong())
 
@@ -41,7 +42,10 @@ class SplashScreen : AppCompatActivity() {
 //        }, SPLASH_DELAY.toLong())
     }
 
-
+    private fun navigateToHome() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
 
     private fun checkAuthentication() {
         val userType = tokenManager.getUserType()
@@ -51,33 +55,20 @@ class SplashScreen : AppCompatActivity() {
             // No token or user type, navigate to GetStarted activity
             val intent = Intent(this, GetStarted::class.java)
             startActivity(intent)
+
         } else {
             // Token and user type exist
             if (userType == "Seller") {
 
                 // Navigate to SellerActivity
-                val intent = Intent(this, MainActivitySeller::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             } else if (userType == "Customer"){
                 // Navigate to BuyerActivity
-                val intent = Intent(this, MainActivityCustomer::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
         }
         finish() // Close the splash activity
     }
-
-    //    private fun checkAuthentication() {
-//        if (tokenManager.getToken().isNullOrBlank()) {
-//            // No token, navigate to GetStarted activity
-//            val intent = Intent(this, GetStarted::class.java)
-//            startActivity(intent)
-//        } else {
-//            // Token exists, navigate to MainActivity
-//            val intent = Intent(this, MainActivityBuyer::class.java)
-//            startActivity(intent)
-//        }
-//
-//        finish() // Close the splash activity
-//    }
 }

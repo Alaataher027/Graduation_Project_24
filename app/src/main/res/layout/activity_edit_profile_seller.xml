@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mainActivitySeller.ListComponents.profile.editProfile.EditProfileSeller">
+    android:background="@color/white"
+    tools:context=".ui.listActivitySeller.ListComponents.profile.editProfile.EditProfileSeller">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -62,7 +63,7 @@
                     android:layout_gravity="start"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/button_back" />
+                    android:src="@drawable/button_back2" />
 
                 <TextView
                     android:id="@+id/profile_title"
@@ -100,6 +101,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline1" />
 
+    <ImageView
+        android:id="@+id/add_image_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="80dp"
+        android:src="@drawable/add_img_profile"
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
@@ -133,7 +146,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/edit_text_bg" />
 
             <!-- EditText 2 -->
 
@@ -151,7 +164,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/edit_text_bg" />
 
             <!-- EditText 3 -->
 
@@ -163,14 +176,14 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
+
             <EditText
                 android:id="@+id/governorate_seller"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22"
-                android:drawableEnd="@drawable/arrow_down" />
+                android:background="@drawable/edit_text_bg" />
 
             <!-- EditText 4 -->
 
@@ -188,8 +201,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22"
-                android:drawableEnd="@drawable/arrow_down" />
+                android:background="@drawable/edit_text_bg" />
 
 
             <!-- EditText 5 -->
@@ -208,7 +220,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="25dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/edit_text_bg" />
 
             <!-- EditText 6 -->
 
@@ -226,7 +238,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="25dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/edit_text_bg" />
 
             <Button
                 android:id="@+id/save_btn"
@@ -239,7 +251,7 @@
                 android:paddingVertical="15dp"
                 android:text="@string/save_changes"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
 
         </LinearLayout>
 

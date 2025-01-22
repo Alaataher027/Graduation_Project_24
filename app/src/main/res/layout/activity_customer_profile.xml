@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mainActivityCustomer.ListComponents.profile.CustomerProfileActivity">
+    tools:context=".ui.listActivityCustomer.ListComponents.profile.profileView.CustomerProfileActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -61,23 +61,23 @@
                     android:layout_gravity="start"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/button_back" />
+                    android:src="@drawable/button_back2" />
 
-                <ImageView
-                    android:id="@+id/setting_btn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/ic_settings" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/setting_btn"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_gravity="end"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:src="@drawable/ic_settings" />-->
 
                 <TextView
                     android:id="@+id/profile_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/nunitobold"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="@string/profile"
                     android:textColor="@color/my_light_primary"
                     android:textSize="23dp"
@@ -113,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
-        android:fontFamily="@font/poppins_"
+        android:fontFamily="@font/poppins_medium"
         android:textColor="@color/my_light_primary"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -126,7 +126,7 @@
         android:id="@+id/type_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/customer"
         android:textColor="@color/gray_name_user"
         android:textSize="18dp"
@@ -135,38 +135,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name_user" />
 
-    <!-- Button 1 -->
-    <Button
-        android:id="@+id/order_btn"
+    <ImageButton
+        android:id="@+id/refresh_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="345dp"
+        android:background="@color/white"
+        android:src="@drawable/baseline_refresh_24"
+        app:layout_constraintEnd_toStartOf="@id/posts_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Button 1 -->
+    <Button
+        android:id="@+id/posts_btn"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:backgroundTint="@color/my_light_primary"
-        android:paddingHorizontal="40dp"
+        android:background="@drawable/rectangle_1465"
+        android:fontFamily="@font/poppins_medium"
         android:paddingVertical="10dp"
         android:text="@string/posts"
         android:textColor="@color/white"
         android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@id/edit_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/type_user" />
-
+        app:layout_constraintTop_toBottomOf="@id/type_user"
+        app:layout_constraintWidth_default="wrap" />
 
     <!-- Button 2 -->
     <Button
         android:id="@+id/edit_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle_1465"
         android:layout_marginEnd="50dp"
         android:backgroundTint="@color/my_light_primary"
-        android:paddingHorizontal="48dp"
+        android:fontFamily="@font/poppins_medium"
         android:paddingVertical="10dp"
         android:text="@string/edit"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/type_user" />
+        app:layout_constraintStart_toEndOf="@id/posts_btn"
+        app:layout_constraintTop_toBottomOf="@id/type_user"
+        app:layout_constraintWidth_default="wrap" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -190,6 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/email"
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
@@ -201,12 +220,16 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:textSize="19dp" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/phone_number"
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
@@ -218,12 +241,17 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+
+                android:textSize="19dp" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/governorate"
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
@@ -235,12 +263,16 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:textSize="19dp" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/city"
                 android:textColor="@color/gray_name_user"
                 android:textSize="20dp"
@@ -252,14 +284,19 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:textSize="19dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
                 android:text="@string/tax_number"
                 android:textColor="@color/gray_name_user"
-                android:textSize="20dp"
+                android:textSize="19dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -268,7 +305,10 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="25dp"
-                android:background="@drawable/rectangle_edit22" />
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:textSize="19dp" />
 
 
         </LinearLayout>

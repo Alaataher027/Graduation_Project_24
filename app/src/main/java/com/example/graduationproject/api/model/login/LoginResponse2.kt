@@ -48,7 +48,13 @@ data class User(
 	val email: String? = null,
 
 	@field:SerializedName("status")
-	val status: Int? = null
+	val status: Int? = null,
+
+	@field:SerializedName("interests")
+	val interests: String? = null,
+
+	@field:SerializedName("fcm_token")
+	val fcmToken: String? = null,
 ) : Parcelable
 
 @Parcelize

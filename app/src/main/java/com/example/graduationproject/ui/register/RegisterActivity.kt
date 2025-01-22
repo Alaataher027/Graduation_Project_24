@@ -1,9 +1,12 @@
 package com.example.graduationproject.ui.register
 
 import android.content.Intent
+import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityRegisterBinding
 import com.example.graduationproject.ui.login.LoginActivity
 
@@ -55,6 +58,14 @@ class RegisterActivity : AppCompatActivity() {
     fun onClickRegister() {
         viewBinding.registerBtn.setOnClickListener {
             performRegister()
+
+            val progressBar = viewBinding.progressBar
+            val progressDrawable = progressBar.indeterminateDrawable.mutate()
+            progressDrawable.setColorFilter(
+                ContextCompat.getColor(this, R.color.my_light_primary),
+                PorterDuff.Mode.SRC_IN
+            )
+            progressBar.indeterminateDrawable = progressDrawable
         }
     }
 

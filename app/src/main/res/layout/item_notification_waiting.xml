@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginBottom="15dp"
+    android:backgroundTint="#F6F6F6"
+    app:cardBackgroundColor="#F6F6F6"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="5dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="#8E8C8C"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Bruno pham" />
+
+        <TextView
+            android:id="@+id/req_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_"
+            android:text="@string/send_you_a_request"
+            android:textColor="#7C7C7C"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@id/name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/time_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/nunitobold"
+            android:textColor="#B5B5B5"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/req_customer"
+            tools:text="Since 3 minutes" />
+
+
+        <!-- Button 1 -->
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#EAB1AB"
+            android:backgroundTintMode="src_atop"
+            android:drawableLeft="@drawable/baseline_cancel_24"
+            android:minWidth="120dp"
+            android:minHeight="50dp"
+            android:text="@string/reject"
+            android:textColor="#BB0000"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toStartOf="@+id/accept_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/time_notification" />
+
+        <!-- Button 2 -->
+
+        <Button
+            android:id="@+id/accept_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/my_light_primary"
+            android:backgroundTintMode="src_atop"
+            android:drawableLeft="@drawable/vector_acc"
+            android:minWidth="120dp"
+            android:minHeight="50dp"
+            android:text="@string/accept"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cancel_btn"
+            app:layout_constraintTop_toBottomOf="@id/time_notification" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

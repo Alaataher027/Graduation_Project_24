@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "348034882771",
+    "project_id": "rekia-fbfe3",
+    "storage_bucket": "rekia-fbfe3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348034882771:android:6317a04e0a654bcfe64826",
+        "android_client_info": {
+          "package_name": "com.example.graduationproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_89JgnAud-PcRTtBZqZMZLafcMDuM9FA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

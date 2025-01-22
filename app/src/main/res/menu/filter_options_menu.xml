@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/location"
+        android:layout="@layout/dialog_filter_options"
+        android:title="@string/location" />
+
+    <item
+        android:id="@+id/accounts"
+        android:layout="@layout/dialog_filter_options"
+        android:title="@string/accounts" />
+    <item
+        android:id="@+id/material"
+        android:layout="@layout/dialog_filter_options"
+        android:title="@string/material" />
+</menu>

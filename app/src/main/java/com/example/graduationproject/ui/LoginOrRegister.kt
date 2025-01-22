@@ -3,9 +3,10 @@ package com.example.graduationproject.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityLoginOrRegisterBinding
 import com.example.graduationproject.ui.login.LoginActivity
-import com.example.graduationproject.ui.mainActivityCustomer.MainActivityCustomer
+import com.example.graduationproject.ui.mainActivity.MainActivity
 import com.example.graduationproject.ui.register.RegisterActivity
 
 class LoginOrRegister : AppCompatActivity() {
@@ -21,17 +22,24 @@ class LoginOrRegister : AppCompatActivity() {
         viewBinding.registerBtn.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         viewBinding.loginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
-        viewBinding.guest.setOnClickListener {
-            val intent = Intent(this, MainActivityCustomer::class.java)
-            startActivity(intent)
-        }
+//        viewBinding.guest.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
+
+        val profileBtn = viewBinding.registerBtn
+        profileBtn.setBackgroundResource(R.drawable.rectangle_btn_list)
+        profileBtn.backgroundTintList = null
     }
 
 

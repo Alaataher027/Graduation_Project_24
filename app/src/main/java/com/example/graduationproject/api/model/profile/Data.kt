@@ -53,7 +53,7 @@ data class Data(
 	val name: String? = null,
 
 	@field:SerializedName("TIN")
-	val tIN: Int? = null,
+	val tIN: String? = null,
 
 	@field:SerializedName("phone_number")
 	val phoneNumber: String? = null,
@@ -65,5 +65,8 @@ data class Data(
 	val email: String? = null,
 
 	@field:SerializedName("status")
-	val status: Int? = null
+	val status: Int? = null,
+
+	@field:SerializedName("fcm_token")
+	val fcmToken: String? = null
 ) : Parcelable

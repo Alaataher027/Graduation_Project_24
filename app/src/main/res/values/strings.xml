@@ -58,9 +58,9 @@
     <string name="menu">menu</string>
     <string name="add_post">Add post</string>
     <string name="saved_posts">Saved Posts</string>
-    <string name="about_us">about us</string>
+    <string name="about_us">About us</string>
     <string name="settings">settings</string>
-    <string name="guidance">guidance</string>
+    <string name="guidance">Guidance</string>
     <string name="privacy">privacy</string>
     <string name="log_out">log out</string>
     <string name="material">Material</string>
@@ -79,4 +79,59 @@
     <string name="tax_number">TAX number</string>
     <string name="save_changes">Save changes</string>
     <string name="are_you_sure_you_want_to_log_out">Are you sure you want to log out?</string>
+    <string name="take_photo">Take photo</string>
+    <string name="add_from_gallery">Add from Gallery</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="do_you_want_to_log_out">Do you want to log out ?</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="list">List</string>
+    <string name="plastic">Plastic</string>
+    <string name="metal">Metal</string>
+    <string name="paper">Paper</string>
+    <string name="wood">Wood</string>
+    <string name="glass">Glass</string>
+    <string name="steel">Steel</string>
+    <string name="save_post">save post</string>
+    <string name="copy_link">copy link</string>
+    <string name="edit_post">edit post</string>
+    <string name="edit_post_cap">Edit post</string>
+    <string name="delete_post">delete post</string>
+    <string name="default_web_client_id" translatable="false">YOUR_WEB_CLIENT_ID</string>
+    <string name="brown_glass">brown-glass</string>
+    <string name="white_glass">white-glass</string>
+    <string name="cardboard">cardboard</string>
+    <string name="privecy_txt">The Recycling App\'s privacy policy explains how the App collects, uses and protects users\' personal information. It typically covers aspects such as the types of data collected, how that data is used (for example, to provide recycling services or improve the application), whether the data is shared with third parties, the security measures in place to protect user information, and the user\'s controls over their data. and information about cookies, tracking, legal compliance with privacy laws, and procedures for notifying users of policy changes. Reviewing the Privacy Policy helps users understand how their data is handled and their rights in relation to their personal information.</string>
+    <string name="location">Location</string>
+    <string name="accounts">Accounts</string>
+    <string name="search_by_address">Search by address..</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="are_you_sure_you_want_to_order_this">Are You Sure You Want To Order This ?</string>
+    <string name="le_for_1_kilo">LE For 1 Kilo</string>
+    <string name="send_you_a_request">Send you a request.</string>
+    <string name="history">History</string>
+    <string name="from">From</string>
+    <string name="fromm">From:</string>
+    <string name="quantity_kilo">Quantity (Kilo)</string>
+    <string name="has_the_order_been_received_from_you">Has the order been received from you?</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+    <string name="alumetal">Alumetal</string>
+    <string name="if_the_classification_was_done_incorrectly">If the classification was done incorrectly</string>
+    <string name="please_enter_the_category_manually">please enter the Category manually :</string>
+    <string name="date">Date :</string>
+    <string name="time">Time :</string>
+    <string name="battery">battery</string>
+    <string name="type">Type:</string>
+    <string name="waiting_for_a_reply">waiting for a reply:</string>
+
+    <string-array name="quantity_options">
+        <item>Quantity (pieces)</item>
+        <item>Quantity (Kilo)</item>
+    </string-array>
+
 </resources>

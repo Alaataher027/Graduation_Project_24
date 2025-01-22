@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mainActivitySeller.ListComponents.SellerListActivity">
+    tools:context=".ui.listActivitySeller.ListComponents.SellerListActivity">
 
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/my_light_primary"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/top_bar_rec"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,19 +19,11 @@
         <ImageView
             android:id="@+id/button_back"
             android:layout_width="42dp"
+            android:padding="7dp"
             android:layout_height="42dp"
             android:layout_gravity="start"
             android:layout_marginTop="15dp"
-            android:src="@drawable/back_ic2" />
-
-        <ImageView
-            android:id="@+id/search_btn"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_gravity="end"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            android:src="@drawable/search_ic" />
+            android:src="@drawable/button_back2" />
 
 
         <TextView
@@ -41,67 +33,23 @@
             android:layout_gravity="center"
             android:fontFamily="@font/nunitobold"
             android:text="@string/menu"
-            android:textColor="@color/white"
+            android:textColor="@color/my_light_primary"
             android:textSize="25dp"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/my_light_primary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-        <ImageView
-            android:id="@+id/image_profile"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="30dp"
-            android:src="@drawable/image_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/name_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/poppins_"
-            android:text="Bruno Pham"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/type_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/poppins_"
-            android:text="@string/seller"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-
-    </androidx.cardview.widget.CardView>
-
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card">
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -110,7 +58,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/card">
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <!-- Button 1 -->
             <Button
@@ -119,7 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
-                android:backgroundTint="#F6F7F6"
+                android:backgroundTint="#F5F6F5"
+                android:fontFamily="@font/poppins_medium"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/profile_list_ic"
                 android:paddingTop="15dp"
@@ -134,9 +83,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
-                android:backgroundTint="#F6F7F6"
+                android:backgroundTint="#F5F6F5"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/save_list_ic"
+                android:fontFamily="@font/poppins_medium"
+
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/saved_posts"
@@ -149,9 +100,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
-                android:backgroundTint="#F6F7F6"
+                android:backgroundTint="#F5F6F5"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/privacy_list_ic"
+                android:fontFamily="@font/poppins_medium"
+
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/privacy"
@@ -164,29 +117,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
-                android:backgroundTint="#F6F7F6"
+                android:backgroundTint="#F5F6F5"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/about_us_ic"
                 android:paddingTop="15dp"
+                android:fontFamily="@font/poppins_medium"
+
                 android:paddingBottom="15dp"
                 android:text="@string/about_us"
                 android:textColor="#898A89"
                 android:textSize="20dp" />
 
             <!-- Button 5 -->
-            <Button
-                android:id="@+id/settings_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:backgroundTint="#F6F7F6"
-                android:backgroundTintMode="src_atop"
-                android:drawableLeft="@drawable/setting_list_ic"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="@string/settings"
-                android:textColor="#898A89"
-                android:textSize="20dp" />
+<!--            <Button-->
+<!--                android:id="@+id/settings_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:backgroundTint="#F5F6F5"-->
+<!--                android:backgroundTintMode="src_atop"-->
+<!--                android:drawableLeft="@drawable/setting_list_ic"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:paddingBottom="15dp"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+
+<!--                android:text="@string/settings"-->
+<!--                android:textColor="#898A89"-->
+<!--                android:textSize="20dp" />-->
 
             <!-- Button 6 -->
             <Button
@@ -194,63 +151,70 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
-                android:backgroundTint="#F6F7F6"
+                android:backgroundTint="#F5F6F5"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/sign_ic"
+                android:fontFamily="@font/poppins_medium"
+
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/guidance"
                 android:textColor="#898A89"
                 android:textSize="20dp" />
 
-            <Button
-                android:id="@+id/material_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:backgroundTint="#F6F7F6"
-                android:backgroundTintMode="src_atop"
-                android:drawableLeft="@drawable/materials_ic"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="@string/material"
-                android:textColor="#898A89"
-                android:textSize="20dp" />
+<!--            <Button-->
+<!--                android:id="@+id/material_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:backgroundTint="#F5F6F5"-->
+<!--                android:backgroundTintMode="src_atop"-->
+<!--                android:drawableLeft="@drawable/materials_ic"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
 
-            <Button
-                android:id="@+id/tech_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:backgroundTint="#F6F7F6"
-                android:backgroundTintMode="src_atop"
-                android:drawableLeft="@drawable/tech_ic"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="@string/technical_support"
-                android:textColor="#898A89"
-                android:textSize="20dp" />
+<!--                android:paddingBottom="15dp"-->
+<!--                android:text="@string/material"-->
+<!--                android:textColor="#898A89"-->
+<!--                android:textSize="20dp" />-->
 
-            <Button
-                android:id="@+id/order_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:backgroundTint="#F6F7F6"
-                android:backgroundTintMode="src_atop"
-                android:drawableLeft="@drawable/order_ic"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="@string/orders"
-                android:textColor="#898A89"
-                android:textSize="20dp" />
+<!--            <Button-->
+<!--                android:id="@+id/tech_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:backgroundTint="#F5F6F5"-->
+<!--                android:backgroundTintMode="src_atop"-->
+<!--                android:drawableLeft="@drawable/tech_ic"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:paddingBottom="15dp"-->
+<!--                android:text="@string/technical_support"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+<!--                android:textColor="#898A89"-->
+<!--                android:textSize="20dp" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/order_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:backgroundTint="#F5F6F5"-->
+<!--                android:backgroundTintMode="src_atop"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+<!--                android:drawableLeft="@drawable/order_ic"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:paddingBottom="15dp"-->
+<!--                android:text="@string/orders"-->
+<!--                android:textColor="#898A89"-->
+<!--                android:textSize="20dp" />-->
             <!-- Button 7 -->
             <Button
                 android:id="@+id/logout_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
-                android:backgroundTint="#F6F7F6"
+                android:backgroundTint="#F5F6F5"
+                android:fontFamily="@font/poppins_medium"
                 android:backgroundTintMode="src_atop"
                 android:drawableLeft="@drawable/log_out_ic"
                 android:paddingTop="15dp"
